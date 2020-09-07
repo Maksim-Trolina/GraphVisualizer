@@ -1,2 +1,3 @@
 # GraphVisualizer
-Can I steal your excavator?
+Fuck you
+Evgen
