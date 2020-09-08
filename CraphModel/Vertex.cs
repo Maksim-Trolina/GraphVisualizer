@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+
 
 namespace CraphModel
 {
-    class Vertex
+    public class Vertex
     {
+        public int Id { get; set; }
         public List<Node> nodes { get; set; }
     }
 
-    internal struct Node
+    public struct Node
     {   
        public int Weight { get; set; }
 
