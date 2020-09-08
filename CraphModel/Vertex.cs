@@ -6,7 +6,7 @@ namespace CraphModel
     public class Vertex
     {
         public int Id { get; set; }
-        public List<Node> nodes { get; set; }
+        public List<Node> Nodes { get; set; }
     }
 
     public struct Node
