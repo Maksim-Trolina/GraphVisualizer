@@ -12,10 +12,18 @@ namespace StartForm
 {
     public partial class Form1 : Form
     {
+        private Button startButton;
         public Form1()
         {
             InitializeComponent();
+
+            startButton = new Button();
+
+            startButton.Bounds = new Rectangle(10, 10, 75, 25);
+
+            Controls.Add(startButton);
         }
 
     }
+
 }
