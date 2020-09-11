@@ -7,20 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Forms;
+
+
 
 namespace StartForm
 {
     public partial class StartForm : Form
     {
+
+        private StartButton menuButton = new StartButton();
+
+        private int buttonWidth = 100, buttonHeight = 50;
+      
         public StartForm()
         {
             InitializeComponent();
 
-            startButton = new Button();
+            menuButton.ButtonInitialization(this, "Matrix", this.ClientRectangle.Width / 2 - buttonWidth, this.ClientRectangle.Height / 2 - buttonHeight, buttonWidth, buttonHeight);
 
-            startButton.Bounds = new Rectangle(10, 10, 75, 25);
-
-            Controls.Add(startButton);
         }
 
     }
