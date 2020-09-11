@@ -10,10 +10,13 @@ namespace Forms
 {
     public partial class InputCountVertexForm : Form
     {
+        private InputCountBox inputBox;
 
         public InputCountVertexForm()
         {
             InitializeComponent();
+            inputBox = new InputCountBox();
+            Controls.Add(inputBox);
             
         }
     }
