@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace GraphModelDraw
 {
-    public class GraphModelDraw
+    public class VertexDraw
     {
         public readonly Brush BrushCircle;
 
@@ -21,7 +21,7 @@ namespace GraphModelDraw
 
         public readonly int Id;
 
-        public GraphModelDraw(Brush brushCircle,Brush textBrush,float x,float y,float width,float height,string text,int id)
+        public VertexDraw(Brush brushCircle,Brush textBrush,float x,float y,float width,float height,string text,int id)
         {
             BrushCircle = brushCircle;
 
