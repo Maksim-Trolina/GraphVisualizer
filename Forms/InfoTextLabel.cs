@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System.Reflection.Emit;
 using System.Text;
 using System.Windows.Forms;
 
 namespace Forms
 {
-    class InputCountBox : TextBox
+    class InfoTextLabel : System.Windows.Forms.Label
     {
-        public InputCountBox(int sizeX, int sizeY, int locationX, int locationY, string initValue = "0")
+        public InfoTextLabel(int sizeX, int sizeY, int locationX, int locationY, string info = "Введите количество вершин в графе:")
         {
-            this.Text = initValue;
+            this.Text = info;
             this.Size = new System.Drawing.Size(sizeX, sizeY);
             this.Location = new System.Drawing.Point(locationX, locationY);
-                     
         }
     }
 }
