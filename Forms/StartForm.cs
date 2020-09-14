@@ -16,15 +16,21 @@ namespace StartForm
     public partial class StartForm : Form
     {
 
-        private StartButton menuButton = new StartButton();
-
         private int buttonWidth = 100, buttonHeight = 50;
       
         public StartForm()
         {
             InitializeComponent();
 
-            menuButton.ButtonInitialization(this, "Matrix", this.ClientRectangle.Width / 2 - buttonWidth, this.ClientRectangle.Height / 2 - buttonHeight, buttonWidth, buttonHeight);
+            StartButton startButton = new StartButton();
+
+            startButton.ButtonInitialization(this, "Matrix", this.ClientRectangle.Width / 2 - buttonWidth, this.ClientRectangle.Height / 2 - buttonHeight, buttonWidth, buttonHeight, ButtonClick);
+
+        }
+
+        public vois ButtonClick(object sender, EventArgs e)
+        {
+
 
         }
 
