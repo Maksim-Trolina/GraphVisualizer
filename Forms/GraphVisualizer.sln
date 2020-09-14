@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{A3A95FA3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CraphModel", "..\CraphModel\CraphModel.csproj", "{BFC324EC-0E23-4040-82BA-5B8554FB28D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphModelDraw", "..\GraphModelDraw\GraphModelDraw.csproj", "{3479594F-2019-4619-940E-9BF288E01C80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{BFC324EC-0E23-4040-82BA-5B8554FB28D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFC324EC-0E23-4040-82BA-5B8554FB28D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFC324EC-0E23-4040-82BA-5B8554FB28D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3479594F-2019-4619-940E-9BF288E01C80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3479594F-2019-4619-940E-9BF288E01C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3479594F-2019-4619-940E-9BF288E01C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3479594F-2019-4619-940E-9BF288E01C80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{6900F299-A8EE-4722-B791-1B14A069CCA4} = {F131930F-A139-433C-B0E5-8E98F443EBA1}
 		{BFC324EC-0E23-4040-82BA-5B8554FB28D7} = {A3A95FA3-C2F9-4C0D-8920-3C34D275BBFF}
+		{3479594F-2019-4619-940E-9BF288E01C80} = {A3A95FA3-C2F9-4C0D-8920-3C34D275BBFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43F0DC72-6F61-43AF-9A39-960489E89B49}
