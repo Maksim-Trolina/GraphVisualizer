@@ -17,6 +17,7 @@ namespace StartForm
     {
 
         private int buttonWidth = 100, buttonHeight = 50;
+
       
         public StartForm()
         {
@@ -28,9 +29,14 @@ namespace StartForm
 
         }
 
-        public vois ButtonClick(object sender, EventArgs e)
-        {
+        InputCountVertexForm nextForm = new InputCountVertexForm();
 
+        private void ButtonClick(object sender, EventArgs e)
+        {
+            
+                this.Hide();
+                nextForm.ShowDialog();
+                this.Show();       
 
         }
         

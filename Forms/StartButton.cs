@@ -19,6 +19,8 @@ namespace Forms
 
             this.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right); // anchorage to place
 
+            this.Click += ev;
+
             StartForm.Controls.Add(this); // mapping an item to a form
 
         }
