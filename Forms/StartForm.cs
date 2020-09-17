@@ -16,30 +16,21 @@ namespace StartForm
     public partial class StartForm : Form
     {
 
-        private int buttonWidth = 100, buttonHeight = 50;
+        StartButton startButton;
 
-      
         public StartForm()
         {
             InitializeComponent();
 
-            StartButton startButton = new StartButton();
+            startButton = new StartButton {nextForm = nextForm};
 
-            startButton.ButtonInitialization(this, "Matrix", this.ClientRectangle.Width / 2 - buttonWidth, this.ClientRectangle.Height / 2 - buttonHeight, buttonWidth, buttonHeight, ButtonClick);
-
+            this.Controls.Add(startButton);
+          
         }
 
         InputCountVertexForm nextForm = new InputCountVertexForm();
 
-        private void ButtonClick(object sender, EventArgs e)
-        {
-            
-                this.Hide();
-                nextForm.ShowDialog();
-                this.Show();       
 
-        }
-        
     }
 
 }

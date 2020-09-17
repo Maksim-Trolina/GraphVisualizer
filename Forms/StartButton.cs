@@ -2,26 +2,43 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using Forms;
+
 
 namespace Forms
 {
     class StartButton : Button
     {
-      
-        public void ButtonInitialization(Form StartForm, string buttonName, int buttonX, int buttonY, int buttonWidth, int buttonHeight, EventHandler ev)
+
+        private int buttonWidth = 100;
+        private int buttonHeight = 50;
+        private string buttonName = "Matrix";
+
+        public StartButton()
         {
 
             this.Text = buttonName;
 
-            this.Location = new System.Drawing.Point(buttonX, buttonY); 
+            this.Location = new System.Drawing.Point(350, 180); 
 
             this.Size = new System.Drawing.Size(buttonWidth, buttonHeight);
 
             this.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right); // anchorage to place
 
-            this.Click += ev;
+            this.Click += new EventHandler(ButtonClick);
 
-            StartForm.Controls.Add(this); // mapping an item to a form
+        }
+
+        public InputCountVertexForm nextForm;
+
+        public void ButtonClick(object sender, EventArgs e)
+        {
+
+            this.Hide();
+            nextForm.ShowDialog();
+            this.Show();
+
+            MessageBox.Show("Fuck you!");
 
         }
     }
