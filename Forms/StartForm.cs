@@ -22,7 +22,7 @@ namespace StartForm
         {
             InitializeComponent();
 
-            startButton = new StartButton {nextForm = nextForm};
+            startButton = new StartButton {nextForm = nextForm, startForm = this};
 
             this.Controls.Add(startButton);
           
@@ -30,7 +30,7 @@ namespace StartForm
 
         InputCountVertexForm nextForm = new InputCountVertexForm();
 
-
     }
+
 
 }

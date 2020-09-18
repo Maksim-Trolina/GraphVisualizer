@@ -30,11 +30,12 @@ namespace Forms
         }
 
         public InputCountVertexForm nextForm;
+        public StartForm startForm;
 
         public void ButtonClick(object sender, EventArgs e)
         {
 
-            this.Hide();
+            startForm.Hide();
             nextForm.ShowDialog();
             this.Show();
 
