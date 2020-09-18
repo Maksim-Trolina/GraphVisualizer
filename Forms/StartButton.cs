@@ -30,7 +30,7 @@ namespace Forms
         {
             StartForm.Hide();
             NextForm.ShowDialog();
-            StartForm.Show();
+            StartForm.Close();
 
         }           
     }
