@@ -1,13 +1,12 @@
-﻿using System;
-using System.Drawing;
+﻿
 
 namespace GraphModelDraw
 {
     public class VertexDraw
     {
-        public readonly Brush BrushCircle;
+        public readonly BrushColor BrushCircle;
 
-        public readonly Brush TextBrush;
+        public readonly BrushColor TextBrush;
 
         public readonly float X;
 
@@ -21,7 +20,7 @@ namespace GraphModelDraw
 
         public readonly int Id;
 
-        public VertexDraw(Brush brushCircle,Brush textBrush,float x,float y,float width,float height,string text,int id)
+        public VertexDraw(BrushColor brushCircle,BrushColor textBrush,float x,float y,float width,float height,string text,int id)
         {
             BrushCircle = brushCircle;
 
