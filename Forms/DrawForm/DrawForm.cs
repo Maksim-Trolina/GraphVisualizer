@@ -16,42 +16,38 @@ namespace StartForm
         {
             InitializeComponent();
 
+            DoubleBuffered = true;
+
             vertexDraws = new List<VertexDraw>();
 
-            MouseDown += new MouseEventHandler(MouseClick);
-
-            
-
-            //Paint += new PaintEventHandler(Paint1);
-
-            //this.
+            MouseDown += new MouseEventHandler(MouseClickDrawForm);
 
         }
 
-        private void MouseClick(object sender, MouseEventArgs e)
+        private void MouseClickDrawForm(object sender, MouseEventArgs e)
         {
             if(e.Button == MouseButtons.Left)
             {
-                vertexDraws.Add(new VertexDraw(BrushColor.Red, BrushColor.Green, e.X, e.Y, 100, 100,"Саси",vertexDraws.Count));
+                vertexDraws.Add(new VertexDraw(BrushColor.Red, BrushColor.Green
+                    ,e.X-(int)VertexParameters.Radius, e.Y-(int)VertexParameters.Radius
+                    ,(int)VertexParameters.Width, (int)VertexParameters.Height,"Саси"
+                    ,vertexDraws.Count));
 
-                //MessageBox.Show("Left tButton");
+                Refresh();
             }
         }
 
-        private void Paint1(object sender, PaintEventArgs e)
-        {
-            Graphics graphics = e.Graphics;
-
-            graphics.FillEllipse(Brushes.Black, 40, 40, 100, 100);
-
-            for(int i = 0; i < vertexDraws.Count; i++)
-            {
-                graphics.FillEllipse(Brushes.Blue, vertexDraws[i].X, vertexDraws[i].Y, vertexDraws[i].Width, vertexDraws[i].Height);
-            }
-        }
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
+
+            Graphics graphics = e.Graphics;
+
+            foreach (var vertex in vertexDraws)
+            {
+                graphics.FillEllipse(Brushes.Blue, vertex.X, vertex.Y, vertex.Width, vertex.Height);
+            }
+            
         }
     }
 }
