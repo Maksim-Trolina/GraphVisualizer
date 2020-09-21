@@ -1,5 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Text;
+using System.IO;
+using System.Runtime.Serialization.Json;
+using CraphModel;
 
 
 namespace Forms.DrawForm
@@ -23,9 +29,7 @@ namespace Forms.DrawForm
 
         public void ButtonClick(object sender, EventArgs e)
         {
-
-
-
+         
         }
 
     }
