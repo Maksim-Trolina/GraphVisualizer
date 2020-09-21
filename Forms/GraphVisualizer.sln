@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{A3A95FA3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CraphModel", "..\CraphModel\CraphModel.csproj", "{BFC324EC-0E23-4040-82BA-5B8554FB28D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphModelDraw", "..\GraphModelDraw\GraphModelDraw.csproj", "{3479594F-2019-4619-940E-9BF288E01C80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphModelDraw", "..\GraphModelDraw\GraphModelDraw.csproj", "{3479594F-2019-4619-940E-9BF288E01C80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

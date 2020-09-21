@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Forms.DrawForm;
 
 namespace StartForm
 {
@@ -13,6 +14,10 @@ namespace StartForm
         public DrawForm()
         {
             InitializeComponent();
+
+            SaveButton saveButton = new SaveButton();
+
+            Controls.Add(saveButton);
         }
     }
 }
