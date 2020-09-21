@@ -8,6 +8,8 @@ namespace Forms
 {
     class InputCountBox : TextBox
     {
+        
+
         public InputCountBox(int sizeX, int sizeY, int locationX, int locationY, string initValue = "0")
         {
             this.Text = initValue;
@@ -15,5 +17,7 @@ namespace Forms
             this.Location = new System.Drawing.Point(locationX, locationY);
                      
         }
+
+
     }
 }

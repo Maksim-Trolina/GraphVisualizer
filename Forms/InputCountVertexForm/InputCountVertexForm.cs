@@ -13,6 +13,7 @@ namespace Forms
         private InputCountBox inputBox;
         private InfoTextLabel infoText;
         private ConfirmButton confirmButton;
+        private InputCountBox[,] matrixGraph;
 
         public InputCountVertexForm()
         {
@@ -24,10 +25,31 @@ namespace Forms
             infoText = new InfoTextLabel(300, 30, 200, 80);
             Controls.Add(infoText);
 
-            confirmButton = new ConfirmButton(100, 30, 300, 300);
+            confirmButton = new ConfirmButton(100, 30, 500, 100) { InputCountBox = inputBox, InputCountVertexForm = this };
+
             Controls.Add(confirmButton);
         }
+
+        public void CreateMatrixGraph(uint number)
+        {
+            matrixGraph = new InputCountBox[number, number];
+            int stepX = 30;
+            int stepY = 30;
+                        
+            for (int i = 0; i < number; ++i)
+            {
+                for (int j = 0; j < number; ++j)
+                {
+                    matrixGraph[i, j] = new InputCountBox(20, 20, 50 + stepY * i, 200 + stepX * j);
+                    if (i == j)
+                    {
+                        matrixGraph[i, j].Enabled = false;
+                    }
+                    Controls.Add(matrixGraph[i, j]);
+                }
+            }
+        }
     }
-       
-    
+
+
 }
