@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Forms.DrawForm;
+using CraphModel;
+
+
 
 namespace StartForm
 {
@@ -14,8 +11,14 @@ namespace StartForm
         public DrawForm()
         {
             InitializeComponent();
+         
+            Book book = new Book();
+            book.Author = "Kingo";
+            book.Name = "It";
+            book.Price = 69;
 
-            SaveButton saveButton = new SaveButton();
+
+            SaveButton saveButton = new SaveButton() { book = book};
 
             Controls.Add(saveButton);
         }
