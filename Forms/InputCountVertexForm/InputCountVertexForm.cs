@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Text;
 using System.Windows.Forms;
 
@@ -13,7 +14,7 @@ namespace Forms
         private InputCountBox inputBox;
         private InfoTextLabel infoText;
         private ConfirmButton confirmButton;
-        private InputCountBox[,] matrixGraph;
+
 
         public InputCountVertexForm()
         {
@@ -30,25 +31,7 @@ namespace Forms
             Controls.Add(confirmButton);
         }
 
-        public void CreateMatrixGraph(uint number)
-        {
-            matrixGraph = new InputCountBox[number, number];
-            int stepX = 30;
-            int stepY = 30;
-                        
-            for (int i = 0; i < number; ++i)
-            {
-                for (int j = 0; j < number; ++j)
-                {
-                    matrixGraph[i, j] = new InputCountBox(20, 20, 50 + stepY * i, 200 + stepX * j);
-                    if (i == j)
-                    {
-                        matrixGraph[i, j].Enabled = false;
-                    }
-                    Controls.Add(matrixGraph[i, j]);
-                }
-            }
-        }
+        
     }
 
 
