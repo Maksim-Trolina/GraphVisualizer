@@ -35,7 +35,7 @@ namespace Forms
             CreateMatrixGraph(inputNumber);
         }
 
-        public void DeleteMatrixGraph()
+        private void DeleteMatrixGraph()
         {
             if (matrixGraph != null)
             {
@@ -49,7 +49,7 @@ namespace Forms
             }
         }
 
-        public void CreateMatrixGraph(int rows)
+        private void CreateMatrixGraph(int rows)
         {
             matrixGraph = new InputCountBox[rows, rows];
 
