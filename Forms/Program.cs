@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-
+using CraphModel;
 
 
 
@@ -18,8 +18,7 @@ namespace StartForm
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new DrawForm());
-
-             
+          
         }
     }
 }
