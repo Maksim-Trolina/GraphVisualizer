@@ -21,22 +21,37 @@ namespace Forms
 
         public void ButtonClick(object sender, EventArgs e)
         {
-            int inputNumber = 0;
-            Int32.TryParse(InputCountBox.Text, out inputNumber);
+            int inputNumber;
+            try
+            {
+                inputNumber = Int32.Parse(InputCountBox.Text);
+            }
+            catch
+            {
+                inputNumber = 0;
+            }
 
+            DeleteMatrixGraph();
+            CreateMatrixGraph(inputNumber);
+        }
+
+        public void DeleteMatrixGraph()
+        {
             if (matrixGraph != null)
             {
-                for (int i = 0; i < Math.Sqrt(matrixGraph.Length); ++i)
+                for (int i = 0; i < matrixGraph.GetLength(0); ++i)
                 {
-                    for (int j = 0; j < Math.Sqrt(matrixGraph.Length); ++j)
+                    for (int j = 0; j < matrixGraph.GetLength(1); ++j)
                     {
                         InputCountVertexForm.Controls.Remove(matrixGraph[i, j]);
-
                     }
                 }
             }
+        }
 
-            matrixGraph = new InputCountBox[inputNumber, inputNumber];
+        public void CreateMatrixGraph(int rows)
+        {
+            matrixGraph = new InputCountBox[rows, rows];
 
             int stepX = 15;
             int stepY = 15;
@@ -47,9 +62,9 @@ namespace Forms
             int positionX = 50;
             int positionY = 200;
 
-            for (int i = 0; i < inputNumber; ++i)
+            for (int i = 0; i < rows; ++i)
             {
-                for (int j = 0; j < inputNumber; ++j)
+                for (int j = 0; j < rows; ++j)
                 {
                     matrixGraph[i, j] = new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j);
                     if (i == j)
