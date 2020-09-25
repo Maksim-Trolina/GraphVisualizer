@@ -18,7 +18,7 @@ namespace CraphModel
         {
             DataContractJsonSerializer formatter = new DataContractJsonSerializer(typeof(int));
 
-            using (FileStream fs = new FileStream("d://Graph1.json", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("Graph1.json", FileMode.OpenOrCreate))
             {
 
                 formatter.WriteObject(fs, this);

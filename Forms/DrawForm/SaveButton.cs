@@ -24,11 +24,13 @@ namespace Forms.DrawForm
 
         public Graph graph { get; set; }
 
+
         public void ButtonClick(object sender, EventArgs e)
         {
 
           graph.SaveGraph();
  
+
         }
     }
 }
