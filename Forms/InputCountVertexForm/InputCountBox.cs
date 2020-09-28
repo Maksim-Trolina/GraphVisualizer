@@ -8,12 +8,22 @@ namespace Forms
 {
     class InputCountBox : TextBox
     {
-        public InputCountBox(int sizeX, int sizeY, int locationX, int locationY, string initValue = "0")
+        public InputCountBox(int width, int height, int positionX, int positionY, string initValue = "0")
         {
             this.Text = initValue;
-            this.Size = new System.Drawing.Size(sizeX, sizeY);
-            this.Location = new System.Drawing.Point(locationX, locationY);
+            this.Size = new System.Drawing.Size(width, height);
+            this.Location = new System.Drawing.Point(positionX, positionY);
+            this.KeyPress += new KeyPressEventHandler(TextBoxKeyPressed);
                      
         }
+        public void TextBoxKeyPressed(object sender, KeyPressEventArgs e)
+        {
+            
+            if (!(Char.IsDigit(e.KeyChar) || e.KeyChar == '\b'))   // entered a digit or backspace
+            {
+                e.Handled = true;
+            }
+        }
+
     }
 }

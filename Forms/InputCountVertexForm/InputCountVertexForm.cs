@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Text;
 using System.Windows.Forms;
 
@@ -14,6 +15,7 @@ namespace Forms
         private InfoTextLabel infoText;
         private ConfirmButton confirmButton;
 
+
         public InputCountVertexForm()
         {
             InitializeComponent();
@@ -24,10 +26,13 @@ namespace Forms
             infoText = new InfoTextLabel(300, 30, 200, 80);
             Controls.Add(infoText);
 
-            confirmButton = new ConfirmButton(100, 30, 300, 300);
+            confirmButton = new ConfirmButton(100, 30, 500, 100) { InputCountBox = inputBox, InputCountVertexForm = this };
+
             Controls.Add(confirmButton);
         }
+
+        
     }
-       
-    
+
+
 }

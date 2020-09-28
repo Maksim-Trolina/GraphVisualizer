@@ -8,11 +8,11 @@ namespace Forms
 {
     class InfoTextLabel : System.Windows.Forms.Label
     {
-        public InfoTextLabel(int sizeX, int sizeY, int locationX, int locationY, string info = "Введите количество вершин в графе:")
+        public InfoTextLabel(int width, int height, int positionX, int positionY, string info = "Введите количество вершин в графе:")
         {
             this.Text = info;
-            this.Size = new System.Drawing.Size(sizeX, sizeY);
-            this.Location = new System.Drawing.Point(locationX, locationY);
+            this.Size = new System.Drawing.Size(width, height);
+            this.Location = new System.Drawing.Point(positionX, positionY);
         }
     }
 }
