@@ -20,16 +20,16 @@ namespace Forms.DrawForm
 
             Click += new EventHandler(ButtonClick);
 
+            Graph = new Graph();
+
         }
 
-        public Graph graph { get; set; }
+        public Graph Graph { get; set; }
 
 
         public void ButtonClick(object sender, EventArgs e)
         {
-
-          graph.SaveGraph();
- 
+          Graph.SaveGraph();
 
         }
     }

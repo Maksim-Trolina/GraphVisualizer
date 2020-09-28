@@ -18,6 +18,12 @@ namespace CraphModel
         {
             DataContractJsonSerializer formatter = new DataContractJsonSerializer(typeof(int));
 
+            Vertexs = new List<Vertex>();
+
+            Vertexs.Add(new Vertex() { Id = 4 });
+
+            Vertexs.Add(new Vertex() { Id = 6 });
+
             using (FileStream fs = new FileStream("Graph1.json", FileMode.OpenOrCreate))
             {
 
