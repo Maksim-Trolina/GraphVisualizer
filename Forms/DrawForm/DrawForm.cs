@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-using CollisionDraw;
+﻿﻿using System.Windows.Forms;
 using GraphModelDraw;
+using CollisionDraw;
+using System.Collections.Generic;
+using System.Drawing;
+using Forms.DrawForm;
 
 namespace StartForm
 {
@@ -23,6 +24,10 @@ namespace StartForm
             collisionVertex = new CollisionVertex();
 
             MouseDown += new MouseEventHandler(MouseClickDrawForm);
+
+            SaveButton saveButton = new SaveButton();
+
+            Controls.Add(saveButton);
 
         }
 

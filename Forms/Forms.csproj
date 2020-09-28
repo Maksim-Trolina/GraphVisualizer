@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CollisionDraw\CollisionDraw.csproj" />
+    <ProjectReference Include="..\CraphModel\CraphModel.csproj" />
     <ProjectReference Include="..\GraphModelDraw\GraphModelDraw.csproj" />
   </ItemGroup>
 
