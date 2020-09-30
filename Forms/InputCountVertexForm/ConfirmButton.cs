@@ -7,16 +7,22 @@ namespace Forms
 {
     class ConfirmButton : Button
     {
-        public InputCountVertexForm InputCountVertexForm { get; set; }
-        public InputCountBox InputCountBox { get; set; }
-        private InputCountBox[,] matrixGraph;
+        private InputCountVertexForm inputCountVertexForm;
 
-        public ConfirmButton(int width, int height, int positionX, int positionY, string buttonText = "OK")
+        private InputCountBox inputCountBox;
+
+        private MatrixGraph matrixGraphCount;
+
+        public ConfirmButton(int width, int height, int positionX, int positionY,InputCountBox inputCountBox,InputCountVertexForm inputCountVertexForm, string buttonText = "OK")
         {
             this.Text = buttonText;
             this.Size = new System.Drawing.Size(width, height);
             this.Location = new System.Drawing.Point(positionX, positionY);
+            this.inputCountBox = inputCountBox;
+            this.inputCountVertexForm = inputCountVertexForm;
             Click += new EventHandler(ButtonClick);
+            matrixGraphCount = new MatrixGraph(this.inputCountVertexForm);
+            
         }
 
         public void ButtonClick(object sender, EventArgs e)
@@ -24,18 +30,31 @@ namespace Forms
             int inputNumber;
             try
             {
-                inputNumber = Int32.Parse(InputCountBox.Text);
+                inputNumber = Int32.Parse(inputCountBox.Text);
             }
             catch
             {
                 inputNumber = 0;
             }
 
-            DeleteMatrixGraph();
-            CreateMatrixGraph(inputNumber);
+            matrixGraphCount.DeleteMatrix();
+            
+            matrixGraphCount.CreateMatrix(inputNumber);
+        }
+    }
+
+    public class MatrixGraph
+    {
+        private InputCountBox[,] matrixGraph;
+
+        private InputCountVertexForm inputCountVertexForm;
+
+        public MatrixGraph(InputCountVertexForm inputCountVertexForm)
+        {
+            this.inputCountVertexForm = inputCountVertexForm;
         }
 
-        private void DeleteMatrixGraph()
+        public void DeleteMatrix()
         {
             if (matrixGraph != null)
             {
@@ -43,13 +62,13 @@ namespace Forms
                 {
                     for (int j = 0; j < matrixGraph.GetLength(1); ++j)
                     {
-                        InputCountVertexForm.Controls.Remove(matrixGraph[i, j]);
+                        inputCountVertexForm.Controls.Remove(matrixGraph[i, j]);
                     }
                 }
             }
         }
 
-        private void CreateMatrixGraph(int rows)
+        public void CreateMatrix(int rows)
         {
             matrixGraph = new InputCountBox[rows, rows];
 
@@ -71,35 +90,8 @@ namespace Forms
                     {
                         matrixGraph[i, j].Enabled = false;
                     }
-                    InputCountVertexForm.Controls.Add(matrixGraph[i, j]);
-                }
-            }
-        }
-    }
-
-    class MatrixGraph
-    {
-        private InputCountBox[,] matrixGraph;
-
-        private InputCountVertexForm inputCountVertexForm;
-
-        public MatrixGraph(InputCountBox[,] matrixGraph,InputCountVertexForm inputCountVertexForm)
-        {
-            this.matrixGraph = matrixGraph;
-
-            this.inputCountVertexForm = inputCountVertexForm;
-        }
-
-        public void DeleteMatrix()
-        {
-            if (matrixGraph != null)
-            {
-                for (int i = 0; i < matrixGraph.GetLength(0); ++i)
-                {
-                    for (int j = 0; j < matrixGraph.GetLength(1); ++j)
-                    {
-                        inputCountVertexForm.Controls.Remove(matrixGraph[i, j]);
-                    }
+                    
+                    inputCountVertexForm.Controls.Add(matrixGraph[i, j]);
                 }
             }
         }
