@@ -76,4 +76,32 @@ namespace Forms
             }
         }
     }
+
+    class MatrixGraph
+    {
+        private InputCountBox[,] matrixGraph;
+
+        private InputCountVertexForm inputCountVertexForm;
+
+        public MatrixGraph(InputCountBox[,] matrixGraph,InputCountVertexForm inputCountVertexForm)
+        {
+            this.matrixGraph = matrixGraph;
+
+            this.inputCountVertexForm = inputCountVertexForm;
+        }
+
+        public void DeleteMatrix()
+        {
+            if (matrixGraph != null)
+            {
+                for (int i = 0; i < matrixGraph.GetLength(0); ++i)
+                {
+                    for (int j = 0; j < matrixGraph.GetLength(1); ++j)
+                    {
+                        inputCountVertexForm.Controls.Remove(matrixGraph[i, j]);
+                    }
+                }
+            }
+        }
+    }
 }
