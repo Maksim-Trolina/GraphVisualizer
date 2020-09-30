@@ -26,7 +26,7 @@ namespace Forms
             infoText = new InfoTextLabel(300, 30, 200, 80);
             Controls.Add(infoText);
 
-            confirmButton = new ConfirmButton(100, 30, 500, 100) { InputCountBox = inputBox, InputCountVertexForm = this };
+            confirmButton = new ConfirmButton(100, 30, 500, 100, inputBox, this);
 
             Controls.Add(confirmButton);
         }

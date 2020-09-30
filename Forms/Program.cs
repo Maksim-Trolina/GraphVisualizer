@@ -1,8 +1,7 @@
 using System;
 using System.Windows.Forms;
 using CraphModel;
-
-
+using Forms;
 
 namespace StartForm
 {
@@ -17,7 +16,7 @@ namespace StartForm
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DrawForm());
+            Application.Run(new InputCountVertexForm());
         }
     }
 }
