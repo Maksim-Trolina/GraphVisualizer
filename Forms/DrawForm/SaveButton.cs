@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using CraphModel;
+using Serializing;
+using System.Collections.Generic;
 
 
 namespace Forms.DrawForm
@@ -26,10 +28,19 @@ namespace Forms.DrawForm
 
         public Graph Graph { get; set; }
 
-
         public void ButtonClick(object sender, EventArgs e)
         {
-          Graph.SaveGraph();
+            Graph graph = new Graph();
+            Vertex vertex = new Vertex();
+
+            graph.Vertexs = new List<Vertex>(1);
+            vertex.Nodes = new List<Node>(1);
+
+            vertex.Nodes.Add(new Node() { Weight = 10, Connectable = 20 });
+            graph.Vertexs.Add(new Vertex() { Nodes = vertex.Nodes, Id = 42 });
+
+            SerializeGraph serializeGraph = new SerializeGraph();
+            serializeGraph.SaveGraph(graph);
 
         }
     }
