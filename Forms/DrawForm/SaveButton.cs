@@ -26,20 +26,25 @@ namespace Forms.DrawForm
 
         }
 
-        public Graph Graph { get; set; }
+        private SerializeGraph serializeGraph = new SerializeGraph();
+
+        public Graph Graph { get; set; } // to transfer a graph from another class
 
         public void ButtonClick(object sender, EventArgs e)
         {
+
+            // graph initialization example:
+
             Graph graph = new Graph();
             Vertex vertex = new Vertex();
 
             graph.Vertexs = new List<Vertex>(1);
             vertex.Nodes = new List<Node>(1);
 
-            vertex.Nodes.Add(new Node() { Weight = 10, Connectable = 20 });
+            vertex.Nodes.Add(new Node() { Weight = 1033232, Connectable = 20 });
             graph.Vertexs.Add(new Vertex() { Nodes = vertex.Nodes, Id = 42 });
 
-            SerializeGraph serializeGraph = new SerializeGraph();
+
             serializeGraph.SaveGraph(graph);
 
         }
