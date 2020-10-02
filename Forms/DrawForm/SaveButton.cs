@@ -41,7 +41,7 @@ namespace Forms.DrawForm
             graph.Vertexs = new List<Vertex>(1);
             vertex.Nodes = new List<Node>(1);
 
-            vertex.Nodes.Add(new Node() { Weight = 1033232, Connectable = 20 });
+            vertex.Nodes.Add(new Node() { Weight = 228, Connectable = 20 });
             graph.Vertexs.Add(new Vertex() { Nodes = vertex.Nodes, Id = 42 });
 
 
