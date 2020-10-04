@@ -16,7 +16,7 @@ namespace StartForm
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DrawForm());
+            Application.Run(new StartForm());
         }
     }
 }
