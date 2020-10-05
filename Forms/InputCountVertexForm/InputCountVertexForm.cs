@@ -37,7 +37,7 @@ namespace Forms
 
             drawForm = new StartForm.DrawForm();
 
-            drawVertexButton = new DrawVertexButton(100, 30, 600, 100, this, drawForm);
+            drawVertexButton = new DrawVertexButton(100, 30, 600, 100, this, drawForm, inputBox);
             Controls.Add(drawVertexButton);
         }
 

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Forms
 {
-    class InputCountBox : TextBox
+    public class InputCountBox : TextBox
     {
         public InputCountBox(int width, int height, int positionX, int positionY, string initValue = "0")
         {
