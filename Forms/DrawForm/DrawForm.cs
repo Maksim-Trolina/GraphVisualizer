@@ -65,7 +65,7 @@ namespace StartForm
             {
                 graphics.FillEllipse(Brushes.Blue, vertex.X, vertex.Y, vertex.Width, vertex.Height);
 
-                graphics.DrawString(vertex.Id.ToString(), font, brush, vertex.X, vertex.Y);
+                graphics.DrawString(vertex.Id.ToString(), font, brush, vertex.X + (int)VertexParameters.Radius, vertex.Y + (int)VertexParameters.Radius);
             }
             
         }
