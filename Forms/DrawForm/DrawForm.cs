@@ -55,9 +55,17 @@ namespace StartForm
 
             Graphics graphics = e.Graphics;
 
+            Font font = new Font("Times New Roman", 12, FontStyle.Bold);
+
+            Brush brush = new SolidBrush(Color.Black);
+
+            graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+
             foreach (var vertex in vertexDraws)
             {
                 graphics.FillEllipse(Brushes.Blue, vertex.X, vertex.Y, vertex.Width, vertex.Height);
+
+                graphics.DrawString(vertex.Id.ToString(), font, brush, vertex.X, vertex.Y);
             }
             
         }
