@@ -13,6 +13,12 @@ namespace StartForm
 
         private CollisionVertex collisionVertex;
 
+        private Brush vertexBrush;
+
+        private StringFormat vertexStringFormat;
+
+        private Font vertexTextFont;
+
         public DrawForm()
         {
             InitializeComponent();
@@ -28,6 +34,16 @@ namespace StartForm
             SaveButton saveButton = new SaveButton();
 
             Controls.Add(saveButton);
+
+            vertexBrush = new SolidBrush(Color.Black);
+
+            vertexStringFormat = new StringFormat();
+
+            vertexStringFormat.Alignment = StringAlignment.Center;
+
+            vertexStringFormat.LineAlignment = StringAlignment.Center;
+
+            vertexTextFont = new Font("Times New Roman", 12, FontStyle.Bold);
 
         }
 
@@ -55,17 +71,13 @@ namespace StartForm
 
             Graphics graphics = e.Graphics;
 
-            Font font = new Font("Times New Roman", 12, FontStyle.Bold);
-
-            Brush brush = new SolidBrush(Color.Black);
-
             graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
 
             foreach (var vertex in vertexDraws)
             {
                 graphics.FillEllipse(Brushes.Blue, vertex.X, vertex.Y, vertex.Width, vertex.Height);
 
-                graphics.DrawString(vertex.Id.ToString(), font, brush, vertex.X + (int)VertexParameters.Radius, vertex.Y + (int)VertexParameters.Radius);
+                graphics.DrawString(vertex.Id.ToString(), vertexTextFont, vertexBrush, vertex.X + (int)VertexParameters.Radius, vertex.Y + (int)VertexParameters.Radius, vertexStringFormat);
             }
             
         }
