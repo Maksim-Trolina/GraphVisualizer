@@ -16,43 +16,38 @@ namespace Forms
 
         private StartForm.DrawForm drawForm;
 
-        private InputCountBox inputCountBox;
+        private ConfirmButton confirmButton;
 
         private List<VertexDraw> vertexDraws;
 
         private CollisionVertex collisionVertex;
 
         public DrawVertexButton(int width, int height, int positionX, int positionY, InputCountVertexForm inputCountForm, StartForm.DrawForm drawForm,
-          InputCountBox inputCountBox, string buttonText = "Create vertexes")
+          ConfirmButton confirmButton, List<VertexDraw> vertexDraws, string buttonText = "Create vertexes")
         {
-
             this.Text = buttonText;
+
             this.Size = new System.Drawing.Size(width, height);
+
             this.Location = new System.Drawing.Point(positionX, positionY);
 
             this.inputCountForm = inputCountForm;
+
             this.drawForm = drawForm;
-            this.inputCountBox = inputCountBox;
+
+            this.vertexDraws = vertexDraws;
+
+            this.confirmButton = confirmButton;
 
             collisionVertex = new CollisionVertex();
 
             Click += new EventHandler(ButtonClick);
-
         }
 
         private void ButtonClick(object sender, EventArgs e)
-        {
-            int countVertex;
-            try
-            {
-                countVertex = Int32.Parse(inputCountBox.Text);
-            }
-            catch
-            {
-                countVertex = 0;
-            }
+        { 
 
-            CreateVertexes(countVertex);
+            CreateVertexes(confirmButton.Rows);
 
             inputCountForm.Hide();
 
@@ -62,7 +57,6 @@ namespace Forms
 
             inputCountForm.Close();
 
-            
         }
 
         private void PaintVertexes(object sender, PaintEventArgs e)
@@ -77,11 +71,10 @@ namespace Forms
 
         private void CreateVertexes(int countVertex)
         {
-            vertexDraws = new List<VertexDraw>();
             
-            float x = 40f;
+            float x = 30f;
 
-            float y = 40f;
+            float y = 30f;
 
             float step = 2 * (float)VertexParameters.Radius + 10;
 

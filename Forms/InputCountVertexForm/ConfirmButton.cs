@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Forms
 {
-    class ConfirmButton : Button
+    public class ConfirmButton : Button
     {
         private InputCountVertexForm inputCountVertexForm;
 
@@ -13,33 +13,41 @@ namespace Forms
 
         private MatrixGraph matrixGraphCount;
 
-        public ConfirmButton(int width, int height, int positionX, int positionY,InputCountBox inputCountBox,InputCountVertexForm inputCountVertexForm, string buttonText = "OK")
+        public int Rows { get; private set; }
+
+        public ConfirmButton(int width, int height, int positionX, int positionY,InputCountBox inputCountBox
+            ,InputCountVertexForm inputCountVertexForm, string buttonText = "OK")
         {
             this.Text = buttonText;
+
             this.Size = new System.Drawing.Size(width, height);
+
             this.Location = new System.Drawing.Point(positionX, positionY);
+
             this.inputCountBox = inputCountBox;
+
             this.inputCountVertexForm = inputCountVertexForm;
+
             Click += new EventHandler(ButtonClick);
+
             matrixGraphCount = new MatrixGraph(this.inputCountVertexForm);
-            
         }
 
         public void ButtonClick(object sender, EventArgs e)
         {
-            int inputNumber;
             try
             {
-                inputNumber = Int32.Parse(inputCountBox.Text);
+                Rows = Int32.Parse(inputCountBox.Text);
             }
             catch
             {
-                inputNumber = 0;
+                Rows = 0;
             }
 
             matrixGraphCount.DeleteMatrix();
             
-            matrixGraphCount.CreateMatrix(inputNumber);
+            matrixGraphCount.CreateMatrix(Rows);
+
         }
     }
 

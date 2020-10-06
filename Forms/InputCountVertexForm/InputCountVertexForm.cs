@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Text;
 using System.Windows.Forms;
+using GraphModelDraw;
 
 namespace Forms
 {
@@ -22,6 +23,8 @@ namespace Forms
 
         private StartForm.DrawForm drawForm;
 
+        private List<VertexDraw> vertexDraws;
+
         public InputCountVertexForm()
         {
             InitializeComponent();
@@ -35,10 +38,14 @@ namespace Forms
             confirmButton = new ConfirmButton(100, 30, 500, 100, inputBox, this);
             Controls.Add(confirmButton);
 
-            drawForm = new StartForm.DrawForm();
+            vertexDraws = new List<VertexDraw>();
 
-            drawVertexButton = new DrawVertexButton(100, 30, 600, 100, this, drawForm, inputBox);
+            drawForm = new StartForm.DrawForm(vertexDraws);
+
+            drawVertexButton = new DrawVertexButton(100, 30, 600, 100, this, drawForm, confirmButton, vertexDraws);
             Controls.Add(drawVertexButton);
+
+            
         }
 
         

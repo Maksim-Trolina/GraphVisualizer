@@ -18,7 +18,6 @@ namespace Forms
         }
         public void TextBoxKeyPressed(object sender, KeyPressEventArgs e)
         {
-            
             if (!(Char.IsDigit(e.KeyChar) || e.KeyChar == '\b'))   // entered a digit or backspace
             {
                 e.Handled = true;
