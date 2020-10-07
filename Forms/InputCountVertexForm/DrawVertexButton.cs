@@ -18,9 +18,9 @@ namespace Forms
 
         private List<VertexDraw> vertexDraws;
 
-        private CollisionVertex collisionVertex;
-
         private MatrixGraph matrixGraph;
+
+        private InitialVertexes initialVertexes;
 
         public DrawVertexButton(int width, int height, int positionX, int positionY, InputCountVertexForm inputCountForm
             , MatrixGraph matrixGraph, string buttonText = "Create vertexes")
@@ -33,13 +33,13 @@ namespace Forms
 
             this.inputCountForm = inputCountForm;
 
+            this.matrixGraph = matrixGraph;
+
             vertexDraws = new List<VertexDraw>();
 
             drawForm = new StartForm.DrawForm(vertexDraws);
 
-            this.matrixGraph = matrixGraph;
-
-            collisionVertex = new CollisionVertex();
+            initialVertexes = new InitialVertexes(vertexDraws);
 
             Click += new EventHandler(ButtonClick);
         }
@@ -48,16 +48,14 @@ namespace Forms
         {
             if (matrixGraph.Matrix == null)
             {
-                CreateVertexes(0);
+                initialVertexes.CreateVertexes(0);
             }
             else
             {
-                CreateVertexes(matrixGraph.Matrix.GetLength(0));
+                initialVertexes.CreateVertexes(matrixGraph.Matrix.GetLength(0));
             }
 
             inputCountForm.Hide();
-
-            drawForm.Paint += new PaintEventHandler(PaintVertexes);
 
             drawForm.ShowDialog();
 
@@ -65,19 +63,24 @@ namespace Forms
 
         }
 
-        private void PaintVertexes(object sender, PaintEventArgs e)
-        {
-            Graphics graphics = e.Graphics;
+        
+    }
 
-            foreach (var vertex in vertexDraws)
-            {
-                graphics.FillEllipse(Brushes.Blue, vertex.X, vertex.Y, vertex.Width, vertex.Height);
-            }
+    public class InitialVertexes
+    {
+        private List<VertexDraw> vertexDraws;
+
+        private CollisionVertex collisionVertex;
+
+        public InitialVertexes(List<VertexDraw> vertexDraws)
+        {
+            this.vertexDraws = vertexDraws;
+
+            collisionVertex = new CollisionVertex();
         }
 
-        private void CreateVertexes(int countVertex)
+        public void CreateVertexes(int countVertex)
         {
-            
             float x = 30f;
 
             float y = 30f;
@@ -91,13 +94,12 @@ namespace Forms
 
                 if (collisionVertex.IsDrawVertex(vertexDraw, vertexDraws))
                 {
-                    vertexDraws.Add(vertexDraw);                   
+                    vertexDraws.Add(vertexDraw);
                 }
-               
+
             }
 
         }
 
     }
-
 }
