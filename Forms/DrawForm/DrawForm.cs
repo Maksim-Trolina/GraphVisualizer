@@ -20,6 +20,7 @@ namespace StartForm
         private Font vertexTextFont;
 
         public DrawForm(List<VertexDraw> vertexDraws)
+
         {
             InitializeComponent();
 
