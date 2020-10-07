@@ -5,47 +5,55 @@ using System.Windows.Forms;
 
 namespace Forms
 {
-    class ConfirmButton : Button
+    public class ConfirmButton : Button
     {
         private InputCountVertexForm inputCountVertexForm;
 
         private InputCountBox inputCountBox;
 
-        private MatrixGraph matrixGraphCount;
+        private MatrixGraph matrixGraph;
 
-        public ConfirmButton(int width, int height, int positionX, int positionY,InputCountBox inputCountBox,InputCountVertexForm inputCountVertexForm, string buttonText = "OK")
+        public ConfirmButton(int width, int height, int positionX, int positionY, InputCountBox inputCountBox
+            ,InputCountVertexForm inputCountVertexForm, MatrixGraph matrixGraph, string buttonText = "OK")
         {
             this.Text = buttonText;
+
             this.Size = new System.Drawing.Size(width, height);
+
             this.Location = new System.Drawing.Point(positionX, positionY);
+
             this.inputCountBox = inputCountBox;
+
             this.inputCountVertexForm = inputCountVertexForm;
+
             Click += new EventHandler(ButtonClick);
-            matrixGraphCount = new MatrixGraph(this.inputCountVertexForm);
-            
+
+            this.matrixGraph = matrixGraph;
         }
 
         public void ButtonClick(object sender, EventArgs e)
         {
-            int inputNumber;
+            int rows;
+
             try
             {
-                inputNumber = Int32.Parse(inputCountBox.Text);
+                rows = Int32.Parse(inputCountBox.Text);
             }
             catch
             {
-                inputNumber = 0;
+                rows = 0;
             }
 
-            matrixGraphCount.DeleteMatrix();
+            matrixGraph.DeleteMatrix();
             
-            matrixGraphCount.CreateMatrix(inputNumber);
+            matrixGraph.CreateMatrix(rows);
+
         }
     }
 
     public class MatrixGraph
     {
-        private InputCountBox[,] matrixGraph;
+        public InputCountBox[,] Matrix { get; private set; }
 
         private InputCountVertexForm inputCountVertexForm;
 
@@ -56,13 +64,13 @@ namespace Forms
 
         public void DeleteMatrix()
         {
-            if (matrixGraph != null)
+            if (Matrix != null)
             {
-                for (int i = 0; i < matrixGraph.GetLength(0); ++i)
+                for (int i = 0; i < Matrix.GetLength(0); ++i)
                 {
-                    for (int j = 0; j < matrixGraph.GetLength(1); ++j)
+                    for (int j = 0; j < Matrix.GetLength(1); ++j)
                     {
-                        inputCountVertexForm.Controls.Remove(matrixGraph[i, j]);
+                        inputCountVertexForm.Controls.Remove(Matrix[i, j]);
                     }
                 }
             }
@@ -70,7 +78,7 @@ namespace Forms
 
         public void CreateMatrix(int rows)
         {
-            matrixGraph = new InputCountBox[rows, rows];
+            Matrix = new InputCountBox[rows, rows];
 
             int stepX = 15;
             int stepY = 15;
@@ -85,13 +93,13 @@ namespace Forms
             {
                 for (int j = 0; j < rows; ++j)
                 {
-                    matrixGraph[i, j] = new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j);
+                    Matrix[i, j] = new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j);
                     if (i == j)
                     {
-                        matrixGraph[i, j].Enabled = false;
+                        Matrix[i, j].Enabled = false;
                     }
                     
-                    inputCountVertexForm.Controls.Add(matrixGraph[i, j]);
+                    inputCountVertexForm.Controls.Add(Matrix[i, j]);
                 }
             }
         }

@@ -19,13 +19,14 @@ namespace StartForm
 
         private Font vertexTextFont;
 
-        public DrawForm()
+        public DrawForm(List<VertexDraw> vertexDraws)
+
         {
             InitializeComponent();
 
             DoubleBuffered = true;
 
-            vertexDraws = new List<VertexDraw>();
+            this.vertexDraws = vertexDraws;
 
             collisionVertex = new CollisionVertex();
 

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Forms
 {
-    class InputCountBox : TextBox
+    public class InputCountBox : TextBox
     {
         public InputCountBox(int width, int height, int positionX, int positionY, string initValue = "0")
         {
@@ -18,7 +18,6 @@ namespace Forms
         }
         public void TextBoxKeyPressed(object sender, KeyPressEventArgs e)
         {
-            
             if (!(Char.IsDigit(e.KeyChar) || e.KeyChar == '\b'))   // entered a digit or backspace
             {
                 e.Handled = true;
