@@ -21,13 +21,13 @@ namespace Forms
 
         private DrawVertexButton drawVertexButton;
 
-        private StartForm.DrawForm drawForm;
-
-        private List<VertexDraw> vertexDraws;
+        private MatrixGraph matrixGraph;
 
         public InputCountVertexForm()
         {
             InitializeComponent();
+
+            matrixGraph = new MatrixGraph(this);
 
             inputBox = new InputCountBox(300, 20, 200, 100);
             Controls.Add(inputBox);
@@ -35,14 +35,10 @@ namespace Forms
             infoText = new InfoTextLabel(300, 30, 200, 80);
             Controls.Add(infoText);
 
-            confirmButton = new ConfirmButton(100, 30, 500, 100, inputBox, this);
+            confirmButton = new ConfirmButton(100, 30, 500, 100, inputBox, this, matrixGraph);
             Controls.Add(confirmButton);
 
-            vertexDraws = new List<VertexDraw>();
-
-            drawForm = new StartForm.DrawForm(vertexDraws);
-
-            drawVertexButton = new DrawVertexButton(100, 30, 600, 100, this, drawForm, confirmButton, vertexDraws);
+            drawVertexButton = new DrawVertexButton(100, 30, 600, 100, this, matrixGraph);
             Controls.Add(drawVertexButton);
 
             

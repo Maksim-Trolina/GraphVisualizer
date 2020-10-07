@@ -16,14 +16,14 @@ namespace Forms
 
         private StartForm.DrawForm drawForm;
 
-        private ConfirmButton confirmButton;
-
         private List<VertexDraw> vertexDraws;
 
         private CollisionVertex collisionVertex;
 
-        public DrawVertexButton(int width, int height, int positionX, int positionY, InputCountVertexForm inputCountForm, StartForm.DrawForm drawForm,
-          ConfirmButton confirmButton, List<VertexDraw> vertexDraws, string buttonText = "Create vertexes")
+        private MatrixGraph matrixGraph;
+
+        public DrawVertexButton(int width, int height, int positionX, int positionY, InputCountVertexForm inputCountForm
+            , MatrixGraph matrixGraph, string buttonText = "Create vertexes")
         {
             this.Text = buttonText;
 
@@ -33,11 +33,11 @@ namespace Forms
 
             this.inputCountForm = inputCountForm;
 
-            this.drawForm = drawForm;
+            vertexDraws = new List<VertexDraw>();
 
-            this.vertexDraws = vertexDraws;
+            drawForm = new StartForm.DrawForm(vertexDraws);
 
-            this.confirmButton = confirmButton;
+            this.matrixGraph = matrixGraph;
 
             collisionVertex = new CollisionVertex();
 
@@ -45,9 +45,15 @@ namespace Forms
         }
 
         private void ButtonClick(object sender, EventArgs e)
-        { 
-
-            CreateVertexes(confirmButton.Rows);
+        {
+            if (matrixGraph.Matrix == null)
+            {
+                CreateVertexes(0);
+            }
+            else
+            {
+                CreateVertexes(matrixGraph.Matrix.GetLength(0));
+            }
 
             inputCountForm.Hide();
 
