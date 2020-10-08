@@ -25,9 +25,9 @@ namespace StartForm
 
         private VertexClick vertexClick;
 
-        private int startVertexID;
+        private int startVertexId;
 
-        private int endVertexID;
+        private int endVertexId;
 
         private Pen pen;
 
@@ -63,9 +63,9 @@ namespace StartForm
 
             pen = new Pen(Brushes.LightCoral, 4);
 
-            startVertexID = -1;
+            startVertexId = -1;
 
-            endVertexID = -1;
+            endVertexId = -1;
 
         }
 
@@ -88,25 +88,26 @@ namespace StartForm
                     Refresh();
                 }
 
-               switch(vertexClick.FoundVertexs(startVertexID, endVertexID))
+               switch(vertexClick.FoundVertexs(startVertexId, endVertexId))
                 {
 
                     case (int)FoundPoints.OneVertexFound:
 
-                        endVertexID = vertexClick.GetNumberOfVertex(e.X - (int)VertexParameters.Radius, 
+                        endVertexId = vertexClick.GetNumberOfVertex(e.X - (int)VertexParameters.Radius, 
                             e.Y - (int)VertexParameters.Radius, vertexDraws, (int)VertexParameters.Radius);
 
                         break;
 
                     case (int)FoundPoints.TwoVertexFound:
 
-
+                        // 
 
                         break;
 
                     default:
 
-                        startVertexID = vertexClick.GetNumberOfVertex();
+                        startVertexId = vertexClick.GetNumberOfVertex(e.X - (int)VertexParameters.Radius,
+                            e.Y - (int)VertexParameters.Radius, vertexDraws, (int)VertexParameters.Radius);
 
                         break;
 
@@ -134,7 +135,12 @@ namespace StartForm
 
             }
 
-            foreach (var edge in edgeDraws )
+            foreach (var edge in edgeDraws)
+            {
+
+
+
+            }
             
         }
     }
