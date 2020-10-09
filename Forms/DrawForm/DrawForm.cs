@@ -72,7 +72,6 @@ namespace StartForm
         }
 
         
-
         private void MouseClickDrawForm(object sender, MouseEventArgs e)
         {
             if(e.Button == MouseButtons.Left)
@@ -89,23 +88,7 @@ namespace StartForm
 
                     Refresh();
                 }
-                else
-                {
-                    if (startVertexId == -1)
-                        startVertexId = vertexClick.GetNumberOfVertex(e.X - (int)VertexParameters.Radius
-                            , e.Y - (int)VertexParameters.Radius, vertexDraws, (int)VertexParameters.Radius);
-                    else
-                    {
-                        endVertexId = vertexClick.GetNumberOfVertex(e.X - (int)VertexParameters.Radius
-                            , e.Y - (int)VertexParameters.Radius, vertexDraws, (int)VertexParameters.Radius);
-
-                        EdgeDraw edgeDraw = new EdgeDraw(BrushColor.Black, 0, startVertexId, endVertexId);
-                        edgeDraws.Add(edgeDraw);
-
-                        startVertexId = -1;
-                        endVertexId = -1;
-                    }
-                }
+               
             }
         }
 

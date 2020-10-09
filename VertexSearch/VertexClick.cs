@@ -12,7 +12,9 @@ namespace VertexSearch
 
             foreach (var vertex in vertexDraws)
             {
-                if ((int)GetDistance(vertex.X, vertex.Y, ClickX, ClickY) >= VertexRadius)
+                int distance = (int)GetDistance(vertex.X, ClickX, vertex.Y, ClickY);
+
+                if (distance <= VertexRadius)
                 {
                     return vertex.Id;
                 }
