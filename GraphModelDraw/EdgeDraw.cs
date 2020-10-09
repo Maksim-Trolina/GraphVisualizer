@@ -8,20 +8,20 @@ namespace GraphModelDraw
     {
         public readonly BrushColor BrushEdge;
 
-        public readonly BrushColor TextBrush;
-
         public readonly int WeightEdge;
+
+        public readonly int Id;
 
         public readonly int ConnectabelEdge;
 
-        public EdgeDraw(BrushColor brushEdge, BrushColor textBrush, int weightEdge, int connectableEdge)
+        public EdgeDraw(BrushColor brushEdge, int weightEdge, int id, int connectableEdge)
         {
 
             BrushEdge = brushEdge;
 
-            TextBrush = textBrush;
-
             WeightEdge = weightEdge;
+
+            Id = id;
 
             ConnectabelEdge = connectableEdge;
 

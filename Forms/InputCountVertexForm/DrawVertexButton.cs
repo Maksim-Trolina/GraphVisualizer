@@ -18,6 +18,8 @@ namespace Forms
 
         private List<VertexDraw> vertexDraws;
 
+        private List<EdgeDraw> edgeDraws;
+
         private MatrixGraph matrixGraph;
 
         private InitialVertexes initialVertexes;
@@ -37,7 +39,9 @@ namespace Forms
 
             vertexDraws = new List<VertexDraw>();
 
-            drawForm = new StartForm.DrawForm(vertexDraws);
+            edgeDraws = new List<EdgeDraw>();
+
+            drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws);
 
             initialVertexes = new InitialVertexes(vertexDraws);
 

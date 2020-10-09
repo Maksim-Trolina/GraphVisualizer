@@ -45,6 +45,8 @@ namespace StartForm
 
             collisionVertex = new CollisionVertex();
 
+            vertexClick = new VertexClick();
+
             MouseDown += new MouseEventHandler(MouseClickDrawForm);
 
             SaveButton saveButton = new SaveButton();
@@ -87,31 +89,22 @@ namespace StartForm
 
                     Refresh();
                 }
-
-               switch(vertexClick.FoundVertexs(startVertexId, endVertexId))
+                else
                 {
+                    if (startVertexId == -1)
+                        startVertexId = vertexClick.GetNumberOfVertex(e.X - (int)VertexParameters.Radius
+                            , e.Y - (int)VertexParameters.Radius, vertexDraws, (int)VertexParameters.Radius);
+                    else
+                    {
+                        endVertexId = vertexClick.GetNumberOfVertex(e.X - (int)VertexParameters.Radius
+                            , e.Y - (int)VertexParameters.Radius, vertexDraws, (int)VertexParameters.Radius);
 
-                    case (int)FoundPoints.OneVertexFound:
+                        EdgeDraw edgeDraw = new EdgeDraw(BrushColor.Black, 0, startVertexId, endVertexId);
+                        edgeDraws.Add(edgeDraw);
 
-                        endVertexId = vertexClick.GetNumberOfVertex(e.X - (int)VertexParameters.Radius, 
-                            e.Y - (int)VertexParameters.Radius, vertexDraws, (int)VertexParameters.Radius);
-
-                        break;
-
-                    case (int)FoundPoints.TwoVertexFound:
-
-                        // 
-
-                        break;
-
-                    default:
-
-                        startVertexId = vertexClick.GetNumberOfVertex(e.X - (int)VertexParameters.Radius,
-                            e.Y - (int)VertexParameters.Radius, vertexDraws, (int)VertexParameters.Radius);
-
-                        break;
-
-
+                        startVertexId = -1;
+                        endVertexId = -1;
+                    }
                 }
             }
         }
@@ -126,19 +119,19 @@ namespace StartForm
             graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
 
 
-  
             foreach (var vertex in vertexDraws)
             {
                 graphics.FillEllipse(Brushes.Blue, vertex.X, vertex.Y, vertex.Width, vertex.Height);
 
                 graphics.DrawString(vertex.Id.ToString(), vertexTextFont, vertexBrush, vertex.X + (int)VertexParameters.Radius, vertex.Y + (int)VertexParameters.Radius, vertexStringFormat);
 
+               // graphics.DrawLine(pen, 10, 10, 50, 50);
             }
 
             foreach (var edge in edgeDraws)
             {
 
-
+                graphics.DrawLine(pen, 10 , 10, 50, 50);
 
             }
             
