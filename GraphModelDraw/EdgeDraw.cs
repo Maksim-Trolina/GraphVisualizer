@@ -8,8 +8,6 @@ namespace GraphModelDraw
     {
         public readonly BrushColor BrushEdge;
 
-        public readonly int WeightEdge;
-
         public readonly int Id;
 
         public readonly int ConnectabelVertex;
@@ -18,8 +16,6 @@ namespace GraphModelDraw
         {
 
             BrushEdge = brushEdge;
-
-            WeightEdge = weightEdge;
 
             Id = id;
 

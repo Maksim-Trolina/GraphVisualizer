@@ -13,6 +13,8 @@ namespace StartForm
     {
         private List<VertexDraw> vertexDraws;
 
+        private DrawingEdges drawingEdges;
+
         private List<EdgeDraw> edgeDraws;
 
         private CollisionVertex collisionVertex;
@@ -46,6 +48,8 @@ namespace StartForm
             collisionVertex = new CollisionVertex();
 
             vertexClick = new VertexClick();
+
+            drawingEdges = new DrawingEdges();
 
             MouseDown += new MouseEventHandler(MouseClickDrawForm);
 
@@ -90,20 +94,9 @@ namespace StartForm
                 }
                 else
                 {
-                    vertexClick.VertexRemember(ref startVertexId, ref endVertexId
-                        , e.X - (int)VertexParameters.Radius, e.Y - (int)VertexParameters.Radius
-                        , vertexDraws, (int)VertexParameters.Radius);
+                    drawingEdges.VertexFind(vertexClick, e, vertexDraws, edgeDraws, ref startVertexId, ref endVertexId);
 
-                    if ((startVertexId != -1) && (endVertexId != -1) && (startVertexId != endVertexId))
-                    {
-                        EdgeDraw edgeDraw = new EdgeDraw(BrushColor.Black, 0, startVertexId, endVertexId);
-
-                        edgeDraws.Add(edgeDraw);
-                        Refresh();
-
-                        startVertexId = -1;
-                        endVertexId = -1;
-                    }
+                    Refresh();
 
                 }
             }
@@ -118,33 +111,15 @@ namespace StartForm
 
             graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
 
-            float startX, startY, endX, endY;
 
             foreach (var edge in edgeDraws)
             {
-                startX = 0;
-                startY = 0;
-                endX = 0;
-                endY = 0;
+                Point p1 = new Point();
+                Point p2 = new Point();
 
-                foreach (var vertex in vertexDraws)
-                {
-                    
-                    if (edge.Id == vertex.Id)
-                    {
-                        startX = vertex.X + (int)VertexParameters.Radius;
-                        startY = vertex.Y + (int)VertexParameters.Radius;
+                drawingEdges.DefinitionOfEdges(edgeDraws, vertexDraws, edge, ref p1, ref p2);
 
-                    }
-                    else if (edge.ConnectabelVertex == vertex.Id)
-                    {
-                        endX = vertex.X + (int)VertexParameters.Radius;
-                        endY = vertex.Y + (int)VertexParameters.Radius;
-
-                        
-                    }
-                }
-                graphics.DrawLine(pen, startX, startY, endX, endY);
+                graphics.DrawLine(pen, p1, p2);
             }
 
 
@@ -155,8 +130,8 @@ namespace StartForm
                 graphics.DrawString(vertex.Id.ToString(), vertexTextFont, vertexBrush
                     , vertex.X + (int)VertexParameters.Radius, vertex.Y + (int)VertexParameters.Radius, vertexStringFormat);
               
-            }
-
+            }          
+             
 
         }
 
