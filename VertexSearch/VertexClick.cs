@@ -29,6 +29,29 @@ namespace VertexSearch
         {
             return Math.Sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
         }
+
+
+
+        public void VertexRemember(ref int startVertexId, ref int endVertexId, float ClickX, float ClickY, List<VertexDraw> vertexDraws, int VertexRadius)
+        {
+
+            if ((startVertexId == -1) && (endVertexId == -1) && (GetNumberOfVertex(ClickX, ClickY, vertexDraws, (int)VertexParameters.Radius) != -1))
+            {
+
+                startVertexId = GetNumberOfVertex(ClickX, ClickY, vertexDraws, (int)VertexParameters.Radius);
+            }
+
+            else if ((endVertexId == -1) && (GetNumberOfVertex(ClickX, ClickY, vertexDraws, (int)VertexParameters.Radius) != -1))
+            {
+
+                endVertexId = GetNumberOfVertex(ClickX, ClickY, vertexDraws, (int)VertexParameters.Radius);
+
+                if (endVertexId == startVertexId)
+                    endVertexId = -1;
+            }
+            else
+                return;
+        }
  
     }
 }

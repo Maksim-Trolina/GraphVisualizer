@@ -12,9 +12,9 @@ namespace GraphModelDraw
 
         public readonly int Id;
 
-        public readonly int ConnectabelEdge;
+        public readonly int ConnectabelVertex;
 
-        public EdgeDraw(BrushColor brushEdge, int weightEdge, int id, int connectableEdge)
+        public EdgeDraw(BrushColor brushEdge, int weightEdge, int id, int connectableVertex)
         {
 
             BrushEdge = brushEdge;
@@ -23,7 +23,7 @@ namespace GraphModelDraw
 
             Id = id;
 
-            ConnectabelEdge = connectableEdge;
+            ConnectabelVertex = connectableVertex;
 
         }
 

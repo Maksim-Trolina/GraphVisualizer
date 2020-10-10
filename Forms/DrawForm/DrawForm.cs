@@ -88,7 +88,24 @@ namespace StartForm
 
                     Refresh();
                 }
-               
+                else
+                {
+                    vertexClick.VertexRemember(ref startVertexId, ref endVertexId
+                        , e.X - (int)VertexParameters.Radius, e.Y - (int)VertexParameters.Radius
+                        , vertexDraws, (int)VertexParameters.Radius);
+
+                    if ((startVertexId != -1) && (endVertexId != -1) && (startVertexId != endVertexId))
+                    {
+                        EdgeDraw edgeDraw = new EdgeDraw(BrushColor.Black, 0, startVertexId, endVertexId);
+
+                        edgeDraws.Add(edgeDraw);
+                        Refresh();
+
+                        startVertexId = -1;
+                        endVertexId = -1;
+                    }
+
+                }
             }
         }
 
@@ -101,23 +118,47 @@ namespace StartForm
 
             graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
 
+            float startX, startY, endX, endY;
+
+            foreach (var edge in edgeDraws)
+            {
+                startX = 0;
+                startY = 0;
+                endX = 0;
+                endY = 0;
+
+                foreach (var vertex in vertexDraws)
+                {
+                    
+                    if (edge.Id == vertex.Id)
+                    {
+                        startX = vertex.X + (int)VertexParameters.Radius;
+                        startY = vertex.Y + (int)VertexParameters.Radius;
+
+                    }
+                    else if (edge.ConnectabelVertex == vertex.Id)
+                    {
+                        endX = vertex.X + (int)VertexParameters.Radius;
+                        endY = vertex.Y + (int)VertexParameters.Radius;
+
+                        
+                    }
+                }
+                graphics.DrawLine(pen, startX, startY, endX, endY);
+            }
+
 
             foreach (var vertex in vertexDraws)
             {
                 graphics.FillEllipse(Brushes.Blue, vertex.X, vertex.Y, vertex.Width, vertex.Height);
 
-                graphics.DrawString(vertex.Id.ToString(), vertexTextFont, vertexBrush, vertex.X + (int)VertexParameters.Radius, vertex.Y + (int)VertexParameters.Radius, vertexStringFormat);
-
-               // graphics.DrawLine(pen, 10, 10, 50, 50);
+                graphics.DrawString(vertex.Id.ToString(), vertexTextFont, vertexBrush
+                    , vertex.X + (int)VertexParameters.Radius, vertex.Y + (int)VertexParameters.Radius, vertexStringFormat);
+              
             }
 
-            foreach (var edge in edgeDraws)
-            {
 
-                graphics.DrawLine(pen, 10 , 10, 50, 50);
-
-            }
-            
         }
+
     }
 }
