@@ -9,6 +9,8 @@ namespace CraphModel
      
         public int Id { get; set; }
         public List<Node> Nodes { get; set; }
+
+        
     }
 
 

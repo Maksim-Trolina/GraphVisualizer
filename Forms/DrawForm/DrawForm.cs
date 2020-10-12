@@ -4,12 +4,18 @@ using CollisionDraw;
 using System.Collections.Generic;
 using System.Drawing;
 using Forms.DrawForm;
+using VertexSearch;
+
 
 namespace StartForm
 {
     public partial class DrawForm : Form
     {
         private List<VertexDraw> vertexDraws;
+
+        private DrawingEdges drawingEdges;
+
+        private List<EdgeDraw> edgeDraws;
 
         private CollisionVertex collisionVertex;
 
@@ -19,7 +25,16 @@ namespace StartForm
 
         private Font vertexTextFont;
 
-        public DrawForm(List<VertexDraw> vertexDraws)
+        private VertexClick vertexClick;
+
+        private int startVertexId = -1;
+
+        private int endVertexId = -1;
+
+        private Pen pen;
+
+
+        public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws)
 
         {
             InitializeComponent();
@@ -28,7 +43,13 @@ namespace StartForm
 
             this.vertexDraws = vertexDraws;
 
+            this.edgeDraws = edgeDraws;
+
             collisionVertex = new CollisionVertex();
+
+            vertexClick = new VertexClick();
+
+            drawingEdges = new DrawingEdges();
 
             MouseDown += new MouseEventHandler(MouseClickDrawForm);
 
@@ -46,8 +67,11 @@ namespace StartForm
 
             vertexTextFont = new Font("Times New Roman", 12, FontStyle.Bold);
 
+            pen = new Pen(Brushes.LightCoral, 4);
+
         }
 
+        
         private void MouseClickDrawForm(object sender, MouseEventArgs e)
         {
             if(e.Button == MouseButtons.Left)
@@ -57,14 +81,25 @@ namespace StartForm
                     , (int)VertexParameters.Width, (int)VertexParameters.Height, "Саси"
                     , vertexDraws.Count);
 
+
                 if (collisionVertex.IsDrawVertex(vertexDraw, vertexDraws))
                 {
                     vertexDraws.Add(vertexDraw);
 
                     Refresh();
                 }
+                else
+                {
+                    drawingEdges.VertexFind(vertexClick, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId);
+
+                    Refresh();
+
+                }
             }
         }
+
+        Point startPoint = new Point();
+        Point endPoint = new Point();
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -73,14 +108,27 @@ namespace StartForm
             Graphics graphics = e.Graphics;
 
             graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+           
+            foreach (var edge in edgeDraws)
+            {
+               
+                drawingEdges.DefinitionOfEdges(vertexDraws, edge, ref startPoint, ref endPoint);
+
+                graphics.DrawLine(pen, startPoint, endPoint);
+            }
+
 
             foreach (var vertex in vertexDraws)
             {
                 graphics.FillEllipse(Brushes.Blue, vertex.X, vertex.Y, vertex.Width, vertex.Height);
 
-                graphics.DrawString(vertex.Id.ToString(), vertexTextFont, vertexBrush, vertex.X + (int)VertexParameters.Radius, vertex.Y + (int)VertexParameters.Radius, vertexStringFormat);
-            }
-            
+                graphics.DrawString(vertex.Id.ToString(), vertexTextFont, vertexBrush
+                    , vertex.X + (int)VertexParameters.Radius, vertex.Y + (int)VertexParameters.Radius, vertexStringFormat);
+              
+            }          
+             
+
         }
+
     }
 }
