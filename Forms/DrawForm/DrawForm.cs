@@ -27,9 +27,9 @@ namespace StartForm
 
         private VertexClick vertexClick;
 
-        private int startVertexId;
+        private int startVertexId = -1;
 
-        private int endVertexId;
+        private int endVertexId = -1;
 
         private Pen pen;
 
@@ -69,10 +69,6 @@ namespace StartForm
 
             pen = new Pen(Brushes.LightCoral, 4);
 
-            startVertexId = -1;
-
-            endVertexId = -1;
-
         }
 
         
@@ -94,7 +90,7 @@ namespace StartForm
                 }
                 else
                 {
-                    drawingEdges.VertexFind(vertexClick, e, vertexDraws, edgeDraws, ref startVertexId, ref endVertexId);
+                    drawingEdges.VertexFind(vertexClick, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId);
 
                     Refresh();
 
@@ -102,6 +98,8 @@ namespace StartForm
             }
         }
 
+        Point startPoint = new Point();
+        Point endPoint = new Point();
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -110,16 +108,13 @@ namespace StartForm
             Graphics graphics = e.Graphics;
 
             graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-
-
+           
             foreach (var edge in edgeDraws)
             {
-                Point p1 = new Point();
-                Point p2 = new Point();
+               
+                drawingEdges.DefinitionOfEdges(vertexDraws, edge, ref startPoint, ref endPoint);
 
-                drawingEdges.DefinitionOfEdges(edgeDraws, vertexDraws, edge, ref p1, ref p2);
-
-                graphics.DrawLine(pen, p1, p2);
+                graphics.DrawLine(pen, startPoint, endPoint);
             }
 
 

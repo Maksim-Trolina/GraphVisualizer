@@ -10,7 +10,7 @@ namespace Forms.DrawForm
     class DrawingEdges
     {
 
-        public void VertexFind(VertexClick vertexClick, MouseEventArgs e, List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, ref int startVertexId, ref int endVertexId)
+        public void VertexFind(VertexClick vertexClick, MouseEventArgs e, List<VertexDraw> vertexDraws,  List<EdgeDraw> edgeDraws, ref int startVertexId, ref int endVertexId)
         {
 
             vertexClick.VertexRemember(ref startVertexId, ref endVertexId
@@ -30,8 +30,7 @@ namespace Forms.DrawForm
 
         }
 
-
-        public void DefinitionOfEdges(List<EdgeDraw>edgeDraws, List<VertexDraw> vertexDraws, EdgeDraw edge, ref Point p1, ref Point p2)
+        public void DefinitionOfEdges(List<VertexDraw> vertexDraws, EdgeDraw edge, ref Point p1, ref Point p2)
         {
             
             p1.X = 0;
@@ -40,7 +39,6 @@ namespace Forms.DrawForm
             p2.X = 0;
             p2.Y = 0;
  
-
             foreach (var vertex in vertexDraws)
             {
 
