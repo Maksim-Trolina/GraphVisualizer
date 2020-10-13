@@ -7,13 +7,28 @@ namespace Algorithms
     {
         private List<List<int>> graph;
 
+        private List<ColorVertex> colors;
+
+        
+
         public UnweightedGraph(List<List<int>> graph)
         {
             this.graph = graph;
         }
 
+        private void Clear()
+        {
+            colors.Clear();
+
+            graph.Clear();
+        }
+
+        public bool IsAcyclic()
+        {
+
+        }
         
-        private void DFS()
+        private bool DFS(int vertex)
         {
 
         }
