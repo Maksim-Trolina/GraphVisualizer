@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Algorithms
 {
-    class ColorVertex
+    enum ColorVertex
     {
+        White,
+        Gray,
+        Black
     }
 }

@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VertexSearch", "..\VertexSe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AlgorithmBackEnd", "AlgorithmBackEnd", "{9C3AAE6C-94CC-4369-A896-2FEEDAA52749}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms", "..\Algorithms\Algorithms.csproj", "{93B2E9ED-E208-44DF-8989-19D89EEF3A9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms", "..\Algorithms\Algorithms.csproj", "{93B2E9ED-E208-44DF-8989-19D89EEF3A9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmsTest", "..\AlgorithmsTest\AlgorithmsTest.csproj", "{77483F02-80FC-43E5-BBC1-54782B2EBFFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{93B2E9ED-E208-44DF-8989-19D89EEF3A9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93B2E9ED-E208-44DF-8989-19D89EEF3A9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93B2E9ED-E208-44DF-8989-19D89EEF3A9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77483F02-80FC-43E5-BBC1-54782B2EBFFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77483F02-80FC-43E5-BBC1-54782B2EBFFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77483F02-80FC-43E5-BBC1-54782B2EBFFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77483F02-80FC-43E5-BBC1-54782B2EBFFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{323CCAFE-F3EE-49DA-9DF7-088E896C60E8} = {80750427-D7EE-41A9-BD6E-A3A495724057}
 		{274B8D99-0D59-4CAB-B973-1539190772BD} = {8044D66F-1E02-4522-8564-F71988C8261A}
 		{93B2E9ED-E208-44DF-8989-19D89EEF3A9A} = {9C3AAE6C-94CC-4369-A896-2FEEDAA52749}
+		{77483F02-80FC-43E5-BBC1-54782B2EBFFB} = {4B94143A-E951-4C88-ABA4-7F9D17DFB93D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43F0DC72-6F61-43AF-9A39-960489E89B49}
