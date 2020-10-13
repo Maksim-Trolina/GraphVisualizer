@@ -26,6 +26,7 @@ namespace Forms.DrawForm
 
         }
 
+       
         private SerializeGraph serializeGraph = new SerializeGraph();
 
         public Graph Graph { get; set; } // to transfer a graph from another class

@@ -10,6 +10,7 @@ namespace StartForm
 
         private StartButton startButton;
         private InputCountVertexForm nextForm;
+        private LoadFileButton loadFileButton;
 
         public StartForm()
         {
@@ -19,8 +20,12 @@ namespace StartForm
 
             startButton = new StartButton {StartForm = this, NextForm = nextForm};
 
+            loadFileButton = new LoadFileButton {StartForm = this, NextForm = nextForm };
+
             Controls.Add(startButton);
-            
+
+            Controls.Add(loadFileButton);
+
         }
     }
 }
