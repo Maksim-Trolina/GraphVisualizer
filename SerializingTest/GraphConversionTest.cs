@@ -36,7 +36,7 @@ namespace SerializingTest
         }
 
         [Test]
-        public void SerializationEdgeWeight_Weight_228return()
+        public void SerializationEdgeWeightTest_Weight_AreEqual()
         {
             serializeGraph.SaveGraph(graph);
 
@@ -48,7 +48,7 @@ namespace SerializingTest
 
 
         [Test]
-        public void SerializationGraphId_Id_42return()
+        public void SerializationGraphIdTest_Id_AreEqual()
         {
             serializeGraph.SaveGraph(graph);
 
@@ -60,7 +60,7 @@ namespace SerializingTest
 
 
         [Test]
-        public void SerializationEdgeConnectable_Connectable_17return()
+        public void SerializationEdgeConnectableTest_Connectable_AreEqual()
         {
             serializeGraph.SaveGraph(graph);
 

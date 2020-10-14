@@ -2,6 +2,9 @@
 using System.Windows.Forms;
 using CraphModel;
 using Serializing;
+using System.Collections.Generic;
+using GraphModelDraw;
+
 
 
 
@@ -10,7 +13,18 @@ namespace Forms
     class LoadFileButton : Button
     {
 
-        public LoadFileButton()
+        private DeserializeGraph deserializeGraph;
+        public Graph LoadGraph { get; set; }
+
+        private StartForm.StartForm startForm;
+
+        private List<VertexDraw> vertexDraws;
+
+        private List<EdgeDraw> edgeDraws;
+
+        private StartForm.DrawForm drawForm;
+
+        public LoadFileButton(StartForm.StartForm startForm)
         {
             Text = "Load file";
 
@@ -20,26 +34,30 @@ namespace Forms
 
             Anchor = (AnchorStyles.Bottom | AnchorStyles.Right); // anchorage to place
 
+            vertexDraws = new List<VertexDraw>();
+
+            this.startForm = startForm;
+
+            edgeDraws = new List<EdgeDraw>();
+
+            drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws);
+
             Click += new EventHandler(ButtonClick);
 
+            deserializeGraph = new DeserializeGraph();
+
+
         }
-
-        private DeserializeGraph deserializeGraph = new DeserializeGraph();
-
-        public Graph LoadGraph { get; set; }
-
-        public StartForm.StartForm StartForm;
-
-        public InputCountVertexForm NextForm;
+       
 
         public void ButtonClick(object sender, EventArgs e)
         {
 
             LoadGraph = deserializeGraph.LoadGraph();
 
-            StartForm.Hide();
-            NextForm.ShowDialog();
-            StartForm.Close();
+            startForm.Hide();
+            drawForm.ShowDialog();
+            startForm.Close();
 
         }
 

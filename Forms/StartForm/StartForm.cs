@@ -1,5 +1,7 @@
 ﻿using System.Windows.Forms;
 using Forms;
+using System.IO;
+using System;
 
 
 
@@ -9,23 +11,36 @@ namespace StartForm
     {
 
         private StartButton startButton;
-        private InputCountVertexForm nextForm;
+        private InputCountVertexForm nextFormStartButton;
         private LoadFileButton loadFileButton;
 
         public StartForm()
         {
             InitializeComponent();
 
-            nextForm = new InputCountVertexForm();
+            nextFormStartButton = new InputCountVertexForm();
 
-            startButton = new StartButton {StartForm = this, NextForm = nextForm};
+            startButton = new StartButton {StartForm = this, NextForm = nextFormStartButton};
 
-            loadFileButton = new LoadFileButton {StartForm = this, NextForm = nextForm };
-
+            loadFileButton = new LoadFileButton(this);
+           
             Controls.Add(startButton);
 
             Controls.Add(loadFileButton);
 
+            
         }
+       
+
+        private void FileExist(object sender, EventArgs e)
+        {
+            if (!File.Exists("Graphs.json"))
+            {           
+                loadFileButton.Enabled = false;
+
+            }           
+
+        }        
+
     }
 }
