@@ -28,6 +28,7 @@ namespace Forms
 
         public void ButtonClick(object sender, EventArgs e)
         {
+          
             StartForm.Hide();
             NextForm.ShowDialog();
             StartForm.Close();

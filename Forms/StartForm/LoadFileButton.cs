@@ -4,7 +4,7 @@ using CraphModel;
 using Serializing;
 using System.Collections.Generic;
 using GraphModelDraw;
-
+using System.IO;
 
 
 
@@ -23,6 +23,8 @@ namespace Forms
         private List<EdgeDraw> edgeDraws;
 
         private StartForm.DrawForm drawForm;
+
+        private FileInfo fI = new FileInfo("Graphs.json");
 
         public LoadFileButton(StartForm.StartForm startForm)
         {
@@ -52,13 +54,23 @@ namespace Forms
 
         public void ButtonClick(object sender, EventArgs e)
         {
+           
+          
+            if ((!fI.Exists) || (fI.Length == 0))
+            {
+                this.Enabled = false;
 
-            LoadGraph = deserializeGraph.LoadGraph();
+            }
+            else
+            {
+                this.Enabled = true;
 
-            startForm.Hide();
-            drawForm.ShowDialog();
-            startForm.Close();
+                LoadGraph = deserializeGraph.LoadGraph();
 
+                startForm.Hide();
+                drawForm.ShowDialog();
+                startForm.Close();
+            }
         }
 
     }

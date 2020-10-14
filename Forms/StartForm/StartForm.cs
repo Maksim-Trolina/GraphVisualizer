@@ -1,8 +1,5 @@
 ﻿using System.Windows.Forms;
 using Forms;
-using System.IO;
-using System;
-
 
 
 namespace StartForm
@@ -29,18 +26,7 @@ namespace StartForm
             Controls.Add(loadFileButton);
 
             
-        }
-       
-
-        private void FileExist(object sender, EventArgs e)
-        {
-            if (!File.Exists("Graphs.json"))
-            {           
-                loadFileButton.Enabled = false;
-
-            }           
-
-        }        
+        }   
 
     }
 }

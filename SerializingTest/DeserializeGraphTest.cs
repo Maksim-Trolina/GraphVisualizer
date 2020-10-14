@@ -7,9 +7,8 @@ using Serializing;
 
 namespace SerializingTest
 {
-    public class GraphConversionTest
+    public class DeserializeGraphTest
     {
-
 
         private Graph graph;
         private Vertex vertex;
@@ -33,12 +32,13 @@ namespace SerializingTest
 
             graph.Vertexs.Add(new Vertex() { Nodes = vertex.Nodes, Id = 42 });
 
+            serializeGraph.SaveGraph(graph);
+
         }
 
         [Test]
         public void SerializationEdgeWeightTest_Weight_AreEqual()
         {
-            serializeGraph.SaveGraph(graph);
 
             int expected = 228;
             int actual = deserializeGraph.LoadGraph().Vertexs[0].Nodes[0].Weight;          
@@ -50,7 +50,6 @@ namespace SerializingTest
         [Test]
         public void SerializationGraphIdTest_Id_AreEqual()
         {
-            serializeGraph.SaveGraph(graph);
 
             int expected = 42;
             int actual = deserializeGraph.LoadGraph().Vertexs[0].Id;
@@ -62,7 +61,6 @@ namespace SerializingTest
         [Test]
         public void SerializationEdgeConnectableTest_Connectable_AreEqual()
         {
-            serializeGraph.SaveGraph(graph);
 
             int expected = 17;
             int actual = deserializeGraph.LoadGraph().Vertexs[0].Nodes[1].Connectable;
