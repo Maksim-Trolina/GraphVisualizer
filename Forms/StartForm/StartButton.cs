@@ -12,7 +12,7 @@ namespace Forms
 
             Text = "Matrix";
 
-            Location = new System.Drawing.Point(350, 180);
+            Location = new System.Drawing.Point(350, 160);
 
             Size = new System.Drawing.Size(100, 50);
 
@@ -28,6 +28,7 @@ namespace Forms
 
         public void ButtonClick(object sender, EventArgs e)
         {
+          
             StartForm.Hide();
             NextForm.ShowDialog();
             StartForm.Close();

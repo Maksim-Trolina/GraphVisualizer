@@ -2,25 +2,31 @@
 using Forms;
 
 
-
 namespace StartForm
 {
     public partial class StartForm : Form
     {
 
         private StartButton startButton;
-        private InputCountVertexForm nextForm;
+        private InputCountVertexForm nextFormStartButton;
+        private LoadFileButton loadFileButton;
 
         public StartForm()
         {
             InitializeComponent();
 
-            nextForm = new InputCountVertexForm();
+            nextFormStartButton = new InputCountVertexForm();
 
-            startButton = new StartButton {StartForm = this, NextForm = nextForm};
+            startButton = new StartButton {StartForm = this, NextForm = nextFormStartButton};
 
+            loadFileButton = new LoadFileButton(this);
+           
             Controls.Add(startButton);
+
+            Controls.Add(loadFileButton);
+
             
-        }
+        }   
+
     }
 }
