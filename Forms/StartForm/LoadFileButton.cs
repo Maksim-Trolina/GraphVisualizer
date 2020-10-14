@@ -24,7 +24,7 @@ namespace Forms
 
         private StartForm.DrawForm drawForm;
 
-        private FileInfo fI = new FileInfo("Graphs.json");
+        private FileInfo fI = new FileInfo(SaveFile.name);
 
         public LoadFileButton(StartForm.StartForm startForm)
         {
