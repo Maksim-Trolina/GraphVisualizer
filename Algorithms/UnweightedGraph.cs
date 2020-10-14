@@ -50,6 +50,8 @@ namespace Algorithms
                 }
             }
 
+            Clear();
+
             if(cycleStart == -1)
             {
                 return true;
