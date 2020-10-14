@@ -24,7 +24,7 @@ namespace Forms
 
         private StartForm.DrawForm drawForm;
 
-        private FileInfo fI = new FileInfo(SaveFile.name);
+        private FileInfo fI;
 
         public LoadFileButton(StartForm.StartForm startForm)
         {
@@ -48,6 +48,7 @@ namespace Forms
 
             deserializeGraph = new DeserializeGraph();
 
+            fI = new FileInfo(SaveFile.Name);
 
         }
        
