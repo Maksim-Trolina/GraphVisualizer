@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using Forms.DrawForm;
 using VertexSearch;
-
+using System.Drawing.Drawing2D;
 
 namespace StartForm
 {
@@ -68,6 +68,8 @@ namespace StartForm
             vertexTextFont = new Font("Times New Roman", 12, FontStyle.Bold);
 
             pen = new Pen(Brushes.LightCoral, 4);
+
+            pen.StartCap = LineCap.ArrowAnchor;
 
         }
 
