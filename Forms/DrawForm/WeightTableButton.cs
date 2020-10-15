@@ -8,6 +8,7 @@ namespace Forms.DrawForm
     class WeightTableButton : ToolStripButton
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         private WeightTable weightTable;
 
         private bool tableIsHide;
@@ -20,10 +21,16 @@ namespace Forms.DrawForm
 
         {
 >>>>>>> 444f41d2ba555fcf67a33771d2c4e667fc17e1ba
+=======
+        public WeightTableButton(int width, int height)
+
+        {
+>>>>>>> 444f41d2ba555fcf67a33771d2c4e667fc17e1ba
             Size = new System.Drawing.Size(width, height);
 
             Dock = DockStyle.Top;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
             this.weightTable = weightTable;
 
@@ -33,6 +40,8 @@ namespace Forms.DrawForm
 
 =======
 >>>>>>> 444f41d2ba555fcf67a33771d2c4e667fc17e1ba
+=======
+>>>>>>> 444f41d2ba555fcf67a33771d2c4e667fc17e1ba
             Click += new EventHandler(ButtonClick);
 
             Text = "Weight Table";
@@ -40,6 +49,7 @@ namespace Forms.DrawForm
 
         public void ButtonClick(object sender, EventArgs e)
         {
+<<<<<<< HEAD
 <<<<<<< HEAD
             tableIsHide = !tableIsHide;
 
@@ -53,6 +63,9 @@ namespace Forms.DrawForm
             }
 
            
+=======
+
+>>>>>>> 444f41d2ba555fcf67a33771d2c4e667fc17e1ba
 =======
 
 >>>>>>> 444f41d2ba555fcf67a33771d2c4e667fc17e1ba
