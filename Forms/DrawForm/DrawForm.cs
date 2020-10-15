@@ -6,6 +6,7 @@ using System.Drawing;
 using Forms.DrawForm;
 using VertexSearch;
 using System.Drawing.Drawing2D;
+using ArrowDraw;
 
 namespace StartForm
 {
@@ -32,6 +33,8 @@ namespace StartForm
         private int endVertexId = -1;
 
         private Pen pen;
+
+        private Arrow arrow;
 
 
         public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws)
@@ -70,6 +73,8 @@ namespace StartForm
             pen = new Pen(Brushes.LightCoral, 4);
 
             pen.StartCap = LineCap.ArrowAnchor;
+
+            arrow = new Arrow();
 
         }
 
@@ -116,7 +121,7 @@ namespace StartForm
                
                 drawingEdges.DefinitionOfEdges(vertexDraws, edge, ref startPoint, ref endPoint);
 
-                graphics.DrawLine(pen, startPoint, endPoint);
+                graphics.DrawLine(pen, startPoint, arrow.GetEndArrowPoint(startPoint,endPoint));
             }
 
 
