@@ -33,6 +33,9 @@ namespace StartForm
 
         private Pen pen;
 
+        private ToolPanel toolPanel;
+
+        private WeightTable weightTable;
 
         public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws)
 
@@ -68,6 +71,14 @@ namespace StartForm
             vertexTextFont = new Font("Times New Roman", 12, FontStyle.Bold);
 
             pen = new Pen(Brushes.LightCoral, 4);
+
+            weightTable = new WeightTable(200, 200, Size.Width - 200, 0, this.vertexDraws, this.edgeDraws);
+
+            Controls.Add(weightTable);
+
+            toolPanel = new ToolPanel(0, 100, weightTable);
+
+            Controls.Add(toolPanel);
 
         }
 

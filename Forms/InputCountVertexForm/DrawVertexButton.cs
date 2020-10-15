@@ -85,9 +85,9 @@ namespace Forms
 
         public void CreateVertexes(int countVertex)
         {
-            float x = 30f;
+            float x = 90f;
 
-            float y = 30f;
+            float y = 50f;
 
             float step = 2 * (float)VertexParameters.Radius + 10;
 
