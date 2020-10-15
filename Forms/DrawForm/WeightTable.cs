@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
-<<<<<<< HEAD
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -69,8 +67,9 @@ namespace Forms.DrawForm
                     }
                 }
             }
-        }       
+        }
     }
+}
 
     //class MatrixWeightPanel
     //{
@@ -98,18 +97,4 @@ namespace Forms.DrawForm
            
     //    }
     //}
-=======
-=======
->>>>>>> 444f41d2ba555fcf67a33771d2c4e667fc17e1ba
-using System.Text;
 
-namespace Forms.DrawForm
-{
-    class WeightTable
-    {
-    }
-<<<<<<< HEAD
->>>>>>> 444f41d2ba555fcf67a33771d2c4e667fc17e1ba
-=======
->>>>>>> 444f41d2ba555fcf67a33771d2c4e667fc17e1ba
-}
