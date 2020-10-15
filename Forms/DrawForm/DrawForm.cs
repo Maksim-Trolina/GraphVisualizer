@@ -33,6 +33,12 @@ namespace StartForm
 
         private Pen pen;
 
+        //
+
+        private ToolPanel toolPanel;
+
+        //
+
 
         public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws)
 
@@ -69,6 +75,9 @@ namespace StartForm
 
             pen = new Pen(Brushes.LightCoral, 4);
 
+            toolPanel = new ToolPanel(0, 100);
+
+            Controls.Add(toolPanel);
         }
 
         
