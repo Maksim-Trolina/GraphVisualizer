@@ -9,13 +9,8 @@ namespace Forms.DrawForm
 {
     class WeightTable : Panel
     {
-        private List<VertexDraw> vertexDraws;
 
-        private List<EdgeDraw> edgeDraws;
-
-        private MatrixWeightPanel matrix;
-
-        public WeightTable(int width, int height, int positionX, int positionY, List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws)
+        public WeightTable(int width, int height, int positionX, int positionY)
         {
             Size = new System.Drawing.Size(width, height);
 
@@ -27,69 +22,32 @@ namespace Forms.DrawForm
 
             BorderStyle = BorderStyle.Fixed3D;
 
-            this.vertexDraws = vertexDraws;
-
-            this.edgeDraws = edgeDraws;
-
-            matrix = new MatrixWeightPanel(this, vertexDraws, edgeDraws);
-
-            matrix.CreateMatrix();
         }
-
-        //public void CreateMatrix()
-        //{
-        //    if (vertexDraws != null)
-        //    {
-        //        weightMatrix = new InputCountBox[vertexDraws.Count, vertexDraws.Count];
-
-        //        int stepX = 15;
-        //        int stepY = 15;
-
-        //        int width = 30;
-        //        int height = 20;
-
-        //        int positionX = 50;
-        //        int positionY = 200;
-
-        //        for (int i = 0; i < vertexDraws.Count; ++i)
-        //        {
-        //            for (int j = 0; j < vertexDraws.Count; ++j)
-        //            {
-        //                weightMatrix[i, j] = new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j);
-        //                if (i == j)
-        //                {
-        //                    weightMatrix[i, j].Enabled = false;
-        //                }
-
-        //                Controls.Add(weightMatrix[i, j]);
-        //            }
-        //        }
-        //    }
-        //}
+  
     }
-    class MatrixWeightPanel
+
+
+     class MatrixWeightPanel
     {
+
+        private List<List<InputCountBox>> matrixx;
+
         private WeightTable weightTable;
+     
 
-        private List<VertexDraw> vertexDraws;
-
-        private List<EdgeDraw> edgeDraws;
-
-        private InputCountBox[,] matrix;
-
-        public MatrixWeightPanel(WeightTable weightTable, List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws)
+        public MatrixWeightPanel(WeightTable weightTable)
         {
+
+            matrixx = new List<List<InputCountBox>>();
+
             this.weightTable = weightTable;
 
-            this.vertexDraws = vertexDraws;
-
-            this.edgeDraws = edgeDraws;
-
-            matrix = new InputCountBox[8, 8];
         }
 
-        public void CreateMatrix()
+        
+        public void CreateMatrix(int countOfNewVertexs)
         {
+
             int stepX = 10;
             int stepY = 10;
 
@@ -99,20 +57,48 @@ namespace Forms.DrawForm
             int positionX = 0;
             int positionY = 0;
 
-            for (int i = 0; i < 8; ++i)
+
+            int countCellsBefore = matrixx.Count;
+
+
+            for (int i = 0; i < countCellsBefore; i++)
             {
-                for (int j = 0; j < 8; ++j)
+                for (int j = countCellsBefore; j < countCellsBefore + countOfNewVertexs; j++)
                 {
-                    matrix[i,j] = new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j);
+
+                    matrixx[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
 
                     if (i == j)
                     {
-                        matrix[i, j].Enabled = false;
+                        matrixx[i][j].Enabled = false;
                     }
 
-                    weightTable.Controls.Add(matrix[i, j]);
+                    weightTable.Controls.Add(matrixx[i][j]);
+
                 }
+                
             }
+
+            for(int i = countCellsBefore; i < countCellsBefore + countOfNewVertexs; i++)
+            {
+                matrixx.Add(new List<InputCountBox>());
+
+                for(int j = 0; j < countOfNewVertexs + countCellsBefore; j++)
+                {
+                 
+                    matrixx[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
+
+                    if (i == j)
+                    {
+                        matrixx[i][j].Enabled = false;
+                    }
+
+                    weightTable.Controls.Add(matrixx[i][j]);
+
+                }
+                
+            }
+
         }
     }
 }

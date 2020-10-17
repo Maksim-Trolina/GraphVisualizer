@@ -37,6 +37,8 @@ namespace StartForm
 
         private WeightTable weightTable;
 
+        private MatrixWeightPanel matrixWeightPanel;
+
         public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws)
 
         {
@@ -72,13 +74,17 @@ namespace StartForm
 
             pen = new Pen(Brushes.LightCoral, 4);
 
-            weightTable = new WeightTable(200, 200, Size.Width - 200, 0, this.vertexDraws, this.edgeDraws);
+            weightTable = new WeightTable(200, 200, Size.Width - 200, 0);
+
+            matrixWeightPanel = new MatrixWeightPanel(weightTable);
 
             Controls.Add(weightTable);
 
             toolPanel = new ToolPanel(0, 100, weightTable);
 
             Controls.Add(toolPanel);
+
+            matrixWeightPanel.CreateMatrix(vertexDraws.Count);
 
         }
 
@@ -96,6 +102,8 @@ namespace StartForm
                 if (collisionVertex.IsDrawVertex(vertexDraw, vertexDraws))
                 {
                     vertexDraws.Add(vertexDraw);
+
+                    matrixWeightPanel.CreateMatrix(1);
 
                     Refresh();
                 }

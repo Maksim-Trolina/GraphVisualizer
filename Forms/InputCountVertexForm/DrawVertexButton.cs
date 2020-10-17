@@ -39,9 +39,7 @@ namespace Forms
 
             vertexDraws = new List<VertexDraw>();
 
-            edgeDraws = new List<EdgeDraw>();
-
-            drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws);
+            edgeDraws = new List<EdgeDraw>();           
 
             initialVertexes = new InitialVertexes(vertexDraws);
 
@@ -52,12 +50,14 @@ namespace Forms
         {
             if (matrixGraph.Matrix == null)
             {
-                initialVertexes.CreateVertexes(0);
+                initialVertexes.CreateVertexes(0); 
             }
             else
             {
                 initialVertexes.CreateVertexes(matrixGraph.Matrix.GetLength(0));
             }
+
+            drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws);
 
             inputCountForm.Hide();
 

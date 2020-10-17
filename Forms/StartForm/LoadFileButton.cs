@@ -40,9 +40,7 @@ namespace Forms
 
             this.startForm = startForm;
 
-            edgeDraws = new List<EdgeDraw>();
-
-            drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws);
+            edgeDraws = new List<EdgeDraw>();          
 
             Click += new EventHandler(ButtonClick);
 
@@ -67,6 +65,8 @@ namespace Forms
                 this.Enabled = true;
 
                 LoadGraph = deserializeGraph.LoadGraph();
+
+                drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws);
 
                 startForm.Hide();
                 drawForm.ShowDialog();

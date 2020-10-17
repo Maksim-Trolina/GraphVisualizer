@@ -6,9 +6,13 @@ namespace Forms
 {
     class StartButton : Button
     {
+        private StartForm.StartForm startForm;
 
-        public StartButton()
+        private InputCountVertexForm inputCountVertexForm;
+
+        public StartButton(StartForm.StartForm startForm)
         {
+            this.startForm = startForm;          
 
             Text = "Matrix";
 
@@ -22,16 +26,14 @@ namespace Forms
 
         }
 
-        public InputCountVertexForm NextForm;
-
-        public StartForm.StartForm StartForm;
 
         public void ButtonClick(object sender, EventArgs e)
         {
-          
-            StartForm.Hide();
-            NextForm.ShowDialog();
-            StartForm.Close();
+            inputCountVertexForm = new InputCountVertexForm();
+
+            startForm.Hide();
+            inputCountVertexForm.ShowDialog();
+            startForm.Close();
 
         }           
     }
