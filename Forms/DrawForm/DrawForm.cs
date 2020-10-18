@@ -72,7 +72,7 @@ namespace StartForm
 
             pen = new Pen(Brushes.LightCoral, 4);
 
-            pen.StartCap = LineCap.ArrowAnchor;
+            pen.EndCap = LineCap.ArrowAnchor;
 
             arrow = new Arrow();
 
