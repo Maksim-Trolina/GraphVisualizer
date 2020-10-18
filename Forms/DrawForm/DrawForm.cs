@@ -84,7 +84,7 @@ namespace StartForm
 
             Controls.Add(toolPanel);
 
-            matrixWeightPanel.CreateMatrix(vertexDraws.Count);
+            matrixWeightPanel.ExpandMatrix(vertexDraws.Count);
 
         }
 
@@ -103,7 +103,7 @@ namespace StartForm
                 {
                     vertexDraws.Add(vertexDraw);
 
-                    matrixWeightPanel.CreateMatrix(1);
+                    matrixWeightPanel.ExpandMatrix(1);
 
                     Refresh();
                 }

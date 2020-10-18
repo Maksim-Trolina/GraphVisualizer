@@ -30,7 +30,7 @@ namespace Forms.DrawForm
      class MatrixWeightPanel
     {
 
-        private List<List<InputCountBox>> matrixx;
+        private List<List<InputCountBox>> matrix;
 
         private WeightTable weightTable;
      
@@ -38,14 +38,14 @@ namespace Forms.DrawForm
         public MatrixWeightPanel(WeightTable weightTable)
         {
 
-            matrixx = new List<List<InputCountBox>>();
+            matrix = new List<List<InputCountBox>>();
 
             this.weightTable = weightTable;
 
         }
 
         
-        public void CreateMatrix(int countOfNewVertexs)
+        public void ExpandMatrix(int countOfNewVertexs)
         {
 
             int stepX = 10;
@@ -58,7 +58,7 @@ namespace Forms.DrawForm
             int positionY = 0;
 
 
-            int countCellsBefore = matrixx.Count;
+            int countCellsBefore = matrix.Count;
 
 
             for (int i = 0; i < countCellsBefore; i++)
@@ -66,14 +66,14 @@ namespace Forms.DrawForm
                 for (int j = countCellsBefore; j < countCellsBefore + countOfNewVertexs; j++)
                 {
 
-                    matrixx[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
+                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
 
                     if (i == j)
                     {
-                        matrixx[i][j].Enabled = false;
+                        matrix[i][j].Enabled = false;
                     }
 
-                    weightTable.Controls.Add(matrixx[i][j]);
+                    weightTable.Controls.Add(matrix[i][j]);
 
                 }
                 
@@ -81,19 +81,19 @@ namespace Forms.DrawForm
 
             for(int i = countCellsBefore; i < countCellsBefore + countOfNewVertexs; i++)
             {
-                matrixx.Add(new List<InputCountBox>());
+                matrix.Add(new List<InputCountBox>());
 
                 for(int j = 0; j < countOfNewVertexs + countCellsBefore; j++)
                 {
                  
-                    matrixx[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
+                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
 
                     if (i == j)
                     {
-                        matrixx[i][j].Enabled = false;
+                        matrix[i][j].Enabled = false;
                     }
 
-                    weightTable.Controls.Add(matrixx[i][j]);
+                    weightTable.Controls.Add(matrix[i][j]);
 
                 }
                 
