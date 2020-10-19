@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using Forms.DrawForm;
 using VertexSearch;
-
+using System.Drawing.Drawing2D;
+using ArrowDraw;
 
 namespace StartForm
 {
@@ -40,6 +41,7 @@ namespace StartForm
 
         private MatrixWeightPanel matrixWeightPanel;
 =======
+        private Arrow arrow;
 
 >>>>>>> develop
 
@@ -91,6 +93,9 @@ namespace StartForm
 
             matrixWeightPanel.ExpandMatrix(vertexDraws.Count);
 =======
+            pen.EndCap = LineCap.ArrowAnchor;
+
+            arrow = new Arrow();
 >>>>>>> develop
 
         }
@@ -140,6 +145,7 @@ namespace StartForm
                
                 drawingEdges.DefinitionOfEdges(vertexDraws, edge, ref startPoint, ref endPoint);
 
+                graphics.DrawLine(pen, startPoint, arrow.GetEndArrowPoint(startPoint,endPoint));
             }
 
 
