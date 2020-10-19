@@ -33,11 +33,15 @@ namespace StartForm
 
         private Pen pen;
 
+<<<<<<< HEAD
         private ToolPanel toolPanel;
 
         private WeightTable weightTable;
 
         private MatrixWeightPanel matrixWeightPanel;
+=======
+
+>>>>>>> develop
 
         public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws)
 
@@ -74,6 +78,7 @@ namespace StartForm
 
             pen = new Pen(Brushes.LightCoral, 4);
 
+<<<<<<< HEAD
             weightTable = new WeightTable(200, 200, Size.Width - 200, 0);
 
             matrixWeightPanel = new MatrixWeightPanel(weightTable);
@@ -85,6 +90,8 @@ namespace StartForm
             Controls.Add(toolPanel);
 
             matrixWeightPanel.ExpandMatrix(vertexDraws.Count);
+=======
+>>>>>>> develop
 
         }
 
@@ -133,7 +140,6 @@ namespace StartForm
                
                 drawingEdges.DefinitionOfEdges(vertexDraws, edge, ref startPoint, ref endPoint);
 
-                graphics.DrawLine(pen, startPoint, endPoint);
             }
 
 

@@ -10,6 +10,7 @@
     <ProjectReference Include="..\CollisionDraw\CollisionDraw.csproj" />
     <ProjectReference Include="..\CraphModel\CraphModel.csproj" />
     <ProjectReference Include="..\DataProcessing\Serializing.csproj" />
+    <ProjectReference Include="..\EdgeDraw\ArrowDraw.csproj" />
     <ProjectReference Include="..\GraphModelDraw\GraphModelDraw.csproj" />
     <ProjectReference Include="..\VertexSearch\VertexSearch.csproj" />
   </ItemGroup>
