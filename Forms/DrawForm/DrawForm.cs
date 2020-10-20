@@ -27,7 +27,7 @@ namespace StartForm
 
         private Font vertexTextFont;
 
-        private VertexClick vertexClick;
+        private NewEdgeDefinition newEdgeDefinition;
 
         private int startVertexId = -1;
 
@@ -57,7 +57,7 @@ namespace StartForm
 
             collisionVertex = new CollisionVertex();
 
-            vertexClick = new VertexClick();
+            newEdgeDefinition = new NewEdgeDefinition();
 
             drawingEdges = new DrawingEdges();
 
@@ -119,7 +119,7 @@ namespace StartForm
                 }
                 else
                 {
-                    drawingEdges.VertexFind(vertexClick, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId);
+                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId);                  
 
                     Refresh();
 
@@ -140,15 +140,16 @@ namespace StartForm
            
             foreach (var edge in edgeDraws)
             {
-               
-                drawingEdges.DefinitionOfEdges(vertexDraws, edge, ref startPoint, ref endPoint);
+
+                newEdgeDefinition.DefinitionOfEdge(vertexDraws, edge, ref startPoint, ref endPoint);               
 
                 graphics.DrawLine(pen, startPoint, arrow.GetEndArrowPoint(startPoint,endPoint));
             }
 
 
             foreach (var vertex in vertexDraws)
-            {
+            {         
+                               
                 graphics.FillEllipse(Brushes.Blue, vertex.X, vertex.Y, vertex.Width, vertex.Height);
 
                 graphics.DrawString(vertex.Id.ToString(), vertexTextFont, vertexBrush

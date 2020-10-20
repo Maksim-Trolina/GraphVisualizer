@@ -1,18 +1,21 @@
 ﻿using System.Collections.Generic;
 using System;
 using GraphModelDraw;
+using System.Drawing;
+
 
 namespace VertexSearch
 {
-    public class VertexClick
+    public class NewEdgeDefinition
     {
 
         public int GetNumberOfVertex(float ClickX, float ClickY, List<VertexDraw> vertexDraws,  int VertexRadius)
         {
+            int distance = 0;
 
             foreach (var vertex in vertexDraws)
             {
-                int distance = (int)GetDistance(vertex.X, ClickX, vertex.Y, ClickY);
+                distance = (int)GetDistance(vertex.X, ClickX, vertex.Y, ClickY);
 
                 if (distance <= VertexRadius)
                 {
@@ -39,6 +42,8 @@ namespace VertexSearch
             {
 
                 startVertexId = GetNumberOfVertex(ClickX, ClickY, vertexDraws, (int)VertexParameters.Radius);
+
+
             }
 
             else if ((endVertexId == -1) && (GetNumberOfVertex(ClickX, ClickY, vertexDraws, (int)VertexParameters.Radius) != -1))
@@ -52,6 +57,35 @@ namespace VertexSearch
             else
                 return;
         }
- 
+
+        public void DefinitionOfEdge(List<VertexDraw> vertexDraws, EdgeDraw edge, ref Point p1, ref Point p2)
+        {
+
+            p1.X = 0;
+            p1.Y = 0;
+
+            p2.X = 0;
+            p2.Y = 0;
+
+            foreach (var vertex in vertexDraws)
+            {
+
+                if (edge.Id == vertex.Id)
+                {
+                    p1.X = (int)vertex.X + (int)VertexParameters.Radius;
+                    p1.Y = (int)vertex.Y + (int)VertexParameters.Radius;
+
+                }
+                else if (edge.ConnectabelVertex == vertex.Id)
+                {
+                    p2.X = (int)vertex.X + (int)VertexParameters.Radius;
+                    p2.Y = (int)vertex.Y + (int)VertexParameters.Radius;
+
+
+                }
+            }
+
+        }
+
     }
 }
