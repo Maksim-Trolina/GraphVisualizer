@@ -30,14 +30,16 @@ namespace GraphRepresentation
 
         public void AddNode(Vertex vertexStart, Vertex vertexEnd, int weight)
         {
+            if (vertexStart != vertexEnd)
+            {
+                Node node = new Node();
 
-            Node node = new Node();
+                node.Connectable = vertexEnd.Id;
 
-            node.Connectable = vertexEnd.Id;
+                node.Weight = weight;
 
-            node.Weight = weight;
-
-            adjacencyList[vertexStart.Id].Add(node);
+                adjacencyList[vertexStart.Id].Add(node);
+            }
         }
     }
 }
