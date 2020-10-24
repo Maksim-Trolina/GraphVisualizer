@@ -6,7 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using GraphModelDraw;
 using CollisionDraw;
-using StartForm;
+using Forms.DrawForm;
 
 namespace Forms
 {
@@ -23,6 +23,8 @@ namespace Forms
         private MatrixGraph matrixGraph;
 
         private InitialVertexes initialVertexes;
+
+        private List<List<InputCountBox>> matrix;
 
         public DrawVertexButton(int width, int height, int positionX, int positionY, InputCountVertexForm inputCountForm
             , MatrixGraph matrixGraph, string buttonText = "Create vertexes")
@@ -57,7 +59,9 @@ namespace Forms
                 initialVertexes.CreateVertexes(matrixGraph.Matrix.GetLength(0));
             }
 
-            drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws);
+            initialVertexes.FillingMatrix(matrixGraph.Matrix, ref matrix);
+
+            drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix);
 
             inputCountForm.Hide();
 
@@ -76,11 +80,47 @@ namespace Forms
 
         private CollisionVertex collisionVertex;
 
+        private WeightTable weightTable;
+
         public InitialVertexes(List<VertexDraw> vertexDraws)
         {
             this.vertexDraws = vertexDraws;
 
             collisionVertex = new CollisionVertex();
+        }
+
+        public void FillingMatrix(InputCountBox[,] Matrix, ref List<List<InputCountBox>> matrix)
+        {
+
+            matrix = new List<List<InputCountBox>>();
+          
+
+            int stepX = 10;
+            int stepY = 10;
+
+            int width = 20;
+            int height = 20;
+
+            int positionX = 0;
+            int positionY = 0;
+
+            for (int i = 0; i < Matrix.GetLength(1); i++)
+            {
+                matrix.Add(new List<InputCountBox>());
+
+                for(int j = 0; j < Matrix.GetLength(1); j++)
+                {
+
+                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
+
+                    matrix[i][j].Text = Matrix[i, j].Text;
+
+                    weightTable.Controls.Add(matrix[i][j]);
+
+                }              
+
+            }
+
         }
 
         public void CreateVertexes(int countVertex)

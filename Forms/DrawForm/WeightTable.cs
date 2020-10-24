@@ -30,17 +30,15 @@ namespace Forms.DrawForm
      class MatrixWeightPanel
     {
 
+        private WeightTable weightTable;
+
         private List<List<InputCountBox>> matrix;
 
-        private WeightTable weightTable;
-     
-
-        public MatrixWeightPanel(WeightTable weightTable)
+        public MatrixWeightPanel(WeightTable weightTable, List<List<InputCountBox>> matrix)
         {
 
-            matrix = new List<List<InputCountBox>>();
-
             this.weightTable = weightTable;
+            this.matrix = matrix;
 
         }
 

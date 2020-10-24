@@ -66,7 +66,7 @@ namespace Forms
 
                 LoadGraph = deserializeGraph.LoadGraph();
 
-                drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws);
+                drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, null);
 
                 startForm.Hide();
                 drawForm.ShowDialog();
