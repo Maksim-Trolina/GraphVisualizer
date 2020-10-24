@@ -26,6 +26,8 @@ namespace Forms
 
         private FileInfo fI;
 
+        private List<List<InputCountBox>> matrix;
+
         public LoadFileButton(StartForm.StartForm startForm)
         {
             Text = "Load file";
@@ -66,7 +68,9 @@ namespace Forms
 
                 LoadGraph = deserializeGraph.LoadGraph();
 
-                drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, null);
+                matrix = new List<List<InputCountBox>>();
+
+                drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix);
 
                 startForm.Hide();
                 drawForm.ShowDialog();
