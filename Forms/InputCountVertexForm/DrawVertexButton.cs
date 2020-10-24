@@ -6,7 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using GraphModelDraw;
 using CollisionDraw;
-using StartForm;
+using Forms.DrawForm;
 
 namespace Forms
 {
@@ -24,6 +24,8 @@ namespace Forms
 
         private InitialVertexes initialVertexes;
 
+        private List<List<InputCountBox>> matrix;
+
         public DrawVertexButton(int width, int height, int positionX, int positionY, InputCountVertexForm inputCountForm
             , MatrixGraph matrixGraph, string buttonText = "Create vertexes")
         {
@@ -39,9 +41,7 @@ namespace Forms
 
             vertexDraws = new List<VertexDraw>();
 
-            edgeDraws = new List<EdgeDraw>();
-
-            drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws);
+            edgeDraws = new List<EdgeDraw>();           
 
             initialVertexes = new InitialVertexes(vertexDraws);
 
@@ -52,12 +52,16 @@ namespace Forms
         {
             if (matrixGraph.Matrix == null)
             {
-                initialVertexes.CreateVertexes(0);
+                initialVertexes.CreateVertexes(0); 
             }
             else
             {
                 initialVertexes.CreateVertexes(matrixGraph.Matrix.GetLength(0));
             }
+
+            initialVertexes.FillingMatrix(matrixGraph.Matrix, ref matrix);
+
+            drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix);
 
             inputCountForm.Hide();
 
@@ -83,11 +87,44 @@ namespace Forms
             collisionVertex = new CollisionVertex();
         }
 
+        public void FillingMatrix(InputCountBox[,] Matrix, ref List<List<InputCountBox>> matrix)
+        {
+
+            matrix = new List<List<InputCountBox>>();
+          
+
+            int stepX = 10;
+            int stepY = 10;
+
+            int width = 20;
+            int height = 20;
+
+            int positionX = 0;
+            int positionY = 0;
+
+            for (int i = 0; i < Matrix.GetLength(1); i++)
+            {
+                matrix.Add(new List<InputCountBox>());
+
+                for(int j = 0; j < Matrix.GetLength(1); j++)
+                {
+
+                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
+
+                    matrix[i][j].Text = Matrix[i, j].Text;
+
+
+                }              
+
+            }
+
+        }
+
         public void CreateVertexes(int countVertex)
         {
-            float x = 30f;
+            float x = 90f;
 
-            float y = 30f;
+            float y = 50f;
 
             float step = 2 * (float)VertexParameters.Radius + 10;
 

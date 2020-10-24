@@ -8,16 +8,13 @@ namespace StartForm
     {
 
         private StartButton startButton;
-        private InputCountVertexForm nextFormStartButton;
         private LoadFileButton loadFileButton;
 
         public StartForm()
         {
             InitializeComponent();
 
-            nextFormStartButton = new InputCountVertexForm();
-
-            startButton = new StartButton {StartForm = this, NextForm = nextFormStartButton};
+            startButton = new StartButton(this);
 
             loadFileButton = new LoadFileButton(this);
            
