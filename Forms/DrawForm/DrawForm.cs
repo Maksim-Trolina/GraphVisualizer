@@ -43,7 +43,6 @@ namespace StartForm
 
         private Arrow arrow;
 
-        private List<List<InputCountBox>> matrix;
 
         public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<InputCountBox>> matrix)
 
@@ -55,8 +54,6 @@ namespace StartForm
             this.vertexDraws = vertexDraws;
 
             this.edgeDraws = edgeDraws;
-
-            this.matrix = matrix;
 
             collisionVertex = new CollisionVertex();
 
@@ -84,7 +81,7 @@ namespace StartForm
 
             weightTable = new WeightTable(200, 200, Size.Width - 200, 0);
 
-            matrixWeightPanel = new MatrixWeightPanel(weightTable, this.matrix);
+            matrixWeightPanel = new MatrixWeightPanel(weightTable, matrix);
 
             matrixWeightPanel.DrawingMatrix();
 

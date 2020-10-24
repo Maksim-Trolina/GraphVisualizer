@@ -80,8 +80,6 @@ namespace Forms
 
         private CollisionVertex collisionVertex;
 
-        private WeightTable weightTable;
-
         public InitialVertexes(List<VertexDraw> vertexDraws)
         {
             this.vertexDraws = vertexDraws;
