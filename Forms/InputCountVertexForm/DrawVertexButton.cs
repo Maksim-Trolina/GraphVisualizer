@@ -115,7 +115,6 @@ namespace Forms
 
                     matrix[i][j].Text = Matrix[i, j].Text;
 
-                    weightTable.Controls.Add(matrix[i][j]);
 
                 }              
 

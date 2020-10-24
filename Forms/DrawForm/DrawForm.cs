@@ -86,13 +86,13 @@ namespace StartForm
 
             matrixWeightPanel = new MatrixWeightPanel(weightTable, this.matrix);
 
+            matrixWeightPanel.DrawingMatrix(matrix.Count);
+
             Controls.Add(weightTable);
 
             toolPanel = new ToolPanel(0, 100, weightTable);
 
             Controls.Add(toolPanel);
-
-            //matrixWeightPanel.ExpandMatrix(vertexDraws.Count);
 
             pen.EndCap = LineCap.ArrowAnchor;
 

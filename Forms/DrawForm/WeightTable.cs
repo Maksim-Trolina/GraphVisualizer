@@ -42,7 +42,27 @@ namespace Forms.DrawForm
 
         }
 
-        
+        public void DrawingMatrix(int rows)
+        {
+
+            for (int i = 0; i < rows; i++)
+            {
+
+                for (int j = 0; j < rows; j++)
+                {
+
+                    if (i == j)
+                    {
+                        matrix[i][j].Enabled = false;
+                    }
+
+                    weightTable.Controls.Add(matrix[i][j]);
+                }
+
+            }
+
+        }
+
         public void ExpandMatrix(int countOfNewVertexs)
         {
 
