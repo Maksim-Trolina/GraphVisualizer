@@ -86,7 +86,7 @@ namespace StartForm
 
             matrixWeightPanel = new MatrixWeightPanel(weightTable, this.matrix);
 
-            matrixWeightPanel.DrawingMatrix(matrix.Count);
+            matrixWeightPanel.DrawingMatrix();
 
             Controls.Add(weightTable);
 

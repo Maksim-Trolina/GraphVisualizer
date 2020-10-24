@@ -42,13 +42,13 @@ namespace Forms.DrawForm
 
         }
 
-        public void DrawingMatrix(int rows)
+        public void DrawingMatrix()
         {
 
-            for (int i = 0; i < rows; i++)
+            for (int i = 0; i < matrix.Count; i++)
             {
 
-                for (int j = 0; j < rows; j++)
+                for (int j = 0; j < matrix.Count; j++)
                 {
 
                     if (i == j)
