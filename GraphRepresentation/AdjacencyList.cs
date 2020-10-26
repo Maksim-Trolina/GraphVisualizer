@@ -21,7 +21,11 @@ namespace GraphRepresentation
 
         public void AddVertex(Vertex vertex)
         {
-            if (!adjacencyList.ContainsKey(vertex.Id))
+            if (adjacencyList.ContainsKey(vertex.Id))
+            {
+                throw new Exception("This vertex is already in the list of adjacencies");
+            }
+            else
             {
                 adjacencyList.Add(vertex.Id, vertex.Nodes);
             }
@@ -30,7 +34,11 @@ namespace GraphRepresentation
 
         public void AddNode(Vertex vertexStart, Vertex vertexEnd, int weight)
         {
-            if (vertexStart != vertexEnd)
+            if (vertexStart == vertexEnd)
+            {
+                throw new Exception("The starting vertex coincides with the ending vertex");
+            }
+            else
             {
                 Node node = new Node();
 
