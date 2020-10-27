@@ -7,6 +7,7 @@ using Forms.DrawForm;
 using VertexSearch;
 using System.Drawing.Drawing2D;
 using ArrowDraw;
+using Forms;
 
 namespace StartForm
 {
@@ -34,10 +35,16 @@ namespace StartForm
 
         private Pen pen;
 
+        private ToolPanel toolPanel;
+
+        private WeightTable weightTable;
+
+        private MatrixWeightPanel matrixWeightPanel;
+
         private Arrow arrow;
 
 
-        public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws)
+        public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<InputCountBox>> matrix)
 
         {
             InitializeComponent();
@@ -72,9 +79,22 @@ namespace StartForm
 
             pen = new Pen(Brushes.LightCoral, 4);
 
+            weightTable = new WeightTable(200, 200, Size.Width - 200, 0);
+
+            matrixWeightPanel = new MatrixWeightPanel(weightTable, matrix);
+
+            matrixWeightPanel.DrawingMatrix();
+
+            Controls.Add(weightTable);
+
+            toolPanel = new ToolPanel(0, 100, weightTable);
+
+            Controls.Add(toolPanel);
+
             pen.EndCap = LineCap.ArrowAnchor;
 
             arrow = new Arrow();
+
 
         }
 
@@ -92,6 +112,8 @@ namespace StartForm
                 if (collisionVertex.IsDrawVertex(vertexDraw, vertexDraws))
                 {
                     vertexDraws.Add(vertexDraw);
+
+                    matrixWeightPanel.ExpandMatrix(1);
 
                     Refresh();
                 }
