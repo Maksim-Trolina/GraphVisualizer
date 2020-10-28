@@ -1,10 +1,12 @@
-﻿
+﻿using System.Drawing.Drawing2D;
+using System.Drawing;
+
 
 namespace GraphModelDraw
 {
     public class VertexDraw
     {
-        public readonly BrushColor BrushCircle;
+        public BrushColor BrushCircle;
 
         public readonly BrushColor TextBrush;
 
