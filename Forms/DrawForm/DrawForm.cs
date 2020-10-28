@@ -119,7 +119,9 @@ namespace StartForm
                 }
                 else
                 {
-                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId);                  
+                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId);   
+                    
+                    drawingEdges.VertexHighlight(vertexDraws, startVertexId);
 
                     Refresh();
 
