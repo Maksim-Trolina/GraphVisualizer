@@ -42,23 +42,6 @@ namespace Forms.DrawForm
         }
 
 
-        public void VertexHighlight(List<VertexDraw> vertexDraws, int startVertexId)
-        {
-            
-            if(startVertexId != -1)
-            {
-                foreach( var vertex in vertexDraws)
-                {
-                    if (vertex.Id == startVertexId)
-
-                        vertex.BrushCircle = BrushColor.Yellow;
-
-                }
-
-            }
-        }
-
-
 
     }
 }

@@ -43,6 +43,8 @@ namespace VertexSearch
 
                 startVertexId = GetNumberOfVertex(ClickX, ClickY, vertexDraws, (int)VertexParameters.Radius);
 
+                vertexDraws[startVertexId].BrushCircle = BrushColor.Black;
+
 
             }
 
@@ -52,7 +54,20 @@ namespace VertexSearch
                 endVertexId = GetNumberOfVertex(ClickX, ClickY, vertexDraws, (int)VertexParameters.Radius);
 
                 if (endVertexId == startVertexId)
+                {
+                    vertexDraws[startVertexId].BrushCircle = BrushColor.Red;
                     endVertexId = -1;
+                    startVertexId = -1;
+                    
+                }
+                    
+
+                if (endVertexId != -1)
+                {
+                    vertexDraws[startVertexId].BrushCircle = BrushColor.Red;
+
+                }
+
             }
             else
                 return;
