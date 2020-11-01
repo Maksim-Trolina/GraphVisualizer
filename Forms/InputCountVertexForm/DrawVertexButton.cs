@@ -140,7 +140,7 @@ namespace Forms
 
             for (int i = 0; i < countVertex; ++i)
             {
-                VertexDraw vertexDraw = new VertexDraw(BrushColor.Green, BrushColor.Red, x + i * step, y, (float)VertexParameters.Width
+                VertexDraw vertexDraw = new VertexDraw(BrushColor.Red, BrushColor.Red, x + i * step, y, (float)VertexParameters.Width
                     , (float)VertexParameters.Height, "", i);
 
                 if (collisionVertex.IsDrawVertex(vertexDraw, vertexDraws))
