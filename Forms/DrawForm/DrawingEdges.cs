@@ -26,6 +26,13 @@ namespace Forms.DrawForm
                 startVertexId = -1;
                 endVertexId = -1;
             }
+            else if (IsDuplicate(edgeDraws, startVertexId, endVertexId))
+            {
+
+                startVertexId = -1;
+                endVertexId = -1;
+            }
+
 
         }
 
@@ -34,8 +41,12 @@ namespace Forms.DrawForm
             foreach (var edge in edgeDraws)
             {
                 if ((startVertexId == edge.Id) && (endVertexId == edge.ConnectabelVertex))
+                {
 
                     return true;
+
+                }
+
             }
             return false;
 
