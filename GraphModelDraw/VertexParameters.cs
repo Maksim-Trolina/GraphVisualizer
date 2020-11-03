@@ -4,10 +4,10 @@ namespace GraphModelDraw
 {
     public enum VertexParameters
     {
-        Radius = 50,
+        Radius = 20,
 
-        Width = 100,
+        Width = 40,
 
-        Height = 100
+        Height = 40
     }
 }

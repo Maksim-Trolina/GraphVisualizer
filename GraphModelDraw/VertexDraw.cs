@@ -1,5 +1,5 @@
-﻿using System.Drawing.Drawing2D;
-using System.Drawing;
+﻿using System.Collections.Generic;
+
 
 
 namespace GraphModelDraw
@@ -39,6 +39,15 @@ namespace GraphModelDraw
             Text = text;
 
             Id = id;
+        }
+
+        public void VertexMove(List<VertexDraw> vertexDraws, ref int vertexId, float newX, float newY)
+        {
+            vertexDraws[vertexId].X = newX;
+            vertexDraws[vertexId].Y = newY;
+            vertexDraws[vertexId].BrushCircle = BrushColor.Red;
+            vertexId = -1;
+
         }
     }
 }

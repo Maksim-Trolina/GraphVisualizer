@@ -36,7 +36,7 @@ namespace VertexSearch
 
 
 
-        public void VertexRemember(ref int startVertexId, ref int endVertexId, float ClickX, float ClickY, List<VertexDraw> vertexDraws, int VertexRadius)
+        public void VertexRemember(ref int startVertexId, ref int endVertexId, float ClickX, float ClickY, List<VertexDraw> vertexDraws)
         {
 
             if ((startVertexId == -1) && (endVertexId == -1) && (GetNumberOfVertex(ClickX, ClickY, vertexDraws) != -1))
