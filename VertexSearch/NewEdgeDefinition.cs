@@ -9,15 +9,16 @@ namespace VertexSearch
     public class NewEdgeDefinition
     {
 
-        public int GetNumberOfVertex(float ClickX, float ClickY, List<VertexDraw> vertexDraws,  int VertexRadius)
+        public int GetNumberOfVertex(float ClickX, float ClickY, List<VertexDraw> vertexDraws)
         {
             int distance = 0;
+            
 
             foreach (var vertex in vertexDraws)
             {
                 distance = (int)GetDistance(vertex.X, ClickX, vertex.Y, ClickY);
 
-                if (distance <= VertexRadius)
+                if (distance <= (int)VertexParameters.Radius)
                 {
                     return vertex.Id;
                 }
@@ -38,20 +39,20 @@ namespace VertexSearch
         public void VertexRemember(ref int startVertexId, ref int endVertexId, float ClickX, float ClickY, List<VertexDraw> vertexDraws, int VertexRadius)
         {
 
-            if ((startVertexId == -1) && (endVertexId == -1) && (GetNumberOfVertex(ClickX, ClickY, vertexDraws, (int)VertexParameters.Radius) != -1))
+            if ((startVertexId == -1) && (endVertexId == -1) && (GetNumberOfVertex(ClickX, ClickY, vertexDraws) != -1))
             {
 
-                startVertexId = GetNumberOfVertex(ClickX, ClickY, vertexDraws, (int)VertexParameters.Radius);
+                startVertexId = GetNumberOfVertex(ClickX, ClickY, vertexDraws);
 
                 vertexDraws[startVertexId].BrushCircle = BrushColor.Black;
 
 
             }
 
-            else if ((endVertexId == -1) && (GetNumberOfVertex(ClickX, ClickY, vertexDraws, (int)VertexParameters.Radius) != -1))
+            else if ((endVertexId == -1) && (GetNumberOfVertex(ClickX, ClickY, vertexDraws) != -1))
             {
 
-                endVertexId = GetNumberOfVertex(ClickX, ClickY, vertexDraws, (int)VertexParameters.Radius);
+                endVertexId = GetNumberOfVertex(ClickX, ClickY, vertexDraws);
 
                 if (endVertexId == startVertexId)
                 {
