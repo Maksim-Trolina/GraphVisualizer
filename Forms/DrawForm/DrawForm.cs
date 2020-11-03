@@ -119,7 +119,8 @@ namespace StartForm
                 if ((collisionVertex.IsDrawVertex(vertexDraw, vertexDraws)) && (startVertexId != -1))
                 {
 
-                    VertexMove(e);
+                    vertexDraw.VertexMove(vertexDraws, ref startVertexId
+                        , e.X - (int)VertexParameters.Radius, e.Y - (int)VertexParameters.Radius);
 
                     Refresh();
 
@@ -176,14 +177,6 @@ namespace StartForm
               
             }          
              
-
-        }
-        private void VertexMove(MouseEventArgs e)
-        {
-            vertexDraws[startVertexId].X = e.X - (int)VertexParameters.Radius;
-            vertexDraws[startVertexId].Y = e.Y - (int)VertexParameters.Radius;
-            vertexDraws[startVertexId].BrushCircle = BrushColor.Red;
-            startVertexId = -1;
 
         }
 

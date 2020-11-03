@@ -14,7 +14,7 @@ namespace Forms.DrawForm
 
             vertexClick.VertexRemember(ref startVertexId, ref endVertexId
                         , e.X - (int)VertexParameters.Radius, e.Y - (int)VertexParameters.Radius
-                        , vertexDraws, (int)VertexParameters.Radius);
+                        , vertexDraws);
 
 
             if ((startVertexId != -1) && (endVertexId != -1) && (startVertexId != endVertexId) && (!IsDuplicate(edgeDraws, startVertexId, endVertexId)))
