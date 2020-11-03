@@ -10,9 +10,9 @@ namespace GraphModelDraw
 
         public readonly BrushColor TextBrush;
 
-        public readonly float X;
+        public float X;
 
-        public readonly float Y;
+        public float Y;
 
         public readonly float Width;
 
