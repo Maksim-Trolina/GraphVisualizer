@@ -1,16 +1,18 @@
-﻿
+﻿using System.Collections.Generic;
+
+
 
 namespace GraphModelDraw
 {
     public class VertexDraw
     {
-        public readonly BrushColor BrushCircle;
+        public BrushColor BrushCircle;
 
         public readonly BrushColor TextBrush;
 
-        public readonly float X;
+        public float X;
 
-        public readonly float Y;
+        public float Y;
 
         public readonly float Width;
 
@@ -37,6 +39,15 @@ namespace GraphModelDraw
             Text = text;
 
             Id = id;
+        }
+
+        public void VertexMove(List<VertexDraw> vertexDraws, ref int vertexId, float newX, float newY)
+        {
+            vertexDraws[vertexId].X = newX;
+            vertexDraws[vertexId].Y = newY;
+            vertexDraws[vertexId].BrushCircle = BrushColor.Red;
+            vertexId = -1;
+
         }
     }
 }

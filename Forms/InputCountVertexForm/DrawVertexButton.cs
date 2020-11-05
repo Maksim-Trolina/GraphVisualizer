@@ -102,11 +102,21 @@ namespace Forms
             int positionX = 0;
             int positionY = 0;
 
-            for (int i = 0; i < Matrix.GetLength(1); i++)
+            int matrixLenght = 0;
+
+            if(Matrix != null)
+            {
+                matrixLenght = Matrix.GetLength(1);
+
+            }
+
+            
+
+            for (int i = 0; i < matrixLenght; i++)
             {
                 matrix.Add(new List<InputCountBox>());
 
-                for(int j = 0; j < Matrix.GetLength(1); j++)
+                for(int j = 0; j < matrixLenght; j++)
                 {
 
                     matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
@@ -130,7 +140,7 @@ namespace Forms
 
             for (int i = 0; i < countVertex; ++i)
             {
-                VertexDraw vertexDraw = new VertexDraw(BrushColor.Green, BrushColor.Red, x + i * step, y, (float)VertexParameters.Width
+                VertexDraw vertexDraw = new VertexDraw(BrushColor.Red, BrushColor.Red, x + i * step, y, (float)VertexParameters.Width
                     , (float)VertexParameters.Height, "", i);
 
                 if (collisionVertex.IsDrawVertex(vertexDraw, vertexDraws))

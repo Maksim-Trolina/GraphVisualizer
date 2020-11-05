@@ -27,7 +27,7 @@ namespace StartForm
 
         private Font vertexTextFont;
 
-        private VertexClick vertexClick;
+        private NewEdgeDefinition newEdgeDefinition;
 
         private int startVertexId = -1;
 
@@ -43,6 +43,8 @@ namespace StartForm
 
         private Arrow arrow;
 
+        private Brush[] brushes;
+
 
         public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<InputCountBox>> matrix)
 
@@ -57,7 +59,7 @@ namespace StartForm
 
             collisionVertex = new CollisionVertex();
 
-            vertexClick = new VertexClick();
+            newEdgeDefinition = new NewEdgeDefinition();
 
             drawingEdges = new DrawingEdges();
 
@@ -77,7 +79,7 @@ namespace StartForm
 
             vertexTextFont = new Font("Times New Roman", 12, FontStyle.Bold);
 
-            pen = new Pen(Brushes.LightCoral, 4);
+            pen = new Pen(Brushes.Black, 5);
 
             weightTable = new WeightTable(200, 200, Size.Width - 200, 0);
 
@@ -95,6 +97,11 @@ namespace StartForm
 
             arrow = new Arrow();
 
+            brushes = new Brush[2];
+      
+            brushes[(int)BrushColor.Red] = Brushes.Red;
+
+            brushes[(int)BrushColor.Black] = Brushes.Black;
 
         }
 
@@ -109,7 +116,16 @@ namespace StartForm
                     , vertexDraws.Count);
 
 
-                if (collisionVertex.IsDrawVertex(vertexDraw, vertexDraws))
+                if ((collisionVertex.IsDrawVertex(vertexDraw, vertexDraws)) && (startVertexId != -1))
+                {
+
+                    vertexDraw.VertexMove(vertexDraws, ref startVertexId
+                        , e.X - (int)VertexParameters.Radius, e.Y - (int)VertexParameters.Radius);
+
+                    Refresh();
+
+                }
+                else if (collisionVertex.IsDrawVertex(vertexDraw, vertexDraws))
                 {
                     vertexDraws.Add(vertexDraw);
 
@@ -119,16 +135,20 @@ namespace StartForm
                 }
                 else
                 {
-                    drawingEdges.VertexFind(vertexClick, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId);
+                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId);   
 
                     Refresh();
 
                 }
             }
+
         }
+
 
         Point startPoint = new Point();
         Point endPoint = new Point();
+
+        
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -140,16 +160,17 @@ namespace StartForm
            
             foreach (var edge in edgeDraws)
             {
-               
-                drawingEdges.DefinitionOfEdges(vertexDraws, edge, ref startPoint, ref endPoint);
+
+                newEdgeDefinition.DefinitionOfEdge(vertexDraws, edge, ref startPoint, ref endPoint);               
 
                 graphics.DrawLine(pen, startPoint, arrow.GetEndArrowPoint(startPoint,endPoint));
             }
 
 
             foreach (var vertex in vertexDraws)
-            {
-                graphics.FillEllipse(Brushes.Blue, vertex.X, vertex.Y, vertex.Width, vertex.Height);
+            {         
+                               
+                graphics.FillEllipse(brushes[(int)vertex.BrushCircle], vertex.X, vertex.Y, vertex.Width, vertex.Height);
 
                 graphics.DrawString(vertex.Id.ToString(), vertexTextFont, vertexBrush
                     , vertex.X + (int)VertexParameters.Radius, vertex.Y + (int)VertexParameters.Radius, vertexStringFormat);
