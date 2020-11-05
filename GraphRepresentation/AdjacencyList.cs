@@ -44,13 +44,9 @@ namespace GraphRepresentation
             else
 
             {
-                Node node = new Node();
 
-                node.Connectable = vertexEnd.Id;
+                adjacencyList[vertexStart.Id].Add(new Node() { Connectable = vertexEnd.Id, Weight = weight});
 
-                node.Weight = weight;
-
-                adjacencyList[vertexStart.Id].Add(node);
             }
         }
     }

@@ -8,15 +8,26 @@ namespace GraphRepresentationTest
 {
     public class AdjacencyListTest
     {
+        private List<Vertex> vertexes;
+
+        private AdjacencyList adList;
+
+        private Vertex vertex;
+
+        [SetUp]
+        public void Setup()
+        {
+            vertex = new Vertex();
+
+            vertexes = new List<Vertex>() { vertex };
+
+            adList = new AdjacencyList(vertexes);
+            
+        }
 
         [Test]
         public void AddVertexTest_AddExistVertex_ExceptionExpected()
         {
-
-            List<Vertex> verticles = new List<Vertex>();
-            Vertex vertex = new Vertex();
-            verticles.Add(vertex);
-            AdjacencyList adList = new AdjacencyList(verticles);
 
             var ex = Assert.Throws<System.Exception>(() => adList.AddVertex(vertex));
 
@@ -27,10 +38,6 @@ namespace GraphRepresentationTest
         [Test]
         public void AddNodeTest_CreateLoop_ExceptionExpected()
         {
-            List<Vertex> verticles = new List<Vertex>();
-            Vertex vertex = new Vertex();
-            verticles.Add(vertex);
-            AdjacencyList adList = new AdjacencyList(verticles);
 
             var ex = Assert.Throws<System.Exception>(() => adList.AddNode(vertex, vertex, 20));
 
