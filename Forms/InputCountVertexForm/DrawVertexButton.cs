@@ -22,7 +22,7 @@ namespace Forms
 
         private MatrixGraph matrixGraph;
 
-        private InitialGraph initialVertexes;
+        private InitialGraph initialGraph;
 
         private List<List<InputCountBox>> matrix;
 
@@ -43,7 +43,7 @@ namespace Forms
 
             edgeDraws = new List<EdgeDraw>();           
 
-            initialVertexes = new InitialGraph(vertexDraws, edgeDraws, matrixGraph);
+            initialGraph = new InitialGraph(vertexDraws, edgeDraws, matrixGraph);
 
             matrix = new List<List<InputCountBox>>();
 
@@ -52,11 +52,11 @@ namespace Forms
 
         private void ButtonClick(object sender, EventArgs e)
         {
-            initialVertexes.CreateVertexes();
+            initialGraph.CreateVertexes();
 
-            initialVertexes.FillingMatrix(matrix);
+            initialGraph.FillingMatrix(matrix);
 
-            initialVertexes.CreateEdges();
+            initialGraph.CreateEdges();
 
             drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix);
 
