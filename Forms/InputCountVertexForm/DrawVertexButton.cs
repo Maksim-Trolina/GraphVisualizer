@@ -43,7 +43,7 @@ namespace Forms
 
             edgeDraws = new List<EdgeDraw>();           
 
-            initialVertexes = new InitialVertexes(vertexDraws);
+            initialVertexes = new InitialVertexes(vertexDraws, edgeDraws, matrixGraph.Matrix);
 
             Click += new EventHandler(ButtonClick);
         }
@@ -60,6 +60,8 @@ namespace Forms
             }
 
             initialVertexes.FillingMatrix(matrixGraph.Matrix, ref matrix);
+
+            initialVertexes.CreateEdges(matrixGraph.Matrix);
 
             drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix);
 
@@ -78,11 +80,19 @@ namespace Forms
     {
         private List<VertexDraw> vertexDraws;
 
+        private List<EdgeDraw> edgeDraws;
+
         private CollisionVertex collisionVertex;
 
-        public InitialVertexes(List<VertexDraw> vertexDraws)
+        private InputCountBox[,] Matrix;
+
+        public InitialVertexes(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, InputCountBox[,] Matrix)
         {
             this.vertexDraws = vertexDraws;
+
+            this.edgeDraws = edgeDraws;
+
+            this.Matrix = Matrix;
 
             collisionVertex = new CollisionVertex();
         }
@@ -102,21 +112,21 @@ namespace Forms
             int positionX = 0;
             int positionY = 0;
 
-            int matrixLenght = 0;
+            int matrixLength = 0;
 
             if(Matrix != null)
             {
-                matrixLenght = Matrix.GetLength(1);
+                matrixLength = Matrix.GetLength(1);
 
             }
 
             
 
-            for (int i = 0; i < matrixLenght; i++)
+            for (int i = 0; i < matrixLength; i++)
             {
                 matrix.Add(new List<InputCountBox>());
 
-                for(int j = 0; j < matrixLenght; j++)
+                for(int j = 0; j < matrixLength; j++)
                 {
 
                     matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
@@ -152,5 +162,28 @@ namespace Forms
 
         }
 
+        public void CreateEdges(InputCountBox[,] Matrix)
+        {
+            int matrixLength = 0;
+
+            if (Matrix != null)
+            {
+                matrixLength = Matrix.GetLength(0);
+
+            }
+
+            for (int i = 0; i < matrixLength; ++i)
+            {
+                for (int j = 0; j < matrixLength; ++j)
+                {
+                    int cellValue = Int32.Parse(Matrix[i, j].Text);
+
+                    if (cellValue != 0)
+                    {
+                        edgeDraws.Add(new EdgeDraw(BrushColor.Black, cellValue, i, j));
+                    }
+                }
+            }
+        }
     }
 }
