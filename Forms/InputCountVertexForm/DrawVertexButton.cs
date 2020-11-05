@@ -104,6 +104,7 @@ namespace Forms
             int positionX = 0;
             int positionY = 0;
 
+
             int matrixLength = 0;
 
             if(matrixGraph.Matrix != null)
@@ -112,13 +113,12 @@ namespace Forms
 
             }
 
-            
-
             for (int i = 0; i < matrixLength; i++)
             {
                 matrix.Add(new List<InputCountBox>());
 
                 for(int j = 0; j < matrixLength; j++)
+
                 {
 
                     matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
