@@ -22,7 +22,7 @@ namespace Forms
 
         private MatrixGraph matrixGraph;
 
-        private InitialVertexes initialVertexes;
+        private InitialGraph initialGraph;
 
         private List<List<InputCountBox>> matrix;
 
@@ -43,23 +43,20 @@ namespace Forms
 
             edgeDraws = new List<EdgeDraw>();           
 
-            initialVertexes = new InitialVertexes(vertexDraws);
+            initialGraph = new InitialGraph(vertexDraws, edgeDraws, matrixGraph);
+
+            matrix = new List<List<InputCountBox>>();
 
             Click += new EventHandler(ButtonClick);
         }
 
         private void ButtonClick(object sender, EventArgs e)
         {
-            if (matrixGraph.Matrix == null)
-            {
-                initialVertexes.CreateVertexes(0); 
-            }
-            else
-            {
-                initialVertexes.CreateVertexes(matrixGraph.Matrix.GetLength(0));
-            }
+            initialGraph.CreateVertexes();
 
-            initialVertexes.FillingMatrix(matrixGraph.Matrix, ref matrix);
+            initialGraph.FillingMatrix(matrix);
+
+            initialGraph.CreateEdges();
 
             drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix);
 
@@ -74,24 +71,29 @@ namespace Forms
         
     }
 
-    public class InitialVertexes
+    public class InitialGraph
     {
         private List<VertexDraw> vertexDraws;
 
+        private List<EdgeDraw> edgeDraws;
+
         private CollisionVertex collisionVertex;
 
-        public InitialVertexes(List<VertexDraw> vertexDraws)
+        private MatrixGraph matrixGraph;
+
+        public InitialGraph(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, MatrixGraph matrixGraph)
         {
             this.vertexDraws = vertexDraws;
+
+            this.edgeDraws = edgeDraws;
+
+            this.matrixGraph = matrixGraph;
 
             collisionVertex = new CollisionVertex();
         }
 
-        public void FillingMatrix(InputCountBox[,] Matrix, ref List<List<InputCountBox>> matrix)
-        {
-
-            matrix = new List<List<InputCountBox>>();
-          
+        public void FillingMatrix(List<List<InputCountBox>> matrix)
+        {         
 
             int stepX = 10;
             int stepY = 10;
@@ -102,26 +104,26 @@ namespace Forms
             int positionX = 0;
             int positionY = 0;
 
-            int matrixLenght = 0;
 
-            if(Matrix != null)
+            int matrixLength = 0;
+
+            if(matrixGraph.Matrix != null)
             {
-                matrixLenght = Matrix.GetLength(1);
+                matrixLength = matrixGraph.Matrix.GetLength(1);
 
             }
 
-            
-
-            for (int i = 0; i < matrixLenght; i++)
+            for (int i = 0; i < matrixLength; i++)
             {
                 matrix.Add(new List<InputCountBox>());
 
-                for(int j = 0; j < matrixLenght; j++)
+                for(int j = 0; j < matrixLength; j++)
+
                 {
 
                     matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
 
-                    matrix[i][j].Text = Matrix[i, j].Text;
+                    matrix[i][j].Text = matrixGraph.Matrix[i, j].Text;
 
 
                 }              
@@ -130,8 +132,15 @@ namespace Forms
 
         }
 
-        public void CreateVertexes(int countVertex)
+        public void CreateVertexes()
         {
+            int countVertex = 0;
+
+            if (matrixGraph.Matrix != null)
+            {
+                countVertex = matrixGraph.Matrix.GetLength(0);
+            }
+
             float x = 90f;
 
             float y = 50f;
@@ -152,5 +161,28 @@ namespace Forms
 
         }
 
+        public void CreateEdges()
+        {
+            int matrixLength = 0;
+
+            if (matrixGraph.Matrix != null)
+            {
+                matrixLength = matrixGraph.Matrix.GetLength(0);
+
+            }
+
+            for (int i = 0; i < matrixLength; ++i)
+            {
+                for (int j = 0; j < matrixLength; ++j)
+                {
+                    int cellValue = Int32.Parse(matrixGraph.Matrix[i, j].Text);
+
+                    if (cellValue != 0)
+                    {
+                        edgeDraws.Add(new EdgeDraw(BrushColor.Black, cellValue, j, i));
+                    }
+                }
+            }
+        }
     }
 }
