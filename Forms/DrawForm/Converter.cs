@@ -12,17 +12,20 @@ namespace Forms.DrawForm
         {
             List<Vertex> vertices = new List<Vertex>();
 
-            for(int i = 0; i < inputCounts.Count; i++)
+            if (inputCounts != null)
             {
-                vertices.Add(new Vertex { Id = 0, Nodes = new List<Node>() });
-
-                for(int j = 0; j < inputCounts[i].Count; j++)
+                for (int i = 0; i < inputCounts.Count; i++)
                 {
-                    int weight = int.Parse(inputCounts[i][j].Text);
+                    vertices.Add(new Vertex { Id = 0, Nodes = new List<Node>() });
 
-                    if(weight != 0)
+                    for (int j = 0; j < inputCounts[i].Count; j++)
                     {
-                        vertices[i].Nodes.Add(new Node { Connectable = j, Weight = weight });
+                        int weight = int.Parse(inputCounts[i][j].Text);
+
+                        if (weight != 0)
+                        {
+                            vertices[i].Nodes.Add(new Node { Connectable = j, Weight = weight });
+                        }
                     }
                 }
             }
