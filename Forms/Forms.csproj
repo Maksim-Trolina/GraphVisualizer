@@ -12,6 +12,7 @@
     <ProjectReference Include="..\DataProcessing\Serializing.csproj" />
     <ProjectReference Include="..\EdgeDraw\ArrowDraw.csproj" />
     <ProjectReference Include="..\GraphModelDraw\GraphModelDraw.csproj" />
+    <ProjectReference Include="..\GraphRepresentation\GraphRepresentation.csproj" />
     <ProjectReference Include="..\VertexSearch\VertexSearch.csproj" />
   </ItemGroup>
 

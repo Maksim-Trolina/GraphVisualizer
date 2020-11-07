@@ -48,6 +48,8 @@ namespace StartForm
 
         private AdjacencyList adjacencyList;
 
+        private Converter converter;
+
 
         public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<InputCountBox>> matrix)
 
@@ -106,6 +108,10 @@ namespace StartForm
 
             brushes[(int)BrushColor.Black] = Brushes.Black;
 
+            converter = new Converter();
+
+            adjacencyList = converter.Convert(matrix);
+
         }
 
         
@@ -130,6 +136,8 @@ namespace StartForm
                 }
                 else if (collisionVertex.IsDrawVertex(vertexDraw, vertexDraws))
                 {
+                    adjacencyList.AddVertex(new CraphModel.Vertex { Id = vertexDraws.Count });
+
                     vertexDraws.Add(vertexDraw);
 
                     matrixWeightPanel.ExpandMatrix(1);
@@ -138,6 +146,7 @@ namespace StartForm
                 }
                 else
                 {
+                    adjacencyList.AddNode(vertexDraws[startVertexId],vertexDraws[en])
                     drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId);   
 
                     Refresh();
