@@ -8,7 +8,6 @@ namespace Forms
 {
     public class InputCountBox : TextBox
     {
-        public int Column { get; set; }
         public InputCountBox(int width, int height, int positionX, int positionY, string initValue = "0")
         {
             this.Text = initValue;
