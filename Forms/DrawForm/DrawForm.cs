@@ -8,6 +8,7 @@ using VertexSearch;
 using System.Drawing.Drawing2D;
 using ArrowDraw;
 using Forms;
+using GraphRepresentation;
 
 namespace StartForm
 {
@@ -44,6 +45,8 @@ namespace StartForm
         private Arrow arrow;
 
         private Brush[] brushes;
+
+        private AdjacencyList adjacencyList;
 
 
         public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<InputCountBox>> matrix)
