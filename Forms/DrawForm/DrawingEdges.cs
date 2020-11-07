@@ -2,14 +2,16 @@
 using GraphModelDraw;
 using System.Windows.Forms;
 using VertexSearch;
-
+using GraphRepresentation;
+using CraphModel;
 
 namespace Forms.DrawForm
 {
     class DrawingEdges
     {
 
-        public void VertexFind(NewEdgeDefinition vertexClick, MouseEventArgs e, List<VertexDraw> vertexDraws,  List<EdgeDraw> edgeDraws, ref int startVertexId, ref int endVertexId)
+        public void VertexFind(NewEdgeDefinition vertexClick, MouseEventArgs e, List<VertexDraw> vertexDraws,  List<EdgeDraw> edgeDraws, ref int startVertexId, ref int endVertexId,
+                               ref AdjacencyList adjacencyList)
         {
 
             vertexClick.VertexRemember(ref startVertexId, ref endVertexId
@@ -22,6 +24,8 @@ namespace Forms.DrawForm
                 EdgeDraw edgeDraw = new EdgeDraw(BrushColor.Black, 0, startVertexId, endVertexId);
 
                 edgeDraws.Add(edgeDraw);
+
+                adjacencyList.AddNode(new Vertex { Id = startVertexId },new Vertex { Id = endVertexId },0);
               
                 startVertexId = -1;
                 endVertexId = -1;

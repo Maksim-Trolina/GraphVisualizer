@@ -146,8 +146,7 @@ namespace StartForm
                 }
                 else
                 {
-                    adjacencyList.AddNode(vertexDraws[startVertexId],vertexDraws[en])
-                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId);   
+                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId, ref adjacencyList);   
 
                     Refresh();
 
