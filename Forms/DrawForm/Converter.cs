@@ -16,7 +16,7 @@ namespace Forms.DrawForm
             {
                 for (int i = 0; i < inputCounts.Count; i++)
                 {
-                    vertices.Add(new Vertex { Id = 0, Nodes = new List<Node>() });
+                    vertices.Add(new Vertex { Id = i, Nodes = new List<Node>() });
 
                     for (int j = 0; j < inputCounts[i].Count; j++)
                     {
