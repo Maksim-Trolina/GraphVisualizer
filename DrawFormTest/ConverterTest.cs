@@ -31,12 +31,12 @@ namespace DrawFormTest
 
             AdjacencyList adjacencyList = converter.Convert(inputCounts);
 
-            Assert.IsTrue(AreEqual(adjacencyList.adjacencyList[0], new List<CraphModel.Node> { new CraphModel.Node { Connectable = 1, Weight = 12 } })
-                && AreEqual(adjacencyList.adjacencyList[1], new List<CraphModel.Node> { new CraphModel.Node { Connectable = 0, Weight = 3 }, new CraphModel.Node { Connectable = 2, Weight = 33 } })
-                && AreEqual(adjacencyList.adjacencyList[2], new List<CraphModel.Node>()));
+            Assert.IsTrue(AreEqualNodes(adjacencyList.adjacencyList[0], new List<CraphModel.Node> { new CraphModel.Node { Connectable = 1, Weight = 12 } })
+                && AreEqualNodes(adjacencyList.adjacencyList[1], new List<CraphModel.Node> { new CraphModel.Node { Connectable = 0, Weight = 3 }, new CraphModel.Node { Connectable = 2, Weight = 33 } })
+                && AreEqualNodes(adjacencyList.adjacencyList[2], new List<CraphModel.Node>()));
         }
 
-        private bool AreEqual(List<CraphModel.Node> list1 ,List<CraphModel.Node> list2)
+        private bool AreEqualNodes(List<CraphModel.Node> list1 ,List<CraphModel.Node> list2)
         {
             if(list1.Count != list2.Count)
             {

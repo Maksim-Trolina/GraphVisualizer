@@ -136,7 +136,7 @@ namespace StartForm
                 }
                 else if (collisionVertex.IsDrawVertex(vertexDraw, vertexDraws))
                 {
-                    adjacencyList.AddVertex(new CraphModel.Vertex { Id = vertexDraws.Count });
+                    adjacencyList.AddVertex(new CraphModel.Vertex { Id = vertexDraws.Count ,Nodes = new List<CraphModel.Node>()});
 
                     vertexDraws.Add(vertexDraw);
 
