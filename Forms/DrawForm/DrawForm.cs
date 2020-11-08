@@ -98,7 +98,7 @@ namespace StartForm
 
             adjacencyList = converter.ConvertToAdjacencyList(matrix);
 
-            toolPanel = new ToolPanel(0, 100, weightTable,edgeDraws,adjacencyList,this);
+            toolPanel = new ToolPanel(0, 100, weightTable,this.edgeDraws,adjacencyList,this);
 
             Controls.Add(toolPanel);
 
