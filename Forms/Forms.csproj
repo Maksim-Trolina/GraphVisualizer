@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Algorithms\Algorithms.csproj" />
     <ProjectReference Include="..\CollisionDraw\CollisionDraw.csproj" />
     <ProjectReference Include="..\CraphModel\GraphModel.csproj" />
     <ProjectReference Include="..\DataProcessing\Serializing.csproj" />

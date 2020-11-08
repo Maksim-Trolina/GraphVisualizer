@@ -94,7 +94,11 @@ namespace StartForm
 
             Controls.Add(weightTable);
 
-            toolPanel = new ToolPanel(0, 100, weightTable);
+            converter = new Converter();
+
+            adjacencyList = converter.ConvertToAdjacencyList(matrix);
+
+            toolPanel = new ToolPanel(0, 100, weightTable,edgeDraws,adjacencyList);
 
             Controls.Add(toolPanel);
 
@@ -107,11 +111,6 @@ namespace StartForm
             brushes[(int)BrushColor.Red] = Brushes.Red;
 
             brushes[(int)BrushColor.Black] = Brushes.Black;
-
-            converter = new Converter();
-
-            adjacencyList = converter.ConvertToAdjacencyList(matrix);
-
         }
 
         

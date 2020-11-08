@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Windows.Forms;
+using GraphModelDraw;
+using GraphRepresentation;
 
 namespace Forms.DrawForm
 {
@@ -12,7 +14,7 @@ namespace Forms.DrawForm
 
         private CycleButton cycleButton;
 
-        public ToolPanel(int positionX, int positionY, WeightTable weightTable)
+        public ToolPanel(int positionX, int positionY, WeightTable weightTable,List<EdgeDraw> edgeDraws,AdjacencyList adjacencyList)
         {
 
             Location = new System.Drawing.Point(positionX, positionY);
@@ -23,7 +25,7 @@ namespace Forms.DrawForm
 
             tableButton = new WeightTableButton(20, 20, weightTable);
 
-            cycleButton = new CycleButton(20, 20);
+            cycleButton = new CycleButton(20, 20,adjacencyList,edgeDraws);
 
             Items.Add(tableButton);
 
