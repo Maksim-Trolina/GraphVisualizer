@@ -14,7 +14,7 @@ namespace Forms.DrawForm
 
         private CycleButton cycleButton;
 
-        public ToolPanel(int positionX, int positionY, WeightTable weightTable,List<EdgeDraw> edgeDraws,AdjacencyList adjacencyList)
+        public ToolPanel(int positionX, int positionY, WeightTable weightTable,List<EdgeDraw> edgeDraws,AdjacencyList adjacencyList,StartForm.DrawForm drawForm)
         {
 
             Location = new System.Drawing.Point(positionX, positionY);
@@ -25,7 +25,7 @@ namespace Forms.DrawForm
 
             tableButton = new WeightTableButton(20, 20, weightTable);
 
-            cycleButton = new CycleButton(20, 20,adjacencyList,edgeDraws);
+            cycleButton = new CycleButton(20, 20,adjacencyList,edgeDraws,drawForm);
 
             Items.Add(tableButton);
 
