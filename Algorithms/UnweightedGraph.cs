@@ -18,6 +18,10 @@ namespace Algorithms
         public UnweightedGraph(List<List<int>> graph)
         {
             this.graph = graph;
+
+            colors = new List<ColorVertex>();
+
+            parent = new List<int>();
         }
 
         private void Clear()
@@ -29,9 +33,7 @@ namespace Algorithms
 
         public bool IsAcyclic()
         {
-            parent = new List<int>();
-
-            colors = new List<ColorVertex>();
+            Clear();
 
             for(int i = 0; i < graph.Count; i++)
             {
@@ -50,8 +52,6 @@ namespace Algorithms
                 }
             }
 
-            Clear();
-
             if(cycleStart == -1)
             {
                 return true;
@@ -60,6 +60,22 @@ namespace Algorithms
             {
                 return false;
             }
+        }
+
+        public List<int> GetCycle()
+        {
+            List<int> cycle = new List<int> { cycleStart };
+
+            for(int i = cycleEnd; i != cycleStart; i = parent[i])
+            {
+                cycle.Add(i);
+            }
+
+            cycle.Add(cycleStart);
+
+            cycle.Reverse();
+
+            return cycle;
         }
         
         private bool DFS(int vertex)
