@@ -10,7 +10,7 @@ namespace Forms.DrawForm
     {
         private WeightTableButton tableButton;
 
-        private ToolStripSeparator toolSeparator;
+        private CycleButton cycleButton;
 
         public ToolPanel(int positionX, int positionY, WeightTable weightTable)
         {
@@ -23,11 +23,15 @@ namespace Forms.DrawForm
 
             tableButton = new WeightTableButton(20, 20, weightTable);
 
-            toolSeparator = new ToolStripSeparator();
+            cycleButton = new CycleButton(20, 20);
 
             Items.Add(tableButton);
 
-            Items.Add(toolSeparator);
+            Items.Add(new ToolStripSeparator());
+
+            Items.Add(cycleButton);
+
+            Items.Add(new ToolStripSeparator());
 
         }
     }
