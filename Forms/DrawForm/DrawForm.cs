@@ -8,6 +8,7 @@ using VertexSearch;
 using System.Drawing.Drawing2D;
 using ArrowDraw;
 using Forms;
+using GraphRepresentation;
 
 namespace StartForm
 {
@@ -44,6 +45,10 @@ namespace StartForm
         private Arrow arrow;
 
         private Brush[] brushes;
+
+        private AdjacencyList adjacencyList;
+
+        private Converter converter;
 
 
         public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<InputCountBox>> matrix)
@@ -103,6 +108,10 @@ namespace StartForm
 
             brushes[(int)BrushColor.Black] = Brushes.Black;
 
+            converter = new Converter();
+
+            adjacencyList = converter.ConvertToAdjacencyList(matrix);
+
         }
 
         
@@ -127,6 +136,8 @@ namespace StartForm
                 }
                 else if (collisionVertex.IsDrawVertex(vertexDraw, vertexDraws))
                 {
+                    adjacencyList.AddVertex(new CraphModel.Vertex { Id = vertexDraws.Count ,Nodes = new List<CraphModel.Node>()});
+
                     vertexDraws.Add(vertexDraw);
 
                     matrixWeightPanel.ExpandMatrix(1);
@@ -135,7 +146,7 @@ namespace StartForm
                 }
                 else
                 {
-                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId);   
+                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId, ref adjacencyList);   
 
                     Refresh();
 

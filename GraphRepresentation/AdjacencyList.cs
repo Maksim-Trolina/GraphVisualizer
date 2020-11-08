@@ -7,7 +7,7 @@ namespace GraphRepresentation
 {
     public class AdjacencyList
     {
-        Dictionary<int, List<Node>> adjacencyList;
+        public Dictionary<int, List<Node>> adjacencyList { get; private set; }
 
         public AdjacencyList(List<Vertex> verticles)
         {
