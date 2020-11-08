@@ -34,5 +34,10 @@ namespace Forms.DrawForm
 
             }
         }
+
+        private void DrawCycle()
+        {
+
+        }
     }
 }

@@ -171,8 +171,9 @@ namespace StartForm
            
             foreach (var edge in edgeDraws)
             {
+                newEdgeDefinition.DefinitionOfEdge(vertexDraws, edge, ref startPoint, ref endPoint);
 
-                newEdgeDefinition.DefinitionOfEdge(vertexDraws, edge, ref startPoint, ref endPoint);               
+                pen.Color = GetColor(edge.BrushEdge);
 
                 graphics.DrawLine(pen, startPoint, arrow.GetEndArrowPoint(startPoint,endPoint));
             }
@@ -189,6 +190,23 @@ namespace StartForm
             }          
              
 
+        }
+
+        private Color GetColor(BrushColor color)
+        {
+            switch (color)
+            {
+                case BrushColor.Black:
+                    return Color.Black;
+                case BrushColor.Green:
+                    return Color.Green;
+                case BrushColor.Red:
+                    return Color.Red;
+                case BrushColor.Yellow:
+                    return Color.Yellow;
+                default:
+                    return Color.White;
+            }
         }
 
     }
