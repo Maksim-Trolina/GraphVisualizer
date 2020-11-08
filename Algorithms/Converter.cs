@@ -11,13 +11,16 @@ namespace Algorithms
         {
             List<List<int>> graph = new List<List<int>>();
 
-            for(int i = 0; i < adjacencyList.adjacencyList.Count; i++)
+            if (adjacencyList != null)
             {
-                graph.Add(new List<int>());
-
-                for(int j = 0; j < adjacencyList.adjacencyList[i].Count; j++)
+                for (int i = 0; i < adjacencyList.adjacencyList.Count; i++)
                 {
-                    graph[i].Add(adjacencyList.adjacencyList[i][j].Connectable);
+                    graph.Add(new List<int>());
+
+                    for (int j = 0; j < adjacencyList.adjacencyList[i].Count; j++)
+                    {
+                        graph[i].Add(adjacencyList.adjacencyList[i][j].Connectable);
+                    }
                 }
             }
 

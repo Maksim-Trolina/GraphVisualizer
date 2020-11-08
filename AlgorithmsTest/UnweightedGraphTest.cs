@@ -57,10 +57,9 @@ namespace AlgorithmsTest
         {
             List<List<int>> graph = new List<List<int>>() { new List<int>(), new List<int>(), new List<int>() };
             UnweightedGraph unweightedGraph = new UnweightedGraph(graph);
-            List<int> cycle;
 
             unweightedGraph.IsAcyclic();
-            cycle = unweightedGraph.GetCycle();
+            List<int> cycle = unweightedGraph.GetCycle();
 
             Assert.IsTrue(cycle.SequenceEqual(new List<int>()));
         }
@@ -70,10 +69,9 @@ namespace AlgorithmsTest
         {
             List<List<int>> graph = new List<List<int>>() { new List<int> { 1, 2 }, new List<int>(), new List<int> { 0, 1 } };
             UnweightedGraph unweightedGraph = new UnweightedGraph(graph);
-            List<int> cycle;
 
             unweightedGraph.IsAcyclic();
-            cycle = unweightedGraph.GetCycle();
+            List<int> cycle = unweightedGraph.GetCycle();
 
             Assert.IsTrue(cycle.SequenceEqual(new List<int>() { 0,2,0}));
         }
@@ -83,10 +81,9 @@ namespace AlgorithmsTest
         {
             List<List<int>> graph = new List<List<int>> { new List<int> { 1 }, new List<int> { 2 }, new List<int> { 3 }, new List<int> { 4 }, new List<int> { 0 } };
             UnweightedGraph unweightedGraph = new UnweightedGraph(graph);
-            List<int> cycle;
 
             unweightedGraph.IsAcyclic();
-            cycle = unweightedGraph.GetCycle();
+            List<int> cycle = unweightedGraph.GetCycle();
 
             Assert.IsTrue(cycle.SequenceEqual(new List<int>() { 0, 1, 2, 3, 4, 0 }));
         }
