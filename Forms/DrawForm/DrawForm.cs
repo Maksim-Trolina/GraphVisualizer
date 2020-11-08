@@ -110,7 +110,7 @@ namespace StartForm
 
             converter = new Converter();
 
-            adjacencyList = converter.Convert(matrix);
+            adjacencyList = converter.ConvertToAdjacencyList(matrix);
 
         }
 

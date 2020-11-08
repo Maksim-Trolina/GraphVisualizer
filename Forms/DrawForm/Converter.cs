@@ -8,7 +8,7 @@ namespace Forms.DrawForm
 {
     public class Converter
     {
-        public AdjacencyList Convert(List<List<InputCountBox>> inputCounts)
+        public AdjacencyList ConvertToAdjacencyList(List<List<InputCountBox>> inputCounts)
         {
             List<Vertex> vertices = new List<Vertex>();
 

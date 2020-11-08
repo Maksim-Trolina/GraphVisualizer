@@ -14,7 +14,7 @@ namespace DrawFormTest
             List<List<InputCountBox>> inputCounts = null;
             Converter converter = new Converter();
 
-            AdjacencyList adjacencyList = converter.Convert(inputCounts);
+            AdjacencyList adjacencyList = converter.ConvertToAdjacencyList(inputCounts);
 
             Assert.IsTrue(adjacencyList.adjacencyList.Count == 0);
 
@@ -29,7 +29,7 @@ namespace DrawFormTest
                 };
             Converter converter = new Converter();
 
-            AdjacencyList adjacencyList = converter.Convert(inputCounts);
+            AdjacencyList adjacencyList = converter.ConvertToAdjacencyList(inputCounts);
 
             Assert.IsTrue(AreEqualNodes(adjacencyList.adjacencyList[0], new List<CraphModel.Node> { new CraphModel.Node { Connectable = 1, Weight = 12 } })
                 && AreEqualNodes(adjacencyList.adjacencyList[1], new List<CraphModel.Node> { new CraphModel.Node { Connectable = 0, Weight = 3 }, new CraphModel.Node { Connectable = 2, Weight = 33 } })
