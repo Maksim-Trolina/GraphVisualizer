@@ -29,6 +29,10 @@ namespace Algorithms
             colors.Clear();
 
             parent.Clear();
+
+            cycleStart = -1;
+
+            cycleEnd = -1;
         }
 
         public bool IsAcyclic()
@@ -41,8 +45,6 @@ namespace Algorithms
 
                 colors.Add(ColorVertex.White);
             }
-
-            cycleStart = -1;
 
             for(int i = 0; i < graph.Count; i++)
             {
@@ -74,6 +76,11 @@ namespace Algorithms
             cycle.Add(cycleStart);
 
             cycle.Reverse();
+
+            if(cycleStart == -1 || cycleEnd == -1)
+            {
+                return new List<int>();
+            }
 
             return cycle;
         }
