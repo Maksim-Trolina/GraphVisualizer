@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Windows.Forms;
+using GraphModelDraw;
+using GraphRepresentation;
 
 namespace Forms.DrawForm
 {
@@ -10,9 +12,9 @@ namespace Forms.DrawForm
     {
         private WeightTableButton tableButton;
 
-        private ToolStripSeparator toolSeparator;
+        private CycleButton cycleButton;
 
-        public ToolPanel(int positionX, int positionY, WeightTable weightTable)
+        public ToolPanel(int positionX, int positionY, WeightTable weightTable,List<EdgeDraw> edgeDraws,AdjacencyList adjacencyList,StartForm.DrawForm drawForm)
         {
 
             Location = new System.Drawing.Point(positionX, positionY);
@@ -23,11 +25,15 @@ namespace Forms.DrawForm
 
             tableButton = new WeightTableButton(20, 20, weightTable);
 
-            toolSeparator = new ToolStripSeparator();
+            cycleButton = new CycleButton(20, 20,adjacencyList,edgeDraws,drawForm);
 
             Items.Add(tableButton);
 
-            Items.Add(toolSeparator);
+            Items.Add(new ToolStripSeparator());
+
+            Items.Add(cycleButton);
+
+            Items.Add(new ToolStripSeparator());
 
         }
     }

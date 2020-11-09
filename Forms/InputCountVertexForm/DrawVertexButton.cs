@@ -123,7 +123,7 @@ namespace Forms
 
                     matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
 
-                    matrix[i][j].Text = matrixGraph.Matrix[i, j].Text;
+                    matrix[i][j].Text = matrixGraph.Matrix[j, i].Text;
 
 
                 }              

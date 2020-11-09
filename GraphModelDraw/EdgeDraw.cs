@@ -6,7 +6,7 @@ namespace GraphModelDraw
 {
     public class EdgeDraw
     {
-        public readonly BrushColor BrushEdge;
+        public BrushColor BrushEdge { get; set; }
 
         public readonly int Id;
 
