@@ -68,11 +68,7 @@ namespace StartForm
 
             drawingEdges = new DrawingEdges();
 
-            MouseDown += new MouseEventHandler(MouseClickDrawForm);
-
-            SaveButton saveButton = new SaveButton();
-
-            Controls.Add(saveButton);
+            MouseDown += new MouseEventHandler(MouseClickDrawForm);          
 
             vertexBrush = new SolidBrush(Color.Black);
 
@@ -111,6 +107,10 @@ namespace StartForm
             brushes[(int)BrushColor.Red] = Brushes.Red;
 
             brushes[(int)BrushColor.Black] = Brushes.Black;
+
+            SaveButton saveButton = new SaveButton(adjacencyList);
+
+            Controls.Add(saveButton);
         }
 
         

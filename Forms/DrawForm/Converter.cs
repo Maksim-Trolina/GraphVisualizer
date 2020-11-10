@@ -32,5 +32,30 @@ namespace Forms.DrawForm
 
             return new AdjacencyList(vertices);
         }
+
+        public Graph ConvertToGraph(AdjacencyList adjacencyList)
+        {
+            Graph graph = new Graph();
+            Vertex vertex = new Vertex();
+
+            graph.Vertexs = new List<Vertex>(adjacencyList.adjacencyList.Count);
+
+            for (int i = 0; i < adjacencyList.adjacencyList.Count; i++)
+            {
+                vertex.Nodes = new List<Node>(adjacencyList.adjacencyList[i].Count);
+
+                for (int j = 0; j < adjacencyList.adjacencyList[i].Count; j++)
+                {
+
+                    vertex.Nodes.Add(new Node() { Weight = adjacencyList.adjacencyList[i][j].Weight, Connectable = adjacencyList.adjacencyList[i][j].Connectable });
+
+                }
+
+                graph.Vertexs.Add(new Vertex() { Nodes = vertex.Nodes, Id = i });
+
+            }
+
+            return graph;
+        }
     }
 }
