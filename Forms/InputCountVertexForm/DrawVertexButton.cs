@@ -121,7 +121,7 @@ namespace Forms
 
                 {
 
-                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
+                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * j, positionY + (height + stepY) * i));
 
                     matrix[i][j].Text = matrixGraph.Matrix[j, i].Text;
 
