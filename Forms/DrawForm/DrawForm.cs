@@ -40,6 +40,8 @@ namespace StartForm
 
         private WeightTable weightTable;
 
+        private AdjacencyListTable adListTable;
+
         private MatrixWeightPanel matrixWeightPanel;
 
         private Arrow arrow;
@@ -98,7 +100,11 @@ namespace StartForm
 
             adjacencyList = converter.ConvertToAdjacencyList(matrix);
 
-            toolPanel = new ToolPanel(0, 100, weightTable,this.edgeDraws,adjacencyList,this);
+            adListTable = new AdjacencyListTable(200, 200, Size.Width - 200, 0);
+
+            Controls.Add(adListTable);
+
+            toolPanel = new ToolPanel(0, 100, weightTable, this.edgeDraws, adjacencyList, this, adListTable);
 
             Controls.Add(toolPanel);
 
