@@ -28,7 +28,7 @@ namespace Forms.DrawForm
 
 
      class MatrixWeightPanel
-    {
+     {
 
         private WeightTable weightTable;
 
@@ -84,7 +84,7 @@ namespace Forms.DrawForm
                 for (int j = countCellsBefore; j < countCellsBefore + countOfNewVertexs; j++)
                 {
 
-                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
+                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * j, positionY + (height + stepY) * i));
 
                     if (i == j)
                     {
@@ -104,7 +104,7 @@ namespace Forms.DrawForm
                 for(int j = 0; j < countOfNewVertexs + countCellsBefore; j++)
                 {
                  
-                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i, positionY + (height + stepY) * j));
+                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * j, positionY + (height + stepY) * i));
 
                     if (i == j)
                     {
@@ -118,7 +118,7 @@ namespace Forms.DrawForm
             }
 
         }
-    }
+     }
 }
 
 
