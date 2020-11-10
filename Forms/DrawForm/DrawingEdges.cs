@@ -11,7 +11,7 @@ namespace Forms.DrawForm
     {
 
         public void VertexFind(NewEdgeDefinition vertexClick, MouseEventArgs e, List<VertexDraw> vertexDraws,  List<EdgeDraw> edgeDraws, ref int startVertexId, ref int endVertexId,
-                               ref AdjacencyList adjacencyList)
+                               ref AdjacencyList adjacencyList, AdjacencyListPanel adListPanel)
         {
 
             vertexClick.VertexRemember(ref startVertexId, ref endVertexId
@@ -25,7 +25,9 @@ namespace Forms.DrawForm
 
                 edgeDraws.Add(edgeDraw);
 
-                adjacencyList.AddNode(new Vertex { Id = startVertexId },new Vertex { Id = endVertexId },0);
+                adjacencyList.AddNode(startVertexId ,endVertexId , 0);
+
+                adListPanel.UpdateNodesPanel(startVertexId, endVertexId);
               
                 startVertexId = -1;
                 endVertexId = -1;

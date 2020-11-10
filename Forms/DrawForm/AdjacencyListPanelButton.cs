@@ -5,13 +5,13 @@ using System.Windows.Forms;
 
 namespace Forms.DrawForm
 {
-    class AdjacencyListButton : ToolStripButton
+    class AdjacencyListPanelButton : ToolStripButton
     {
         private bool adListIsHide;
 
-        private AdjacencyListTable adListTable;
+        private AdjacencyListPanel adListPanel;
 
-        public AdjacencyListButton(int width, int height, AdjacencyListTable adListTable)
+        public AdjacencyListPanelButton(int width, int height, AdjacencyListPanel adListPanel)
         {
             Size = new System.Drawing.Size(width, height);
 
@@ -23,9 +23,9 @@ namespace Forms.DrawForm
 
             adListIsHide = true;
 
-            this.adListTable = adListTable;
+            this.adListPanel = adListPanel;
 
-            adListTable.Hide();
+            adListPanel.Hide();
         }
 
         public void ButtonClick(object sender, EventArgs e)
@@ -34,11 +34,11 @@ namespace Forms.DrawForm
 
             if (adListIsHide)
             {
-                adListTable.Hide();
+                adListPanel.Hide();
             }
             else
             {
-                adListTable.Show();
+                adListPanel.Show();
             }
         }
     }
