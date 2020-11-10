@@ -7,12 +7,12 @@ namespace Serializing
 {
     public class DeserializeGraph
     {
-        public Graph LoadGraph()
+        public Graph LoadGraph(string FilePath)
         {
 
             DataContractJsonSerializer formatter = new DataContractJsonSerializer(typeof(Graph));
 
-            using (FileStream fs = new FileStream(SaveFile.Name, FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream(string.Concat(FilePath, ".json"), FileMode.OpenOrCreate))
             {
                 
                return (Graph)formatter.ReadObject(fs);

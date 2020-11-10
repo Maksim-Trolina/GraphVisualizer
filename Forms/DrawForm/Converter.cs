@@ -57,5 +57,14 @@ namespace Forms.DrawForm
 
             return graph;
         }
+
+        public AdjacencyList ConvertToAdjacencyList(Graph graph)
+        {
+            List<Vertex> vertices = new List<Vertex>();
+
+
+
+            return new AdjacencyList(vertices);
+        }
     }
 }

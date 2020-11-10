@@ -24,8 +24,6 @@ namespace Forms
 
         private StartForm.DrawForm drawForm;
 
-        private FileInfo fI;
-
         private List<List<InputCountBox>> matrix;
 
         public LoadFileButton(StartForm.StartForm startForm)
@@ -48,25 +46,21 @@ namespace Forms
 
             deserializeGraph = new DeserializeGraph();
 
-            fI = new FileInfo(SaveFile.Name);
-
         }
        
 
         public void ButtonClick(object sender, EventArgs e)
         {
-           
-          
-            if ((!fI.Exists) || (fI.Length == 0))
-            {
-                this.Enabled = false;
+            OpenFileDialog ofd = new OpenFileDialog();
 
-            }
-            else
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
+
                 this.Enabled = true;
 
-                LoadGraph = deserializeGraph.LoadGraph();
+                LoadGraph = deserializeGraph.LoadGraph(ofd.FileName);
+
+
 
                 matrix = new List<List<InputCountBox>>();
 
@@ -76,6 +70,7 @@ namespace Forms
                 drawForm.ShowDialog();
                 startForm.Close();
             }
+            
         }
 
     }

@@ -8,6 +8,7 @@ namespace StartForm
     {
 
         private StartButton startButton;
+
         private LoadFileButton loadFileButton;
 
         public StartForm()

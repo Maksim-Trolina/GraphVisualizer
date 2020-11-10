@@ -7,12 +7,12 @@ namespace Serializing
 
     public class SerializeGraph
     {
-        public void SaveGraph(Graph Graph)
+        public void SaveGraph(Graph Graph, string FilePath)
         {
 
             DataContractJsonSerializer formatter = new DataContractJsonSerializer(typeof(Graph));
 
-            using FileStream fs = new FileStream(SaveFile.Name, FileMode.OpenOrCreate);
+            using FileStream fs = new FileStream(string.Concat(FilePath, ".json"), FileMode.OpenOrCreate);
 
             formatter.WriteObject(fs, Graph);
 

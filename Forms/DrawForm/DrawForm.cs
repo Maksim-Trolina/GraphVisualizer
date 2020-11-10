@@ -108,7 +108,7 @@ namespace StartForm
 
             brushes[(int)BrushColor.Black] = Brushes.Black;
 
-            SaveButton saveButton = new SaveButton(adjacencyList);
+            SaveButton saveButton = new SaveButton(matrix);
 
             Controls.Add(saveButton);
         }
