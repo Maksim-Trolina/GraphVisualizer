@@ -40,7 +40,7 @@ namespace StartForm
 
         private WeightTable weightTable;
 
-        private AdjacencyListTable adListTable;
+        private AdjacencyListPanel adListPanel;
 
         private MatrixWeightPanel matrixWeightPanel;
 
@@ -100,11 +100,11 @@ namespace StartForm
 
             adjacencyList = converter.ConvertToAdjacencyList(matrix);
 
-            adListTable = new AdjacencyListTable(200, 200, Size.Width - 200, 0);
+            adListPanel = new AdjacencyListPanel(200, 200, Size.Width - 200, 0, adjacencyList);
 
-            Controls.Add(adListTable);
+            Controls.Add(adListPanel);
 
-            toolPanel = new ToolPanel(0, 100, weightTable, this.edgeDraws, adjacencyList, this, adListTable);
+            toolPanel = new ToolPanel(0, 100, weightTable, this.edgeDraws, adjacencyList, this, adListPanel);
 
             Controls.Add(toolPanel);
 
@@ -143,6 +143,8 @@ namespace StartForm
                 {
                     adjacencyList.AddVertex(new CraphModel.Vertex { Id = vertexDraws.Count ,Nodes = new List<CraphModel.Node>()});
 
+                    adListPanel.UpdateIdPanel();
+
                     vertexDraws.Add(vertexDraw);
 
                     matrixWeightPanel.ExpandMatrix(1);
@@ -151,7 +153,9 @@ namespace StartForm
                 }
                 else
                 {
-                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId, ref adjacencyList);   
+
+                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId, ref adjacencyList, adListPanel);
+
 
                     Refresh();
 
