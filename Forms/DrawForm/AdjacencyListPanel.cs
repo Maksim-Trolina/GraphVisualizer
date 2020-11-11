@@ -24,6 +24,7 @@ namespace Forms.DrawForm
             BorderStyle = BorderStyle.Fixed3D;
 
             adListTable = new AdjacencyListTable(adjacencyList, this);
+
         }
 
         public void UpdateIdPanel()
@@ -61,7 +62,7 @@ namespace Forms.DrawForm
             {
                 cells.Add(new List<CellAdjacencyList>());
 
-                InfoTextLabel startId = new InfoTextLabel(40, 20, 0, 20 + i * stepY, Convert.ToString(i) + ": ");
+                InfoTextLabel startId = new InfoTextLabel(40, 20, adListPanel.HorizontalScroll.Value, 20 + i * stepY, Convert.ToString(i) + ": ");
 
                 adListPanel.Controls.Add(startId);
 
@@ -90,8 +91,8 @@ namespace Forms.DrawForm
 
             cells.Add(new List<CellAdjacencyList>());
 
-            InfoTextLabel startId = new InfoTextLabel(40, 20, 0, 20 + numberLastKey * stepY
-                , Convert.ToString(numberLastKey) + ": ");
+            InfoTextLabel startId = new InfoTextLabel(40, 20, -adListPanel.HorizontalScroll.Value, 
+                20 + numberLastKey * stepY - adListPanel.VerticalScroll.Value, Convert.ToString(numberLastKey) + ": ");
 
             adListPanel.Controls.Add(startId);
 
@@ -101,7 +102,8 @@ namespace Forms.DrawForm
 
                 int weight = adjacencyList.adjacencyList[numberLastKey][j].Weight;
 
-                cells[numberLastKey].Add(new CellAdjacencyList(id, weight, 40 + stepX * j, stepY * numberLastKey));
+                cells[numberLastKey].Add(new CellAdjacencyList(id, weight, 40 + stepX * j - adListPanel.HorizontalScroll.Value
+                    , stepY * numberLastKey - adListPanel.VerticalScroll.Value));
 
                 adListPanel.Controls.Add(cells[numberLastKey][j]);
             }
@@ -113,7 +115,8 @@ namespace Forms.DrawForm
 
             int stepY = 80;
 
-            cells[startId].Add(new CellAdjacencyList(endId, 0, 40 + stepX * cells[startId].Count, stepY * startId));
+            cells[startId].Add(new CellAdjacencyList(endId, 0, 40 + stepX * cells[startId].Count - adListPanel.HorizontalScroll.Value
+                , stepY * startId - adListPanel.VerticalScroll.Value));
 
             int numberLastKey = adjacencyList.adjacencyList[startId].Count - 1;
 
@@ -162,4 +165,6 @@ namespace Forms.DrawForm
         }
 
     }
+
+    
 }
