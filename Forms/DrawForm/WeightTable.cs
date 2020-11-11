@@ -84,7 +84,8 @@ namespace Forms.DrawForm
                 for (int j = countCellsBefore; j < countCellsBefore + countOfNewVertexs; j++)
                 {
 
-                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * j, positionY + (height + stepY) * i));
+                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i - weightTable.HorizontalScroll.Value
+                        , positionY + (height + stepY) * j - weightTable.VerticalScroll.Value));
 
                     if (i == j)
                     {
@@ -103,8 +104,9 @@ namespace Forms.DrawForm
 
                 for(int j = 0; j < countOfNewVertexs + countCellsBefore; j++)
                 {
-                 
-                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * j, positionY + (height + stepY) * i));
+
+                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i - weightTable.HorizontalScroll.Value
+                         , positionY + (height + stepY) * j - weightTable.VerticalScroll.Value));
 
                     if (i == j)
                     {
