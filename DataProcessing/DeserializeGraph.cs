@@ -14,7 +14,7 @@ namespace Serializing
 
             using (FileStream fs = new FileStream(FilePath, FileMode.OpenOrCreate))
             {
-                
+
                return (Graph)formatter.ReadObject(fs);
 
             }

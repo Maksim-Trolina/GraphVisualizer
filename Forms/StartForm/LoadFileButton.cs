@@ -4,9 +4,7 @@ using CraphModel;
 using Serializing;
 using System.Collections.Generic;
 using GraphModelDraw;
-
-
-
+using System.IO;
 
 namespace Forms
 {
@@ -58,9 +56,11 @@ namespace Forms
         {
             OpenFileDialog ofd = new OpenFileDialog();
 
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
+            ofd.Filter = "Json files (*.json)|*.json|Text files (*.txt)|*.txt";
 
+            if ((ofd.ShowDialog() == DialogResult.OK))
+            {
+                
                 this.Enabled = true;
 
                 LoadGraph = deserializeGraph.LoadGraph(ofd.FileName);
@@ -73,6 +73,7 @@ namespace Forms
                 drawForm.ShowDialog();
                 startForm.Close();
             }
+            
             
         }
 
