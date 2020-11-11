@@ -34,10 +34,10 @@ namespace GraphRepresentation
 
         }
 
-        public void AddNode(Vertex vertexStart, Vertex vertexEnd, int weight)
+        public void AddNode(int vertexStartId, int vertexEndId, int weight)
         {
 
-            if (vertexStart == vertexEnd)
+            if (vertexStartId == vertexEndId)
             {
                 throw new Exception("The starting vertex coincides with the ending vertex");
             }
@@ -45,7 +45,7 @@ namespace GraphRepresentation
 
             {
 
-                adjacencyList[vertexStart.Id].Add(new Node() { Connectable = vertexEnd.Id, Weight = weight});
+                adjacencyList[vertexStartId].Add(new Node() { Connectable = vertexEndId, Weight = weight});
 
             }
         }

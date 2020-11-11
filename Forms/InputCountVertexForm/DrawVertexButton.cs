@@ -174,7 +174,16 @@ namespace Forms
             {
                 for (int j = 0; j < matrixLength; ++j)
                 {
-                    int cellValue = Int32.Parse(matrixGraph.Matrix[i, j].Text);
+                    int cellValue;
+
+                    try
+                    {
+                        cellValue = Int32.Parse(matrixGraph.Matrix[i, j].Text);
+                    }
+                    catch
+                    {
+                        cellValue = 0;
+                    }
 
                     if (cellValue != 0)
                     {
