@@ -115,7 +115,7 @@ namespace Forms.DrawForm
 
             int stepY = 80;
 
-            cells[startId].Add(new CellAdjacencyList(endId, 0, 40 + stepX * cells[startId].Count - adListPanel.HorizontalScroll.Value
+            cells[startId].Add(new CellAdjacencyList(endId, 1, 40 + stepX * cells[startId].Count - adListPanel.HorizontalScroll.Value
                 , stepY * startId - adListPanel.VerticalScroll.Value));
 
             int numberLastKey = adjacencyList.adjacencyList[startId].Count - 1;

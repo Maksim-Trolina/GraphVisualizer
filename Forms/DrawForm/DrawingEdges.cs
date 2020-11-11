@@ -25,7 +25,7 @@ namespace Forms.DrawForm
 
                 edgeDraws.Add(edgeDraw);
 
-                adjacencyList.AddNode(startVertexId ,endVertexId , 0);
+                adjacencyList.AddNode(startVertexId ,endVertexId , 1);
 
                 adListPanel.UpdateNodesPanel(startVertexId, endVertexId);
               
