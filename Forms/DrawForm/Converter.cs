@@ -20,7 +20,16 @@ namespace Forms.DrawForm
 
                     for (int j = 0; j < inputCounts[i].Count; j++)
                     {
-                        int weight = int.Parse(inputCounts[i][j].Text);
+                        int weight;
+
+                        try
+                        {
+                            weight = int.Parse(inputCounts[i][j].Text);
+                        }
+                        catch
+                        {
+                            weight = 0;
+                        }
 
                         if (weight != 0)
                         {

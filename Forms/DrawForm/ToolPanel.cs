@@ -14,7 +14,10 @@ namespace Forms.DrawForm
 
         private CycleButton cycleButton;
 
-        public ToolPanel(int positionX, int positionY, WeightTable weightTable,List<EdgeDraw> edgeDraws,AdjacencyList adjacencyList,StartForm.DrawForm drawForm)
+        private AdjacencyListPanelButton adListButton;
+
+        public ToolPanel(int positionX, int positionY, WeightTable weightTable, List<EdgeDraw> edgeDraws, AdjacencyList adjacencyList 
+            ,StartForm.DrawForm drawForm, AdjacencyListPanel adListPanel)
         {
 
             Location = new System.Drawing.Point(positionX, positionY);
@@ -25,9 +28,15 @@ namespace Forms.DrawForm
 
             tableButton = new WeightTableButton(20, 20, weightTable);
 
-            cycleButton = new CycleButton(20, 20,adjacencyList,edgeDraws,drawForm);
+            cycleButton = new CycleButton(20, 20, adjacencyList, edgeDraws, drawForm);
 
-            Items.Add(tableButton);
+            adListButton = new AdjacencyListPanelButton(20, 20, adListPanel);
+
+            Items.Add(tableButton); 
+
+            Items.Add(new ToolStripSeparator());
+
+            Items.Add(adListButton);
 
             Items.Add(new ToolStripSeparator());
 
