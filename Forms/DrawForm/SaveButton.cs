@@ -20,9 +20,9 @@ namespace Forms.DrawForm
         public SaveButton(AdjacencyList adjacencyList)
         {
 
-            Text = "Save that shit";
+            Text = "Save that graph";
 
-            Location = new System.Drawing.Point(630, 400);
+            Location = new System.Drawing.Point(350, 400);
 
             Size = new System.Drawing.Size(150, 30);
 
