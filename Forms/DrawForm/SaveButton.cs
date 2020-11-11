@@ -16,9 +16,8 @@ namespace Forms.DrawForm
 
         private Converter converter;
 
-        private List<List<InputCountBox>> matrix;
 
-        public SaveButton(List<List<InputCountBox>> matrix)
+        public SaveButton(AdjacencyList adjacencyList)
         {
 
             Text = "Save that shit";
@@ -35,7 +34,7 @@ namespace Forms.DrawForm
 
             converter = new Converter();
 
-            this.matrix = matrix;
+            this.adjacencyList = adjacencyList;
 
         }
 
@@ -50,7 +49,7 @@ namespace Forms.DrawForm
 
                 Path.GetFullPath(sfd.FileName);
 
-                adjacencyList = converter.ConvertToAdjacencyList(matrix);
+               // adjacencyList = converter.ConvertToAdjacencyList(matrix);
 
                 serializeGraph.SaveGraph(converter.ConvertToGraph(adjacencyList), Path.GetFullPath(sfd.FileName));
 
