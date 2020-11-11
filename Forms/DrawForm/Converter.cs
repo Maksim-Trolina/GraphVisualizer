@@ -58,13 +58,43 @@ namespace Forms.DrawForm
             return graph;
         }
 
-        public AdjacencyList ConvertToAdjacencyList(Graph graph)
+        public List<List<InputCountBox>> ConvertToListListInputCountBox(Graph graph)
         {
-            List<Vertex> vertices = new List<Vertex>();
+            List<List<InputCountBox>> matrix = new List<List<InputCountBox>>();
 
+            int stepX = 10;
+            int stepY = 10;
 
+            int width = 20;
+            int height = 20;
 
-            return new AdjacencyList(vertices);
+            int positionX = 0;
+            int positionY = 0;
+
+            
+           for(int i = 0; i < graph.Vertexs.Count; i++)
+           {
+                matrix.Add(new List<InputCountBox>());
+
+                for (int j = 0; j < graph.Vertexs.Count; j++)
+                {
+                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * j, positionY + (height + stepY) * i));
+                    
+
+                }
+
+           }
+            for (int i = 0; i < graph.Vertexs.Count; i++)
+            {
+                for(int  j = 0; j < graph.Vertexs[i].Nodes.Count; j++)
+                {
+                    matrix[i][graph.Vertexs[i].Nodes[j].Connectable].Text = graph.Vertexs[i].Nodes[j].Weight.ToString();
+                    
+                }
+
+            }
+
+                return matrix;
         }
     }
 }

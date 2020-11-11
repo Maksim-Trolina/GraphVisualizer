@@ -9,6 +9,7 @@ using System.Drawing.Drawing2D;
 using ArrowDraw;
 using Forms;
 using GraphRepresentation;
+using System.Runtime.CompilerServices;
 
 namespace StartForm
 {

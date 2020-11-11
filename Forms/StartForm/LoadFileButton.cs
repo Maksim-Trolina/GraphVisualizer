@@ -4,7 +4,7 @@ using CraphModel;
 using Serializing;
 using System.Collections.Generic;
 using GraphModelDraw;
-using System.IO;
+
 
 
 
@@ -26,6 +26,9 @@ namespace Forms
 
         private List<List<InputCountBox>> matrix;
 
+        private DrawForm.Converter converter;
+
+
         public LoadFileButton(StartForm.StartForm startForm)
         {
             Text = "Load file";
@@ -46,6 +49,8 @@ namespace Forms
 
             deserializeGraph = new DeserializeGraph();
 
+            converter = new DrawForm.Converter();
+
         }
        
 
@@ -60,9 +65,7 @@ namespace Forms
 
                 LoadGraph = deserializeGraph.LoadGraph(ofd.FileName);
 
-
-
-                matrix = new List<List<InputCountBox>>();
+                matrix = converter.ConvertToListListInputCountBox(LoadGraph);
 
                 drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix);
 

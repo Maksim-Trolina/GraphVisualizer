@@ -12,7 +12,7 @@ namespace Serializing
 
             DataContractJsonSerializer formatter = new DataContractJsonSerializer(typeof(Graph));
 
-            using (FileStream fs = new FileStream(string.Concat(FilePath, ".json"), FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream(FilePath, FileMode.OpenOrCreate))
             {
                 
                return (Graph)formatter.ReadObject(fs);

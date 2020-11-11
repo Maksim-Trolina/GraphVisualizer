@@ -118,7 +118,6 @@ namespace Forms
                 matrix.Add(new List<InputCountBox>());
 
                 for(int j = 0; j < matrixLength; j++)
-
                 {
 
                     matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * j, positionY + (height + stepY) * i));
