@@ -6,7 +6,7 @@ related algorithms.
 
 ## System requirements and how to get started:
 
-To use this application, you need .NET Core version 3.1 or higher.
+To use this application, you need .NET Core + .Net FrameWork.
 Path to exe file: GraphVisualizer\Forms\bin\Debug\netcoreapp3.1
 
 ## How to use the app:
@@ -53,11 +53,11 @@ The save format is json.
 
 ## Technologies used:
 
-C#,Windows Forms, .NET Core, NUnit, Visual Studio 2019
+C#,Windows Forms, .NET FrameWork + .Net Core, NUnit, Visual Studio 2019
 
 ## Development team:
 
-Team Leader - Maxim Panasenko (https://vk.com/yaropolkdominik)
+Team Leader - Maxim Panasenko
 Developers - Danil Karimov, 
 Evgeny Kulik
 
