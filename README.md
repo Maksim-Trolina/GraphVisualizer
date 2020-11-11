@@ -1,15 +1,15 @@
-# H1 GraphVisualizer
+#  GraphVisualizer
 
 GraphVisualizer is an application for simpler and more visual presentation of graphs using
 visual effects. This application is designed to assist the user in learning about graphs and 
 related algorithms.
 
-# H2 System requirements and how to get started:
+## System requirements and how to get started:
 
 To use this application, you need .NET Core version 3.1 or higher.
 Path to exe file: GraphVisualizer\Forms\bin\Debug\netcoreapp3.1
 
-# H2 How to use the app:
+## How to use the app:
 
 After starting the application, it appears with the option to create a new graph or load an existing one.
 The graph loading function is still under development. 
@@ -24,7 +24,7 @@ Then the user needs to click "Create vertexes" to visualize this graph.
 It is also possible to go straight to drawing. To do this, without creating an adjacency matrix, press
 "Create vertexes".
 
-# H3 Drawing Graph:
+### Drawing Graph:
 
 In the drawing menu, the user can click on the left mouse button to draw vertices (they should not 
 intersect with those already drawn).
@@ -44,11 +44,11 @@ To view the adjacency list, click "Adjacency list". It displays connections betw
 To check the graph for a cycle, click "Show cycle". The edges of the loop will be highlighted in green. 
 Press again to remove the backlight.
 
-# H2 Technologies used:
+## Technologies used:
 
 C#,Windows Forms, .NET Core, NUnit, Visual Studio 2019
 
-# H2 Development team:
+## Development team:
 
 Team Leader - Maxim Panasenko (https://vk.com/yaropolkdominik)
 Developers - Danil Karimov, Evgeny Kulik
