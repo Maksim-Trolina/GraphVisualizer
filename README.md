@@ -34,16 +34,16 @@ intersect with those already drawn).
 In order to move a vertex, first click on it with the left mouse button (it will be highlighted in black), 
 and then in the free zone where you would like to move it.
 
-To draw an edge, you need to select the initial vertex with the left mouse button, and then the final one.
++ To draw an edge, you need to select the initial vertex with the left mouse button, and then the final one.
 
-To reset the selection of a vertex, left-click on it again.
++ To reset the selection of a vertex, left-click on it again.
 
-To view the adjacency matrix, click "Weight table". To hide it, click again. Adjacency matrix expands when 
++ To view the adjacency matrix, click "Weight table". To hide it, click again. Adjacency matrix expands when 
 drawing new vertices.
 
-To view the adjacency list, click "Adjacency list". It displays connections between vertices in real time.
++ To view the adjacency list, click "Adjacency list". It displays connections between vertices in real time.
 
-To check the graph for a cycle, click "Show cycle". The edges of the loop will be highlighted in green. 
++ To check the graph for a cycle, click "Show cycle". The edges of the loop will be highlighted in green. 
 Press again to remove the backlight.
 
 ### Saving graph
