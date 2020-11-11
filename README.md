@@ -17,6 +17,8 @@ After clicking on the "Matrix" button, a window opens, in which you can enter th
 in the graph, then click "OK" and an adjacency matrix for these vertices will be generated in the same 
 window.
 
+### Adjacency matrix
+
 The weights of the edges can be entered into this matrix according to the following rule: the initial 
 vertices are indicated vertically, and the final vertices are indicated horizontally.
 Then the user needs to click "Create vertexes" to visualize this graph.
@@ -24,7 +26,7 @@ Then the user needs to click "Create vertexes" to visualize this graph.
 It is also possible to go straight to drawing. To do this, without creating an adjacency matrix, press
 "Create vertexes".
 
-### Drawing Graph:
+### Drawing Graph
 
 In the drawing menu, the user can click on the left mouse button to draw vertices (they should not 
 intersect with those already drawn).
@@ -44,6 +46,11 @@ To view the adjacency list, click "Adjacency list". It displays connections betw
 To check the graph for a cycle, click "Show cycle". The edges of the loop will be highlighted in green. 
 Press again to remove the backlight.
 
+### Saving graph
+
+In order to save the drawn graph, press "Save graph", then select the folder to save and enter the file name. 
+The save format is json.
+
 ## Technologies used:
 
 C#,Windows Forms, .NET Core, NUnit, Visual Studio 2019
@@ -51,6 +58,7 @@ C#,Windows Forms, .NET Core, NUnit, Visual Studio 2019
 ## Development team:
 
 Team Leader - Maxim Panasenko (https://vk.com/yaropolkdominik)
-Developers - Danil Karimov, Evgeny Kulik
+Developers - Danil Karimov, 
+Evgeny Kulik
 
 
