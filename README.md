@@ -7,7 +7,7 @@ related algorithms.
 ## System requirements and how to get started:
 
 To use this application, you need .NET Core + .Net FrameWork.
-Path to exe file: GraphVisualizer\Forms\bin\Debug\netcoreapp3.1
+Path to exe file: GraphVisualizer\Forms\bin\Release\netcoreapp3.1
 
 ## How to use the app:
 
