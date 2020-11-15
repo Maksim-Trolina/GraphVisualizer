@@ -4,7 +4,6 @@ using CraphModel;
 using Serializing;
 using System.Collections.Generic;
 using GraphModelDraw;
-using System.IO;
 using CollisionDraw;
 
 namespace Forms
@@ -90,12 +89,7 @@ namespace Forms
 
         private void DrawingLoadedVertexs(List<List<InputCountBox>> matrix)
         {
-            int countVertex = 0;
-
-            if (matrix != null)
-            {
-                countVertex = matrix[0].Count;
-            }
+            int countVertex = matrix.Count;
 
             float x = 90f;
 
@@ -119,12 +113,8 @@ namespace Forms
 
         private void DrawingLoadedEdges(List<List<InputCountBox>> matrix)
         {
-            int matrixLength = 0;
+            int matrixLength = matrix.Count;
 
-            if (matrix != null)
-            {
-                matrixLength = matrix[0].Count;
-            }
 
             for (int i = 0; i < matrixLength; ++i)
             {
