@@ -8,7 +8,7 @@ using System.IO;
 
 namespace Forms.DrawForm
 {
-    class SaveButton : Button
+    class SaveButton : ToolStripButton
     {
         private AdjacencyList adjacencyList;
 
@@ -17,12 +17,14 @@ namespace Forms.DrawForm
         private Converter converter;
 
 
-        public SaveButton(AdjacencyList adjacencyList)
+        public SaveButton(int width, int height, AdjacencyList adjacencyList)
         {
 
-            Text = "Save that graph";
+            Size = new System.Drawing.Size(width, height);
 
-            Location = new System.Drawing.Point(350, 400);
+            Dock = DockStyle.Top;
+
+            Text = "Save that graph";
 
             Size = new System.Drawing.Size(150, 30);
 

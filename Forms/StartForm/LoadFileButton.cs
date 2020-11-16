@@ -133,7 +133,7 @@ namespace Forms
 
                     if (cellValue != 0)
                     {
-                        edgeDraws.Add(new EdgeDraw(BrushColor.Black, cellValue, j, i));
+                        edgeDraws.Add(new EdgeDraw(BrushColor.Black, cellValue, i, j));
                     }
                 }
             }

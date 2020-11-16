@@ -16,8 +16,12 @@ namespace Forms.DrawForm
 
         private AdjacencyListPanelButton adListButton;
 
+        private SaveButton saveButton;
+
+        private DeleteAllButton deleteAllButton;
+
         public ToolPanel(int positionX, int positionY, WeightTable weightTable, List<EdgeDraw> edgeDraws, AdjacencyList adjacencyList 
-            ,StartForm.DrawForm drawForm, AdjacencyListPanel adListPanel)
+            ,StartForm.DrawForm drawForm, AdjacencyListPanel adListPanel, List<VertexDraw> vertexDraws, List<List<InputCountBox>> matrix)
         {
 
             Location = new System.Drawing.Point(positionX, positionY);
@@ -32,6 +36,10 @@ namespace Forms.DrawForm
 
             adListButton = new AdjacencyListPanelButton(20, 20, adListPanel);
 
+            saveButton = new SaveButton(20, 20, adjacencyList);
+
+            deleteAllButton = new DeleteAllButton(20, 20, adjacencyList, vertexDraws, edgeDraws, drawForm, adListPanel, weightTable, matrix);
+
             Items.Add(tableButton); 
 
             Items.Add(new ToolStripSeparator());
@@ -43,6 +51,15 @@ namespace Forms.DrawForm
             Items.Add(cycleButton);
 
             Items.Add(new ToolStripSeparator());
+
+            Items.Add(saveButton);
+
+            Items.Add(new ToolStripSeparator());
+
+            Items.Add(deleteAllButton);
+
+            Items.Add(new ToolStripSeparator());
+
 
         }
     }

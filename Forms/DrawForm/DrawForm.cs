@@ -101,7 +101,7 @@ namespace StartForm
 
             Controls.Add(adListPanel);
 
-            toolPanel = new ToolPanel(0, 100, weightTable, this.edgeDraws, adjacencyList, this, adListPanel);
+            toolPanel = new ToolPanel(0, 100, weightTable, this.edgeDraws, adjacencyList, this, adListPanel, this.vertexDraws, matrix);
 
             Controls.Add(toolPanel);
 
@@ -115,9 +115,6 @@ namespace StartForm
 
             brushes[(int)BrushColor.Black] = Brushes.Black;
 
-            SaveButton saveButton = new SaveButton(adjacencyList);
-
-            Controls.Add(saveButton);
         }
 
         
