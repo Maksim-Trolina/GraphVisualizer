@@ -54,7 +54,7 @@ namespace StartForm
         private Converter converter;
 
 
-        public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<InputCountBox>> matrix)
+        public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<CellBox>> matrix)
 
         {
             InitializeComponent();
@@ -152,8 +152,7 @@ namespace StartForm
                 else
                 {
 
-                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId, ref adjacencyList, adListPanel);
-
+                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId, ref adjacencyList, adListPanel, matrixWeightPanel);
 
                     Refresh();
 

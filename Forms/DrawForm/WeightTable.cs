@@ -32,9 +32,9 @@ namespace Forms.DrawForm
 
         private WeightTable weightTable;
 
-        private List<List<InputCountBox>> matrix;
+        private List<List<CellBox>> matrix;
 
-        public MatrixWeightPanel(WeightTable weightTable, List<List<InputCountBox>> matrix)
+        public MatrixWeightPanel(WeightTable weightTable, List<List<CellBox>> matrix)
         {
 
             this.weightTable = weightTable;
@@ -50,12 +50,6 @@ namespace Forms.DrawForm
 
                 for (int j = 0; j < matrix.Count; j++)
                 {
-
-                    if (i == j)
-                    {
-                        matrix[i][j].Enabled = false;
-                    }
-
                     weightTable.Controls.Add(matrix[i][j]);
                 }
 
@@ -84,13 +78,10 @@ namespace Forms.DrawForm
                 for (int j = countCellsBefore; j < countCellsBefore + countOfNewVertexs; j++)
                 {
 
-                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i - weightTable.HorizontalScroll.Value
+                    matrix[i].Add(new CellBox(width, height, positionX + (width + stepX) * i - weightTable.HorizontalScroll.Value
                         , positionY + (height + stepY) * j - weightTable.VerticalScroll.Value));
 
-                    if (i == j)
-                    {
-                        matrix[i][j].Enabled = false;
-                    }
+                    matrix[i][j].Enabled = false;
 
                     weightTable.Controls.Add(matrix[i][j]);
 
@@ -100,18 +91,13 @@ namespace Forms.DrawForm
 
             for(int i = countCellsBefore; i < countCellsBefore + countOfNewVertexs; i++)
             {
-                matrix.Add(new List<InputCountBox>());
+                matrix.Add(new List<CellBox>());
 
                 for(int j = 0; j < countOfNewVertexs + countCellsBefore; j++)
                 {
 
-                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * i - weightTable.HorizontalScroll.Value
+                    matrix[i].Add(new CellBox(width, height, positionX + (width + stepX) * i - weightTable.HorizontalScroll.Value
                          , positionY + (height + stepY) * j - weightTable.VerticalScroll.Value));
-
-                    if (i == j)
-                    {
-                        matrix[i][j].Enabled = false;
-                    }
 
                     weightTable.Controls.Add(matrix[i][j]);
 
@@ -119,6 +105,12 @@ namespace Forms.DrawForm
                 
             }
 
+        }
+
+        public void UpdateNodes(int startId, int endId)
+        {
+            matrix[endId][startId].Text = "1";
+            matrix[endId][startId].Enabled = true;
         }
      }
 }

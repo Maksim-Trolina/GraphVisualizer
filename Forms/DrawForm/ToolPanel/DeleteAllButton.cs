@@ -22,10 +22,10 @@ namespace Forms.DrawForm
 
         private WeightTable weightTable;
 
-        private List<List<InputCountBox>> matrix;
+        private List<List<CellBox>> matrix;
 
         public DeleteAllButton(int width, int height, AdjacencyList adjacencyList, List<VertexDraw> vertexDraws, 
-            List<EdgeDraw> edgeDraws, StartForm.DrawForm drawForm, AdjacencyListPanel adjacencyListPanel, WeightTable weightTable, List<List<InputCountBox>> matrix)
+            List<EdgeDraw> edgeDraws, StartForm.DrawForm drawForm, AdjacencyListPanel adjacencyListPanel, WeightTable weightTable, List<List<CellBox>> matrix)
         {
 
             Size = new System.Drawing.Size(width, height);
@@ -53,7 +53,7 @@ namespace Forms.DrawForm
 
         public void ButtonClick(object sender, EventArgs e)
         {
-
+            
             adjacencyList.adjacencyList.Clear();
             vertexDraws.Clear();
             edgeDraws.Clear();

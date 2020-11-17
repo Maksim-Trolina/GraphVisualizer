@@ -5,6 +5,7 @@ using Serializing;
 using System.Collections.Generic;
 using GraphModelDraw;
 using CollisionDraw;
+using Forms.DrawForm;
 
 namespace Forms
 {
@@ -23,7 +24,7 @@ namespace Forms
 
         private StartForm.DrawForm drawForm;
 
-        private List<List<InputCountBox>> matrix;
+        private List<List<CellBox>> matrix;
 
         private DrawForm.Converter converter;
 
@@ -72,7 +73,7 @@ namespace Forms
 
                 loadGraph = deserializeGraph.LoadGraph(ofd.FileName);
 
-                matrix = converter.ConvertToListListInputCountBox(loadGraph);
+                matrix = converter.ConvertToListListCellBox(loadGraph);
 
                 DrawingLoadedEdges(matrix);
                 DrawingLoadedVertexs(matrix);
@@ -87,7 +88,7 @@ namespace Forms
             
         }
 
-        private void DrawingLoadedVertexs(List<List<InputCountBox>> matrix)
+        private void DrawingLoadedVertexs(List<List<CellBox>> matrix)
         {
             int countVertex = matrix.Count;
 
@@ -111,7 +112,7 @@ namespace Forms
 
         }
 
-        private void DrawingLoadedEdges(List<List<InputCountBox>> matrix)
+        private void DrawingLoadedEdges(List<List<CellBox>> matrix)
         {
             int matrixLength = matrix.Count;
 

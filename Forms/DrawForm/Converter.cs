@@ -8,7 +8,7 @@ namespace Forms.DrawForm
 {
     public class Converter
     {
-        public AdjacencyList ConvertToAdjacencyList(List<List<InputCountBox>> inputCounts)
+        public AdjacencyList ConvertToAdjacencyList(List<List<CellBox>> inputCounts)
         {
             List<Vertex> vertices = new List<Vertex>();
 
@@ -67,9 +67,9 @@ namespace Forms.DrawForm
             return graph;
         }
 
-        public List<List<InputCountBox>> ConvertToListListInputCountBox(Graph graph)
+        public List<List<CellBox>> ConvertToListListCellBox(Graph graph)
         {
-            List<List<InputCountBox>> matrix = new List<List<InputCountBox>>();
+            List<List<CellBox>> matrix = new List<List<CellBox>>();
 
             int stepX = 10;
             int stepY = 10;
@@ -83,11 +83,11 @@ namespace Forms.DrawForm
             
            for(int i = 0; i < graph.Vertexs.Count; i++)
            {
-                matrix.Add(new List<InputCountBox>());
+                matrix.Add(new List<CellBox>());
 
                 for (int j = 0; j < graph.Vertexs.Count; j++)
                 {
-                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * j, positionY + (height + stepY) * i));
+                    matrix[i].Add(new CellBox(width, height, positionX + (width + stepX) * j, positionY + (height + stepY) * i));
                     
 
                 }

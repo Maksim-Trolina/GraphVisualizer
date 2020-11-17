@@ -24,7 +24,7 @@ namespace Forms
 
         private InitialGraph initialGraph;
 
-        private List<List<InputCountBox>> matrix;
+        private List<List<CellBox>> matrix;
 
         public DrawVertexButton(int width, int height, int positionX, int positionY, InputCountVertexForm inputCountForm
             , MatrixGraph matrixGraph, string buttonText = "Create vertexes")
@@ -45,7 +45,7 @@ namespace Forms
 
             initialGraph = new InitialGraph(vertexDraws, edgeDraws, matrixGraph);
 
-            matrix = new List<List<InputCountBox>>();
+            matrix = new List<List<CellBox>>();
 
             Click += new EventHandler(ButtonClick);
         }
@@ -92,7 +92,7 @@ namespace Forms
             collisionVertex = new CollisionVertex();
         }
 
-        public void FillingMatrix(List<List<InputCountBox>> matrix)
+        public void FillingMatrix(List<List<CellBox>> matrix)
         {         
 
             int stepX = 10;
@@ -115,12 +115,12 @@ namespace Forms
 
             for (int i = 0; i < matrixLength; i++)
             {
-                matrix.Add(new List<InputCountBox>());
+                matrix.Add(new List<CellBox>());
 
                 for(int j = 0; j < matrixLength; j++)
                 {
 
-                    matrix[i].Add(new InputCountBox(width, height, positionX + (width + stepX) * j, positionY + (height + stepY) * i));
+                    matrix[i].Add(new CellBox(width, height, positionX + (width + stepX) * j, positionY + (height + stepY) * i));
 
                     matrix[i][j].Text = matrixGraph.Matrix[j, i].Text;
 

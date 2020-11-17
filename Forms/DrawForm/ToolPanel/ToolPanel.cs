@@ -21,7 +21,7 @@ namespace Forms.DrawForm
         private DeleteAllButton deleteAllButton;
 
         public ToolPanel(int positionX, int positionY, WeightTable weightTable, List<EdgeDraw> edgeDraws, AdjacencyList adjacencyList 
-            ,StartForm.DrawForm drawForm, AdjacencyListPanel adListPanel, List<VertexDraw> vertexDraws, List<List<InputCountBox>> matrix)
+            ,StartForm.DrawForm drawForm, AdjacencyListPanel adListPanel, List<VertexDraw> vertexDraws, List<List<CellBox>> matrix)
         {
 
             Location = new System.Drawing.Point(positionX, positionY);
