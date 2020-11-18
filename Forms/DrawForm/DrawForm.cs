@@ -177,13 +177,30 @@ namespace StartForm
            
             foreach (var edge in edgeDraws)
             {
-                newEdgeDefinition.DefinitionOfEdge(vertexDraws, edge, ref startPoint, ref endPoint);
+                if (edge.BrushEdge != BrushColor.Green)
+                {
+                    newEdgeDefinition.DefinitionOfEdge(vertexDraws, edge, ref startPoint, ref endPoint);
 
-                pen.Color = GetColor(edge.BrushEdge);
+                    pen.Color = GetColor(edge.BrushEdge);
 
-                graphics.DrawLine(pen, startPoint, arrow.GetEndArrowPoint(startPoint,endPoint));
+                    graphics.DrawLine(pen, startPoint, arrow.GetEndArrowPoint(startPoint, endPoint));
+                }
             }
 
+            pen.Width = 8;
+            pen.Color = Color.Green;
+
+            foreach(var edge in edgeDraws)
+            {
+                if(edge.BrushEdge == BrushColor.Green)
+                {
+                    newEdgeDefinition.DefinitionOfEdge(vertexDraws, edge, ref startPoint, ref endPoint);
+
+                    graphics.DrawLine(pen, startPoint, arrow.GetEndArrowPoint(startPoint, endPoint));
+                }
+            }
+
+            pen.Width = 5;
 
             foreach (var vertex in vertexDraws)
             {         
