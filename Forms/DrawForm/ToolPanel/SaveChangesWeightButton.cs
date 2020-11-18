@@ -31,6 +31,8 @@ namespace Forms.DrawForm
             Text = "Save Changes";
 
             Click += new EventHandler(ButtonClick);
+
+            Enabled = false;
         } 
 
         private void ButtonClick(object sender, EventArgs e)
@@ -72,7 +74,7 @@ namespace Forms.DrawForm
                     {
                         if (adjacencyList.adjacencyList[i][adjacencyList.FindNumberInList(i, j)].Weight != value)
                         {
-                            adjacencyList.ChangeWeight(i, j, value);
+                            adjacencyList.ChangeWeight(i, adjacencyList.FindNumberInList(i, j), value);
                         }
                     }
                 }
@@ -81,7 +83,30 @@ namespace Forms.DrawForm
 
         private void SaveAdjacencyListWeight()
         {
+            int value;
 
+            for (int i = 0; i < adListPanel.AdListTable.Cells.Count; ++i)
+            {
+                for (int j = 0; j < adListPanel.AdListTable.Cells[i].Count; ++j)
+                {
+                    try
+                    {
+                        value = Int32.Parse(adListPanel.AdListTable.Cells[i][j].WeightBox.Text);
+                    }
+                    catch
+                    {
+                        value = adListPanel.AdListTable.Cells[i][j].WeightBox.FirstDigit - '0';
+                    }
+
+                    if (value != 0)
+                    {
+                        if (adjacencyList.adjacencyList[i][j].Weight != value)
+                        {
+                            adjacencyList.ChangeWeight(i, j, value);
+                        }
+                    }
+                }
+            }
         }
 
         private void UpdateMatrix()
@@ -112,7 +137,27 @@ namespace Forms.DrawForm
 
         private void UpdateAdjacencyList()
         {
+            int value;
 
+            for (int i = 0; i < adListPanel.AdListTable.Cells.Count; ++i)
+            {
+                for (int j = 0; j < adListPanel.AdListTable.Cells[i].Count; ++j)
+                {
+                    try
+                    {
+                        value = Int32.Parse(adListPanel.AdListTable.Cells[i][j].WeightBox.Text);
+                    }
+                    catch
+                    {
+                        value = adListPanel.AdListTable.Cells[i][j].WeightBox.FirstDigit - '0';
+                    }
+
+                    if (value != 0)
+                    {
+                        adListPanel.AdListTable.Cells[i][j].WeightBox.Text = Convert.ToString(adjacencyList.adjacencyList[i][j].Weight);
+                    }
+                }
+            }
         }
     }
 

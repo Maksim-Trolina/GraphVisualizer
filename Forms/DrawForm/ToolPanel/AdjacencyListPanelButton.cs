@@ -11,7 +11,10 @@ namespace Forms.DrawForm
 
         private WeightTable weightTable;
 
-        public AdjacencyListPanelButton(int width, int height, AdjacencyListPanel adListPanel, WeightTable weightTable)
+        private SaveWeightButton saveWeightButton;
+
+        public AdjacencyListPanelButton(int width, int height, AdjacencyListPanel adListPanel, WeightTable weightTable
+            , SaveWeightButton saveWeightButton)
         {
             Size = new System.Drawing.Size(width, height);
 
@@ -24,7 +27,8 @@ namespace Forms.DrawForm
             this.adListPanel = adListPanel;
 
             this.weightTable = weightTable;
-   
+
+            this.saveWeightButton = saveWeightButton;
         }
 
         public void ButtonClick(object sender, EventArgs e)
@@ -32,6 +36,15 @@ namespace Forms.DrawForm
             weightTable.Visible = false;
 
             adListPanel.Visible = !adListPanel.Visible;
+
+            if (!adListPanel.Visible && !weightTable.Visible)
+            {
+                saveWeightButton.Enabled = false;
+            }
+            else
+            {
+                saveWeightButton.Enabled = true;
+            }
         }
     }
 }

@@ -32,17 +32,18 @@ namespace Forms.DrawForm
 
             LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow;
 
-            tableButton = new WeightTableButton(20, 20, weightTable, adListPanel);
+            saveWeightButton = new SaveWeightButton(20, 20, adjacencyList, matrix, weightTable, adListPanel);
+
+            tableButton = new WeightTableButton(20, 20, weightTable, adListPanel, saveWeightButton);
 
             cycleButton = new CycleButton(20, 20, adjacencyList, edgeDraws, drawForm);
 
-            adListButton = new AdjacencyListPanelButton(20, 20, adListPanel, weightTable);
+            adListButton = new AdjacencyListPanelButton(20, 20, adListPanel, weightTable, saveWeightButton);
 
             saveButton = new SaveButton(20, 20, adjacencyList);
 
             deleteAllButton = new DeleteAllButton(20, 20, adjacencyList, vertexDraws, edgeDraws, drawForm, adListPanel, weightTable, matrix);
 
-            saveWeightButton = new SaveWeightButton(20, 20, adjacencyList, matrix, weightTable, adListPanel);
 
             Items.Add(tableButton); 
 
