@@ -7,43 +7,32 @@ namespace Forms.DrawForm
 {
     class WeightTableButton : ToolStripButton
     {
-
         private WeightTable weightTable;
 
-        private bool tableIsHide;
+        private AdjacencyListPanel adListPanel;
 
-        public WeightTableButton(int width, int height, WeightTable weightTable)
+        public WeightTableButton(int width, int height, WeightTable weightTable, AdjacencyListPanel adListPanel)
         {
 
             Size = new System.Drawing.Size(width, height);
 
             Dock = DockStyle.Top;
 
-            this.weightTable = weightTable;
-
-            tableIsHide = true;
-
-            weightTable.Hide();
-
             Click += new EventHandler(ButtonClick);
 
             Text = "Weight Table";
+
+            this.weightTable = weightTable;
+
+            this.adListPanel = adListPanel;
+
         }
 
         public void ButtonClick(object sender, EventArgs e)
         {
+            adListPanel.Visible = false;
 
-            tableIsHide = !tableIsHide;
-
-            if (tableIsHide)
-            {
-                weightTable.Hide();
-            }
-            else
-            {
-                weightTable.Show();
-            }
-
+            weightTable.Visible = !weightTable.Visible;
         }
     }
 }

@@ -121,10 +121,15 @@ namespace Forms
                 {
 
                     matrix[i].Add(new CellBox(width, height, positionX + (width + stepX) * j, positionY + (height + stepY) * i));
-
-                    matrix[i][j].Text = matrixGraph.Matrix[j, i].Text;
-
-
+                    
+                    if (matrixGraph.Matrix[j, i].Text == "")
+                    {
+                        matrix[i][j].Text = "0";
+                    }
+                    else
+                    {
+                        matrix[i][j].Text = matrixGraph.Matrix[j, i].Text;
+                    }
                 }              
 
             }

@@ -22,6 +22,8 @@ namespace Forms.DrawForm
 
             BorderStyle = BorderStyle.Fixed3D;
 
+            Visible = false;
+
         }
   
     }
@@ -50,6 +52,10 @@ namespace Forms.DrawForm
 
                 for (int j = 0; j < matrix.Count; j++)
                 {
+                    if (matrix[i][j].Text == "0")
+                    {
+                        matrix[i][j].Enabled = false;
+                    }
                     weightTable.Controls.Add(matrix[i][j]);
                 }
 
@@ -99,6 +105,8 @@ namespace Forms.DrawForm
                     matrix[i].Add(new CellBox(width, height, positionX + (width + stepX) * i - weightTable.HorizontalScroll.Value
                          , positionY + (height + stepY) * j - weightTable.VerticalScroll.Value));
 
+                    matrix[i][j].Enabled = false;
+
                     weightTable.Controls.Add(matrix[i][j]);
 
                 }
@@ -110,6 +118,7 @@ namespace Forms.DrawForm
         public void UpdateNodes(int startId, int endId)
         {
             matrix[endId][startId].Text = "1";
+
             matrix[endId][startId].Enabled = true;
         }
      }

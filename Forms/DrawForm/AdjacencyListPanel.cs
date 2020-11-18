@@ -25,6 +25,7 @@ namespace Forms.DrawForm
 
             adListTable = new AdjacencyListTable(adjacencyList, this);
 
+            Visible = false;
         }
 
         public void UpdateIdPanel()
@@ -36,6 +37,8 @@ namespace Forms.DrawForm
         {
             adListTable.UpdateColumns(startId, endId);
         }
+
+        
     }
 
     class AdjacencyListTable
@@ -130,7 +133,7 @@ namespace Forms.DrawForm
     {
         private int id;
 
-        private InputCountBox weightBox;
+        private CellBox weightBox;
 
         InfoTextLabel text;
 
@@ -153,7 +156,7 @@ namespace Forms.DrawForm
 
             text = new InfoTextLabel(widthText, heightText, x, y, $"id: {id}; w: ");
 
-            weightBox = new InputCountBox(widthBox, heightBox, x + widthText, y, Convert.ToString(weight));
+            weightBox = new CellBox(widthBox, heightBox, x + widthText, y, weight);
 
             Controls.Add(weightBox);
 

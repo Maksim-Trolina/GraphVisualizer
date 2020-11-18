@@ -7,6 +7,8 @@ namespace Forms.DrawForm
 {
     public class CellBox : TextBox
     {
+        public char FirstDigit { get; private set; }
+
         public CellBox(int width, int height, int positionX, int positionY, int initValue = 0)
         {
             Text = Convert.ToString(initValue);
@@ -17,18 +19,24 @@ namespace Forms.DrawForm
 
             KeyPress += new KeyPressEventHandler(TextBoxKeyPressed);
 
-            if (Text == "0")
-            {
-                Enabled = false;
-            }
+            
         }
+
         public void TextBoxKeyPressed(object sender, KeyPressEventArgs e)
         {
-            if (!(Char.IsDigit(e.KeyChar) || e.KeyChar == '\b'))   // entered a digit or backspace
+            if (Text.Length == 1)
+            {
+                FirstDigit = Text[0];
+            }
+
+            if (!(Char.IsDigit(e.KeyChar) || e.KeyChar == '\b') || (Text.Length == 0 && e.KeyChar == '0'))   // entered a digit or backspace
             {
                 e.Handled = true;
-
             }
+
+
         }
+
+        
     }
 }
