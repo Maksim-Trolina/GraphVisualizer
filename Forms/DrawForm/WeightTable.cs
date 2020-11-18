@@ -84,8 +84,8 @@ namespace Forms.DrawForm
                 for (int j = countCellsBefore; j < countCellsBefore + countOfNewVertexs; j++)
                 {
 
-                    matrix[i].Add(new CellBox(width, height, positionX + (width + stepX) * i - weightTable.HorizontalScroll.Value
-                        , positionY + (height + stepY) * j - weightTable.VerticalScroll.Value));
+                    matrix[i].Add(new CellBox(width, height, positionX + (width + stepX) * j - weightTable.HorizontalScroll.Value
+                        , positionY + (height + stepY) * i - weightTable.VerticalScroll.Value));
 
                     matrix[i][j].Enabled = false;
 
@@ -102,8 +102,8 @@ namespace Forms.DrawForm
                 for(int j = 0; j < countOfNewVertexs + countCellsBefore; j++)
                 {
 
-                    matrix[i].Add(new CellBox(width, height, positionX + (width + stepX) * i - weightTable.HorizontalScroll.Value
-                         , positionY + (height + stepY) * j - weightTable.VerticalScroll.Value));
+                    matrix[i].Add(new CellBox(width, height, positionX + (width + stepX) * j - weightTable.HorizontalScroll.Value
+                         , positionY + (height + stepY) * i - weightTable.VerticalScroll.Value));
 
                     matrix[i][j].Enabled = false;
 
@@ -117,9 +117,9 @@ namespace Forms.DrawForm
 
         public void UpdateNodes(int startId, int endId)
         {
-            matrix[endId][startId].Text = "1";
+            matrix[startId][endId].Text = "1";
 
-            matrix[endId][startId].Enabled = true;
+            matrix[startId][endId].Enabled = true;
         }
      }
 }

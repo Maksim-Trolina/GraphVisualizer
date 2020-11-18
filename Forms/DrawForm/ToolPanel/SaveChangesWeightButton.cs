@@ -37,21 +37,72 @@ namespace Forms.DrawForm
         {
             if (weightTable.Visible)
             {
-
+                SaveMatrixWeight();
             }
+
             else if (adListPanel.Visible) {
 
+                SaveAdjacencyListWeight();
+
             }
+
+            UpdateMatrix();
+
+            UpdateAdjacencyList();
         }
 
         private void SaveMatrixWeight()
         {
+            int value;
 
+            for (int i = 0; i < matrix.Count; ++i)
+            {
+                for (int j = 0; j < matrix.Count; ++j)
+                {
+                    try
+                    {
+                        value = Int32.Parse(matrix[i][j].Text);
+                    }
+                    catch
+                    {
+                        value = matrix[i][j].FirstDigit - '0';
+                    }
+
+                    if (value != 0)
+                    {
+                        if (adjacencyList.adjacencyList[i][adjacencyList.FindNumberInList(i, j)].Weight != value)
+                        {
+                            adjacencyList.ChangeWeight(i, j, value);
+                        }
+                    }
+                }
+            }
         }
 
         private void SaveAdjacencyListWeight()
         {
 
         }
+
+        private void UpdateMatrix()
+        {
+            for (int i = 0; i < matrix.Count; ++i)
+            {
+                for (int j = 0; j < matrix.Count; ++j)
+                {
+                    if (Int32.Parse(matrix[i][j].Text) != 0)
+                    {
+                        matrix[i][j].Text = Convert.ToString(adjacencyList.adjacencyList[i][adjacencyList.FindNumberInList(i,j)].Weight);
+                    }
+                }
+            }
+        }
+
+        private void UpdateAdjacencyList()
+        {
+
+        }
     }
+
+
 }
