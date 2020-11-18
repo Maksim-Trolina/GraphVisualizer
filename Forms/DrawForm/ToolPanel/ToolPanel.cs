@@ -16,8 +16,14 @@ namespace Forms.DrawForm
 
         private AdjacencyListPanelButton adListButton;
 
+        private SaveButton saveButton;
+
+        private DeleteAllButton deleteAllButton;
+
+        private SaveWeightButton saveWeightButton;
+
         public ToolPanel(int positionX, int positionY, WeightTable weightTable, List<EdgeDraw> edgeDraws, AdjacencyList adjacencyList 
-            ,StartForm.DrawForm drawForm, AdjacencyListPanel adListPanel)
+            ,StartForm.DrawForm drawForm, AdjacencyListPanel adListPanel, List<VertexDraw> vertexDraws, List<List<CellBox>> matrix)
         {
 
             Location = new System.Drawing.Point(positionX, positionY);
@@ -26,11 +32,18 @@ namespace Forms.DrawForm
 
             LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow;
 
-            tableButton = new WeightTableButton(20, 20, weightTable);
+            saveWeightButton = new SaveWeightButton(20, 20, adjacencyList, matrix, weightTable, adListPanel);
+
+            tableButton = new WeightTableButton(20, 20, weightTable, adListPanel, saveWeightButton);
 
             cycleButton = new CycleButton(20, 20, adjacencyList, edgeDraws, drawForm);
 
-            adListButton = new AdjacencyListPanelButton(20, 20, adListPanel);
+            adListButton = new AdjacencyListPanelButton(20, 20, adListPanel, weightTable, saveWeightButton);
+
+            saveButton = new SaveButton(20, 20, adjacencyList);
+
+            deleteAllButton = new DeleteAllButton(20, 20, adjacencyList, vertexDraws, edgeDraws, drawForm, adListPanel, weightTable, matrix);
+
 
             Items.Add(tableButton); 
 
@@ -44,6 +57,17 @@ namespace Forms.DrawForm
 
             Items.Add(new ToolStripSeparator());
 
+            Items.Add(saveButton);
+
+            Items.Add(new ToolStripSeparator());
+
+            Items.Add(deleteAllButton);
+
+            Items.Add(new ToolStripSeparator());
+
+            Items.Add(saveWeightButton);
+
+            Items.Add(new ToolStripSeparator());
         }
     }
 }

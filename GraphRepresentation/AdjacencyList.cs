@@ -49,5 +49,48 @@ namespace GraphRepresentation
 
             }
         }
+
+        public void ChangeWeight(int vertexStartId, int numberInList, int weight)
+        {
+            if (vertexStartId == adjacencyList[vertexStartId][numberInList].Connectable)
+            {
+                throw new Exception("The starting vertex coincides with the ending vertex");
+            }
+            else
+
+            {
+                Node node = new Node { Connectable = adjacencyList[vertexStartId][numberInList].Connectable, Weight = weight };
+
+                adjacencyList[vertexStartId][numberInList] = node;
+            }
+        }
+
+        public void ChangeWeightByNumberList(int vertexStartId, int numberInList, int weight)
+        {
+            //if (vertexStartId == adjacencyList[vertexStartId][numberInList].Connectable)
+            //{
+            //    throw new Exception("The starting vertex coincides with the ending vertex");
+            //}
+            //else
+
+            //{
+            //    Node node = new Node { Connectable = vertexEndId, Weight = weight };
+
+            //    adjacencyList[vertexStartId][FindNumberInList(vertexStartId, vertexEndId)] = node;
+            //}
+        }
+
+        public int FindNumberInList(int vertexStartId, int vertexEndId)
+        {
+            for (int i = 0; i < adjacencyList[vertexStartId].Count; ++i)
+            {
+                if (adjacencyList[vertexStartId][i].Connectable == vertexEndId)
+                {
+                    return i;
+                }
+            }
+
+            throw new Exception("There is no such number");
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace Forms
             drawVertexButton = new DrawVertexButton(100, 30, 600, 100, this, matrixGraph);
             Controls.Add(drawVertexButton);
 
-            
+           
         }
 
         

@@ -7,11 +7,14 @@ namespace Forms.DrawForm
 {
     class AdjacencyListPanelButton : ToolStripButton
     {
-        private bool adListIsHide;
-
         private AdjacencyListPanel adListPanel;
 
-        public AdjacencyListPanelButton(int width, int height, AdjacencyListPanel adListPanel)
+        private WeightTable weightTable;
+
+        private SaveWeightButton saveWeightButton;
+
+        public AdjacencyListPanelButton(int width, int height, AdjacencyListPanel adListPanel, WeightTable weightTable
+            , SaveWeightButton saveWeightButton)
         {
             Size = new System.Drawing.Size(width, height);
 
@@ -21,24 +24,26 @@ namespace Forms.DrawForm
 
             Text = "Adjacency List";
 
-            adListIsHide = true;
-
             this.adListPanel = adListPanel;
 
-            adListPanel.Hide();
+            this.weightTable = weightTable;
+
+            this.saveWeightButton = saveWeightButton;
         }
 
         public void ButtonClick(object sender, EventArgs e)
         {
-            adListIsHide = !adListIsHide;
+            weightTable.Visible = false;
 
-            if (adListIsHide)
+            adListPanel.Visible = !adListPanel.Visible;
+
+            if (!adListPanel.Visible && !weightTable.Visible)
             {
-                adListPanel.Hide();
+                saveWeightButton.Enabled = false;
             }
             else
             {
-                adListPanel.Show();
+                saveWeightButton.Enabled = true;
             }
         }
     }

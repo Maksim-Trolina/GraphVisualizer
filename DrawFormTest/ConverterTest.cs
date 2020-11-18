@@ -11,7 +11,7 @@ namespace DrawFormTest
         [Test]
         public void ConvertTest_MatrixNull_EmptyList()
         {
-            List<List<InputCountBox>> inputCounts = null;
+            List<List<CellBox>> inputCounts = null;
             Converter converter = new Converter();
 
             AdjacencyList adjacencyList = converter.ConvertToAdjacencyList(inputCounts);
@@ -23,9 +23,9 @@ namespace DrawFormTest
         [Test]
         public void ConvertTest_Matrix_List()
         {
-            List<List<InputCountBox>> inputCounts = new List<List<InputCountBox>> { new List<InputCountBox>{ new InputCountBox(0,0,0,0) { Text = "0"}, new InputCountBox(0,0,0,0){Text = "12"} ,new InputCountBox(0, 0, 0, 0) { Text="0"} },
-                new List<InputCountBox>{new InputCountBox(0, 0, 0, 0) { Text = "3"},new InputCountBox(0, 0, 0, 0) { Text = "0"},new InputCountBox(0, 0, 0, 0) { Text = "33"} },
-                new List<InputCountBox>{new InputCountBox(0, 0, 0, 0) { Text = "0"}, new InputCountBox(0, 0, 0, 0) { Text = "0"},new InputCountBox(0, 0, 0, 0) { Text = "0"} }
+            List<List<CellBox>> inputCounts = new List<List<CellBox>> { new List<CellBox>{ new CellBox(0,0,0,0) { Text = "0"}, new CellBox(0,0,0,0){Text = "12"} ,new CellBox(0, 0, 0, 0) { Text="0"} },
+                new List<CellBox>{new CellBox(0, 0, 0, 0) { Text = "3"},new CellBox(0, 0, 0, 0) { Text = "0"},new CellBox(0, 0, 0, 0) { Text = "33"} },
+                new List<CellBox>{new CellBox(0, 0, 0, 0) { Text = "0"}, new CellBox(0, 0, 0, 0) { Text = "0"},new CellBox(0, 0, 0, 0) { Text = "0"} }
                 };
             Converter converter = new Converter();
 

@@ -9,6 +9,7 @@ using System.Drawing.Drawing2D;
 using ArrowDraw;
 using Forms;
 using GraphRepresentation;
+using System.Runtime.CompilerServices;
 
 namespace StartForm
 {
@@ -53,7 +54,7 @@ namespace StartForm
         private Converter converter;
 
 
-        public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<InputCountBox>> matrix)
+        public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<CellBox>> matrix)
 
         {
             InitializeComponent();
@@ -70,11 +71,7 @@ namespace StartForm
 
             drawingEdges = new DrawingEdges();
 
-            MouseDown += new MouseEventHandler(MouseClickDrawForm);
-
-            SaveButton saveButton = new SaveButton();
-
-            Controls.Add(saveButton);
+            MouseDown += new MouseEventHandler(MouseClickDrawForm);          
 
             vertexBrush = new SolidBrush(Color.Black);
 
@@ -104,7 +101,7 @@ namespace StartForm
 
             Controls.Add(adListPanel);
 
-            toolPanel = new ToolPanel(0, 100, weightTable, this.edgeDraws, adjacencyList, this, adListPanel);
+            toolPanel = new ToolPanel(0, 100, weightTable, this.edgeDraws, adjacencyList, this, adListPanel, this.vertexDraws, matrix);
 
             Controls.Add(toolPanel);
 
@@ -117,6 +114,7 @@ namespace StartForm
             brushes[(int)BrushColor.Red] = Brushes.Red;
 
             brushes[(int)BrushColor.Black] = Brushes.Black;
+
         }
 
         
@@ -154,8 +152,7 @@ namespace StartForm
                 else
                 {
 
-                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId, ref adjacencyList, adListPanel);
-
+                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId, ref adjacencyList, adListPanel, matrixWeightPanel);
 
                     Refresh();
 

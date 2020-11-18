@@ -9,7 +9,7 @@ namespace Forms.DrawForm
 {
     class AdjacencyListPanel : Panel
     {
-        private AdjacencyListTable adListTable;
+        public AdjacencyListTable AdListTable { get; set; }
 
         public AdjacencyListPanel(int width, int height, int positionX, int positionY, GraphRepresentation.AdjacencyList adjacencyList)
         {
@@ -23,26 +23,28 @@ namespace Forms.DrawForm
 
             BorderStyle = BorderStyle.Fixed3D;
 
-            adListTable = new AdjacencyListTable(adjacencyList, this);
+            AdListTable = new AdjacencyListTable(adjacencyList, this);
 
+            Visible = false;
         }
 
         public void UpdateIdPanel()
         {
-            adListTable.UpdateRows();
+            AdListTable.UpdateRows();
         }
 
         public void UpdateNodesPanel(int startId, int endId)
         {
-            adListTable.UpdateColumns(startId, endId);
+            AdListTable.UpdateColumns(startId, endId);
         }
+
     }
 
     class AdjacencyListTable
     {
         private GraphRepresentation.AdjacencyList adjacencyList;
 
-        private List<List<CellAdjacencyList>> cells;
+        public List<List<CellAdjacencyList>> Cells { get; set; }
 
         private AdjacencyListPanel adListPanel;
 
@@ -52,7 +54,7 @@ namespace Forms.DrawForm
 
             this.adListPanel = adListPanel;
 
-            cells = new List<List<CellAdjacencyList>>();
+            Cells = new List<List<CellAdjacencyList>>();
 
             int stepX = 160;
 
@@ -60,7 +62,7 @@ namespace Forms.DrawForm
 
             for (int i = 0; i < adjacencyList.adjacencyList.Count; ++i)
             {
-                cells.Add(new List<CellAdjacencyList>());
+                Cells.Add(new List<CellAdjacencyList>());
 
                 InfoTextLabel startId = new InfoTextLabel(40, 20, adListPanel.HorizontalScroll.Value, 20 + i * stepY, Convert.ToString(i) + ": ");
 
@@ -72,9 +74,9 @@ namespace Forms.DrawForm
 
                     int weight = adjacencyList.adjacencyList[i][j].Weight;
 
-                    cells[i].Add(new CellAdjacencyList(id, weight, 40 + stepX * j, stepY * i));
+                    Cells[i].Add(new CellAdjacencyList(id, weight, 40 + stepX * j, stepY * i));
 
-                    adListPanel.Controls.Add(cells[i][j]);
+                    adListPanel.Controls.Add(Cells[i][j]);
                 }
             }
 
@@ -89,7 +91,7 @@ namespace Forms.DrawForm
 
             int numberLastKey = adjacencyList.adjacencyList.Count - 1;
 
-            cells.Add(new List<CellAdjacencyList>());
+            Cells.Add(new List<CellAdjacencyList>());
 
             InfoTextLabel startId = new InfoTextLabel(40, 20, -adListPanel.HorizontalScroll.Value, 
                 20 + numberLastKey * stepY - adListPanel.VerticalScroll.Value, Convert.ToString(numberLastKey) + ": ");
@@ -102,10 +104,10 @@ namespace Forms.DrawForm
 
                 int weight = adjacencyList.adjacencyList[numberLastKey][j].Weight;
 
-                cells[numberLastKey].Add(new CellAdjacencyList(id, weight, 40 + stepX * j - adListPanel.HorizontalScroll.Value
+                Cells[numberLastKey].Add(new CellAdjacencyList(id, weight, 40 + stepX * j - adListPanel.HorizontalScroll.Value
                     , stepY * numberLastKey - adListPanel.VerticalScroll.Value));
 
-                adListPanel.Controls.Add(cells[numberLastKey][j]);
+                adListPanel.Controls.Add(Cells[numberLastKey][j]);
             }
         }
 
@@ -115,14 +117,12 @@ namespace Forms.DrawForm
 
             int stepY = 80;
 
-            cells[startId].Add(new CellAdjacencyList(endId, 0, 40 + stepX * cells[startId].Count - adListPanel.HorizontalScroll.Value
+            Cells[startId].Add(new CellAdjacencyList(endId, 1, 40 + stepX * Cells[startId].Count - adListPanel.HorizontalScroll.Value
                 , stepY * startId - adListPanel.VerticalScroll.Value));
 
             int numberLastKey = adjacencyList.adjacencyList[startId].Count - 1;
 
-            adListPanel.Controls.Add(cells[startId][numberLastKey]);
-
-
+            adListPanel.Controls.Add(Cells[startId][numberLastKey]);
         }
     }
 
@@ -130,7 +130,7 @@ namespace Forms.DrawForm
     {
         private int id;
 
-        private InputCountBox weightBox;
+        public CellBox WeightBox { get; set; }
 
         InfoTextLabel text;
 
@@ -153,9 +153,9 @@ namespace Forms.DrawForm
 
             text = new InfoTextLabel(widthText, heightText, x, y, $"id: {id}; w: ");
 
-            weightBox = new InputCountBox(widthBox, heightBox, x + widthText, y, Convert.ToString(weight));
+            WeightBox = new CellBox(widthBox, heightBox, x + widthText, y, weight);
 
-            Controls.Add(weightBox);
+            Controls.Add(WeightBox);
 
             Controls.Add(text);
 

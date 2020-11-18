@@ -32,7 +32,7 @@ namespace SerializingTest
 
             graph.Vertexs.Add(new Vertex() { Nodes = vertex.Nodes, Id = 42 });
 
-            serializeGraph.SaveGraph(graph);
+            serializeGraph.SaveGraph(graph, "TestSeving");
 
         }
 
@@ -41,7 +41,7 @@ namespace SerializingTest
         {
 
             int expected = 228;
-            int actual = deserializeGraph.LoadGraph().Vertexs[0].Nodes[0].Weight;          
+            int actual = deserializeGraph.LoadGraph("TestSeving.json").Vertexs[0].Nodes[0].Weight;          
 
             Assert.AreEqual(expected, actual);
         }
@@ -52,7 +52,7 @@ namespace SerializingTest
         {
 
             int expected = 42;
-            int actual = deserializeGraph.LoadGraph().Vertexs[0].Id;
+            int actual = deserializeGraph.LoadGraph("TestSeving.json").Vertexs[0].Id;
           
             Assert.AreEqual(expected, actual);
         }
@@ -63,7 +63,7 @@ namespace SerializingTest
         {
 
             int expected = 17;
-            int actual = deserializeGraph.LoadGraph().Vertexs[0].Nodes[1].Connectable;
+            int actual = deserializeGraph.LoadGraph("TestSeving.json").Vertexs[0].Nodes[1].Connectable;
 
             Assert.AreEqual(expected, actual);
         }
