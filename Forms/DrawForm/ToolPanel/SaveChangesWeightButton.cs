@@ -86,14 +86,26 @@ namespace Forms.DrawForm
 
         private void UpdateMatrix()
         {
+            int value;
+
             for (int i = 0; i < matrix.Count; ++i)
             {
                 for (int j = 0; j < matrix.Count; ++j)
                 {
-                    if (Int32.Parse(matrix[i][j].Text) != 0)
+                    try
+                    {
+                        value = Int32.Parse(matrix[i][j].Text);
+                    }
+                    catch
+                    {
+                        value = matrix[i][j].FirstDigit - '0';
+                    }
+
+                    if (value != 0)
                     {
                         matrix[i][j].Text = Convert.ToString(adjacencyList.adjacencyList[i][adjacencyList.FindNumberInList(i,j)].Weight);
                     }
+                   
                 }
             }
         }
