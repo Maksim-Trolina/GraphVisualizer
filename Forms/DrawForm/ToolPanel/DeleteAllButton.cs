@@ -24,8 +24,10 @@ namespace Forms.DrawForm
 
         private List<List<CellBox>> matrix;
 
+        private List<List<CellAdjacencyList>> cells;
+
         public DeleteAllButton(int width, int height, AdjacencyList adjacencyList, List<VertexDraw> vertexDraws, 
-            List<EdgeDraw> edgeDraws, StartForm.DrawForm drawForm, AdjacencyListPanel adjacencyListPanel, WeightTable weightTable, List<List<CellBox>> matrix)
+            List<EdgeDraw> edgeDraws, StartForm.DrawForm drawForm, AdjacencyListPanel adjacencyListPanel, WeightTable weightTable, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells)
         {
 
             Size = new System.Drawing.Size(width, height);
@@ -49,6 +51,8 @@ namespace Forms.DrawForm
             this.adjacencyListPanel = adjacencyListPanel;
 
             this.matrix = matrix;
+
+            this.cells = cells;
         }
 
         public void ButtonClick(object sender, EventArgs e)
@@ -58,6 +62,7 @@ namespace Forms.DrawForm
             vertexDraws.Clear();
             edgeDraws.Clear();
             matrix.Clear();
+            cells.Clear();
 
             adjacencyListPanel.Controls.Clear();
             weightTable.Controls.Clear();
