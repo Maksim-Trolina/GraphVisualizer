@@ -22,8 +22,9 @@ namespace Forms.DrawForm
 
         private SaveWeightButton saveWeightButton;
 
+
         public ToolPanel(int positionX, int positionY, WeightTable weightTable, List<EdgeDraw> edgeDraws, AdjacencyList adjacencyList 
-            ,StartForm.DrawForm drawForm, AdjacencyListPanel adListPanel, List<VertexDraw> vertexDraws, List<List<CellBox>> matrix)
+            ,StartForm.DrawForm drawForm, AdjacencyListPanel adListPanel, List<VertexDraw> vertexDraws, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells)
         {
 
             Location = new System.Drawing.Point(positionX, positionY);
@@ -42,7 +43,7 @@ namespace Forms.DrawForm
 
             saveButton = new SaveButton(20, 20, adjacencyList);
 
-            deleteAllButton = new DeleteAllButton(20, 20, adjacencyList, vertexDraws, edgeDraws, drawForm, adListPanel, weightTable, matrix);
+            deleteAllButton = new DeleteAllButton(20, 20, adjacencyList, vertexDraws, edgeDraws, drawForm, adListPanel, weightTable, matrix, cells);
 
 
             Items.Add(tableButton); 

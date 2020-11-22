@@ -101,7 +101,8 @@ namespace StartForm
 
             Controls.Add(adListPanel);
 
-            toolPanel = new ToolPanel(0, 100, weightTable, this.edgeDraws, adjacencyList, this, adListPanel, this.vertexDraws, matrix);
+            toolPanel = new ToolPanel(0, 100, weightTable, this.edgeDraws
+                , adjacencyList, this, adListPanel, this.vertexDraws, matrix, adListPanel.AdListTable.Cells);
 
             Controls.Add(toolPanel);
 
