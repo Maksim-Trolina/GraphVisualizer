@@ -32,8 +32,8 @@ namespace Forms
             inputCountVertexForm = new InputCountVertexForm(startForm);
 
             startForm.Hide();
-            inputCountVertexForm.ShowDialog();
-            startForm.Close();
+            inputCountVertexForm.Show();
+            //startForm.Close();
 
         }           
     }

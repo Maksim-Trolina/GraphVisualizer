@@ -23,7 +23,7 @@ namespace Forms
 
         private MatrixGraph matrixGraph;
 
-        private BackButton backButton;
+        private BackToMenuButton backToMenuButton;
 
         public InputCountVertexForm(StartForm.StartForm startForm)
         {
@@ -41,8 +41,8 @@ namespace Forms
             confirmButton = new ConfirmButton(100, 30, 500, 100, inputBox, this, matrixGraph);
             Controls.Add(confirmButton);
 
-            backButton = new BackButton(100, 30, 10, 410, matrixGraph, startForm, this);
-            Controls.Add(backButton);
+            backToMenuButton = new BackToMenuButton(matrixGraph, startForm, this);
+            Controls.Add(backToMenuButton);
 
             drawVertexButton = new DrawVertexButton(100, 30, 600, 100, this, matrixGraph);
             Controls.Add(drawVertexButton);
