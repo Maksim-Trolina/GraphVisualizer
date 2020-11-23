@@ -33,6 +33,8 @@ namespace Forms.DrawForm
 
             Text = buttonText;
 
+            Location = new System.Drawing.Point(600, 410);
+
             this.adjacencyList = adjacencyList;
 
             this.vertexDraws = vertexDraws;
@@ -65,8 +67,8 @@ namespace Forms.DrawForm
             adjacencyListPanel.Controls.Clear();
             weightTable.Controls.Clear();
 
-            drawForm.Hide();
             startForm.Show();
+            drawForm.Hide();
             
         }
 

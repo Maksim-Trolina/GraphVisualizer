@@ -11,9 +11,7 @@ namespace Forms
 
             Text = buttonText;
 
-            Size = new System.Drawing.Size(100, 30);
-
-            Location = new System.Drawing.Point(10, 410);
+            Size = new System.Drawing.Size(100, 30);           
 
             Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
 

@@ -64,11 +64,10 @@ namespace Forms
 
             drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix, startForm);
 
+            drawForm.Show();
+
             inputCountForm.Hide();
-
-            drawForm.ShowDialog();
-
-            inputCountForm.Close();
+            
 
         }
 

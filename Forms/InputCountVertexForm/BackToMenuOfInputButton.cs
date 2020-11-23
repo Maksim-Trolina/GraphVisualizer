@@ -18,6 +18,8 @@ namespace Forms
 
             Text = buttonText;
 
+            Location = new System.Drawing.Point(10, 410);
+
             this.startForm = startForm;
 
             this.inputCountVertexForm = inputCountVertexForm;
@@ -32,8 +34,10 @@ namespace Forms
 
             matrixGraph.DeleteMatrix();
 
-            inputCountVertexForm.Hide();
             startForm.Show();
+
+            inputCountVertexForm.Hide();
+           
 
         }
     }
