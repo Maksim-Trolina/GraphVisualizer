@@ -5,8 +5,14 @@ namespace Forms
 {
     class BackButton : Button
     {
+        private MatrixGraph matrixGraph;
 
-        public BackButton(int width, int height, int positionX, int positionY, string buttonText = "back to menu")
+        private StartForm.StartForm startForm;
+
+        private InputCountVertexForm inputCountVertexForm;
+
+        public BackButton(int width, int height, int positionX, int positionY, MatrixGraph matrixGraph, 
+            StartForm.StartForm startForm, InputCountVertexForm inputCountVertexForm, string buttonText = "back to menu")
         {
 
             this.Text = buttonText;
@@ -15,14 +21,25 @@ namespace Forms
 
             this.Location = new System.Drawing.Point(positionX, positionY);
 
+            Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+
             Click += new EventHandler(ButtonClick);
+
+            this.matrixGraph = matrixGraph;
+
+            this.startForm = startForm;
+
+            this.inputCountVertexForm = inputCountVertexForm;
 
         }
 
-        public void ButtonClick(object sender, EventArgs e)
+        public virtual void ButtonClick(object sender, EventArgs e)
         {
+            matrixGraph.DeleteMatrix();
 
-
+            inputCountVertexForm.Hide();
+            startForm.ShowDialog();
+            inputCountVertexForm.Close();
         }
     }
 }
