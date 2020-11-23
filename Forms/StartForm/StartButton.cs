@@ -33,7 +33,6 @@ namespace Forms
 
             startForm.Hide();
             inputCountVertexForm.Show();
-            //startForm.Close();
 
         }           
     }

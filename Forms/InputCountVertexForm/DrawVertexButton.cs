@@ -26,8 +26,10 @@ namespace Forms
 
         private List<List<CellBox>> matrix;
 
+        private StartForm.StartForm startForm;
+
         public DrawVertexButton(int width, int height, int positionX, int positionY, InputCountVertexForm inputCountForm
-            , MatrixGraph matrixGraph, string buttonText = "Create vertexes")
+            , MatrixGraph matrixGraph, StartForm.StartForm startForm, string buttonText = "Create vertexes")
         {
             this.Text = buttonText;
 
@@ -48,6 +50,8 @@ namespace Forms
             matrix = new List<List<CellBox>>();
 
             Click += new EventHandler(ButtonClick);
+
+            this.startForm = startForm;
         }
 
         private void ButtonClick(object sender, EventArgs e)
@@ -58,7 +62,7 @@ namespace Forms
 
             initialGraph.CreateEdges();
 
-            drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix);
+            drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix, startForm);
 
             inputCountForm.Hide();
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Forms
 {
-    class BackToMenuButton : BackButton
+    class BackToMenuOfInputButton : BackButton
     {
         private Forms.InputCountVertexForm inputCountVertexForm;
 
@@ -12,7 +12,7 @@ namespace Forms
 
         private StartForm.StartForm startForm;
 
-        public BackToMenuButton(MatrixGraph matrixGraph, StartForm.StartForm startForm, 
+        public BackToMenuOfInputButton(MatrixGraph matrixGraph, StartForm.StartForm startForm, 
             InputCountVertexForm inputCountVertexForm, string buttonText = "back to menu") : base(buttonText)
         {
 
@@ -29,13 +29,12 @@ namespace Forms
 
         public override void ButtonClick(object sender, EventArgs e)
         {
-            //base.ButtonClick(sender, e);
 
             matrixGraph.DeleteMatrix();
 
             inputCountVertexForm.Hide();
             startForm.Show();
-            //inputCountVertexForm.Close();
+
         }
     }
 }

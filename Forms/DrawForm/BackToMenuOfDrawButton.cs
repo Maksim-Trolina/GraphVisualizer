@@ -1,15 +1,13 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Collections.Generic;
 using GraphModelDraw;
 using GraphRepresentation;
-using System.Collections.Generic;
-using System;
 
 
 namespace Forms.DrawForm
 {
-    class DeleteAllButton : ToolStripButton
+    class BackToMenuOfDrawButton : BackButton
     {
-
         private AdjacencyList adjacencyList;
 
         private List<VertexDraw> vertexDraws;
@@ -26,18 +24,14 @@ namespace Forms.DrawForm
 
         private List<List<CellAdjacencyList>> cells;
 
-        public DeleteAllButton(int width, int height, AdjacencyList adjacencyList, List<VertexDraw> vertexDraws, 
+        private StartForm.StartForm startForm;
+
+        public BackToMenuOfDrawButton(AdjacencyList adjacencyList, List<VertexDraw> vertexDraws, 
             List<EdgeDraw> edgeDraws, StartForm.DrawForm drawForm, AdjacencyListPanel adjacencyListPanel, 
-            WeightTable weightTable, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells)
+            WeightTable weightTable, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells, StartForm.StartForm startForm, string buttonText = "back to menu") : base(buttonText)
         {
 
-            Size = new System.Drawing.Size(width, height);
-
-            Dock = DockStyle.Top;
-
-            Text = "Delete all";
-
-            Click += new EventHandler(ButtonClick);
+            Text = buttonText;
 
             this.adjacencyList = adjacencyList;
 
@@ -54,11 +48,14 @@ namespace Forms.DrawForm
             this.matrix = matrix;
 
             this.cells = cells;
-        }
 
-        public void ButtonClick(object sender, EventArgs e)
+            this.startForm = startForm;
+
+    }
+
+        public override void ButtonClick(object sender, EventArgs e)
         {
-            
+
             adjacencyList.adjacencyList.Clear();
             vertexDraws.Clear();
             edgeDraws.Clear();
@@ -68,7 +65,10 @@ namespace Forms.DrawForm
             adjacencyListPanel.Controls.Clear();
             weightTable.Controls.Clear();
 
-            drawForm.Refresh();
+            drawForm.Hide();
+            startForm.Show();
+            
         }
+
     }
 }

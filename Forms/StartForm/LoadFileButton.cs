@@ -78,7 +78,7 @@ namespace Forms
                 DrawingLoadedEdges(matrix);
                 DrawingLoadedVertexs(matrix);
 
-                drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix);
+                drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix, startForm);
 
                 startForm.Hide();
                 drawForm.ShowDialog();

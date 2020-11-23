@@ -53,8 +53,9 @@ namespace StartForm
 
         private Converter converter;
 
+        private BackToMenuOfDrawButton backToMenuOfDrawButton;
 
-        public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<CellBox>> matrix)
+        public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<CellBox>> matrix, StartForm startForm)
 
         {
             InitializeComponent();
@@ -116,6 +117,10 @@ namespace StartForm
 
             brushes[(int)BrushColor.Black] = Brushes.Black;
 
+            backToMenuOfDrawButton = new BackToMenuOfDrawButton(adjacencyList, vertexDraws, edgeDraws,
+                this, adListPanel, weightTable, matrix, adListPanel.AdListTable.Cells, startForm);
+
+            Controls.Add(backToMenuOfDrawButton);
         }
 
         
