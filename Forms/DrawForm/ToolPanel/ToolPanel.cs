@@ -8,7 +8,7 @@ using GraphRepresentation;
 
 namespace Forms.DrawForm
 {
-    class ToolPanel : ToolStrip
+    public class ToolPanel : ToolStrip
     {
         private WeightTableButton tableButton;
 

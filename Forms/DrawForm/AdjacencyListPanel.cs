@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Forms.DrawForm
 {
-    class AdjacencyListPanel : Panel
+    public class AdjacencyListPanel : Panel
     {
         public AdjacencyListTable AdListTable { get; set; }
 
@@ -40,7 +40,7 @@ namespace Forms.DrawForm
 
     }
 
-    class AdjacencyListTable
+    public class AdjacencyListTable
     {
         private GraphRepresentation.AdjacencyList adjacencyList;
 
@@ -126,7 +126,7 @@ namespace Forms.DrawForm
         }
     }
 
-    class CellAdjacencyList : GroupBox
+    public class CellAdjacencyList : GroupBox
     {
         private int id;
 
