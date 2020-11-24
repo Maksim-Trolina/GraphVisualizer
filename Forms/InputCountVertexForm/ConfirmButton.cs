@@ -7,14 +7,13 @@ namespace Forms
 {
     public class ConfirmButton : Button
     {
-        private InputCountVertexForm inputCountVertexForm;
 
         private InputCountBox inputCountBox;
 
         private MatrixGraph matrixGraph;
 
         public ConfirmButton(int width, int height, int positionX, int positionY, InputCountBox inputCountBox
-            ,InputCountVertexForm inputCountVertexForm, MatrixGraph matrixGraph, string buttonText = "OK")
+            , MatrixGraph matrixGraph, string buttonText = "OK")
         {
             this.Text = buttonText;
 
@@ -23,8 +22,6 @@ namespace Forms
             this.Location = new System.Drawing.Point(positionX, positionY);
 
             this.inputCountBox = inputCountBox;
-
-            this.inputCountVertexForm = inputCountVertexForm;
 
             Click += new EventHandler(ButtonClick);
 
@@ -53,7 +50,7 @@ namespace Forms
 
     public class MatrixGraph
     {
-        public InputCountBox[,] Matrix { get; private set; }
+        public InputCountBox[,] Matrix { get; set; }
 
         private InputCountVertexForm inputCountVertexForm;
 

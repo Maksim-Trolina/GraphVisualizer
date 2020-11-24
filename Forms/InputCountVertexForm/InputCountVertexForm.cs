@@ -1,13 +1,5 @@
-﻿using StartForm;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Text;
-using System.Windows.Forms;
-using GraphModelDraw;
+﻿using System.Windows.Forms;
+
 
 namespace Forms
 {
@@ -21,9 +13,9 @@ namespace Forms
 
         private DrawVertexButton drawVertexButton;
 
-        private MatrixGraph matrixGraph;
+        public MatrixGraph matrixGraph;
 
-        private BackToMenuOfInputButton backToMenuOfInputButton;
+        private BackToMenuFromInputButton backToMenuOfInputButton;
 
         public InputCountVertexForm(StartForm.StartForm startForm)
         {
@@ -37,10 +29,10 @@ namespace Forms
             infoText = new InfoTextLabel(300, 30, 200, 80);
             Controls.Add(infoText);
 
-            confirmButton = new ConfirmButton(100, 30, 500, 100, inputBox, this, matrixGraph);
+            confirmButton = new ConfirmButton(100, 30, 500, 100, inputBox, matrixGraph);
             Controls.Add(confirmButton);
 
-            backToMenuOfInputButton = new BackToMenuOfInputButton(matrixGraph, startForm, this);
+            backToMenuOfInputButton = new BackToMenuFromInputButton(matrixGraph, startForm, this);
             Controls.Add(backToMenuOfInputButton);
 
             drawVertexButton = new DrawVertexButton(100, 30, 600, 100, this, matrixGraph, startForm);

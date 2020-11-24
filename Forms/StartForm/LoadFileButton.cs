@@ -32,6 +32,8 @@ namespace Forms
 
         private CollisionVertex collisionVertex;
 
+        private InputCountVertexForm inputCountVertexForm;
+
         public LoadFileButton(StartForm.StartForm startForm)
         {
             Text = "Load file";
@@ -78,7 +80,11 @@ namespace Forms
                 DrawingLoadedEdges(matrix);
                 DrawingLoadedVertexs(matrix);
 
-                drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix, startForm);
+                if(inputCountVertexForm == null)
+                inputCountVertexForm = new InputCountVertexForm(startForm);
+
+                if(drawForm == null)
+                drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix, startForm, inputCountVertexForm);
 
                 startForm.Hide();
                 drawForm.ShowDialog();

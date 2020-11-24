@@ -6,7 +6,7 @@ using GraphRepresentation;
 
 namespace Forms.DrawForm
 {
-    class BackToMenuOfDrawButton : BackButton
+    class BackToMenuFromDrawButton : BackButton
     {
         private AdjacencyList adjacencyList;
 
@@ -26,14 +26,15 @@ namespace Forms.DrawForm
 
         private StartForm.StartForm startForm;
 
-        public BackToMenuOfDrawButton(AdjacencyList adjacencyList, List<VertexDraw> vertexDraws, 
+        public BackToMenuFromDrawButton(AdjacencyList adjacencyList, List<VertexDraw> vertexDraws, 
             List<EdgeDraw> edgeDraws, StartForm.DrawForm drawForm, AdjacencyListPanel adjacencyListPanel, 
-            WeightTable weightTable, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells, StartForm.StartForm startForm, string buttonText = "back to menu") : base(buttonText)
+            WeightTable weightTable, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells, 
+            StartForm.StartForm startForm, string buttonText = "back to menu") : base(buttonText)
         {
 
             Text = buttonText;
 
-            Location = new System.Drawing.Point(600, 410);
+            Location = new System.Drawing.Point(300, 410);
 
             this.adjacencyList = adjacencyList;
 

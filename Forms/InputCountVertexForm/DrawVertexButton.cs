@@ -56,13 +56,18 @@ namespace Forms
 
         private void ButtonClick(object sender, EventArgs e)
         {
+            vertexDraws.Clear();
+
+            edgeDraws.Clear();
+
             initialGraph.CreateVertexes();
 
             initialGraph.FillingMatrix(matrix);
 
             initialGraph.CreateEdges();
 
-            drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix, startForm);
+            if(drawForm == null)
+            drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix, startForm, inputCountForm);          
 
             drawForm.Show();
 

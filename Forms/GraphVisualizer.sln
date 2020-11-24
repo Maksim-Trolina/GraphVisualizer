@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forms", "Forms.csproj", "{6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Forms", "Forms", "{F131930F-A139-433C-B0E5-8E98F443EBA1}"
 	ProjectSection(SolutionItems) = preProject
-		InputCountVertexForm\BackButton.cs = InputCountVertexForm\BackButton.cs
+		BackButton.cs = BackButton.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{A3A95FA3-C2F9-4C0D-8920-3C34D275BBFF}"

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Forms
 {
-    class BackToMenuOfInputButton : BackButton
+    class BackToMenuFromInputButton : BackButton
     {
         private Forms.InputCountVertexForm inputCountVertexForm;
 
@@ -12,7 +12,7 @@ namespace Forms
 
         private StartForm.StartForm startForm;
 
-        public BackToMenuOfInputButton(MatrixGraph matrixGraph, StartForm.StartForm startForm, 
+        public BackToMenuFromInputButton(MatrixGraph matrixGraph, StartForm.StartForm startForm, 
             InputCountVertexForm inputCountVertexForm, string buttonText = "back to menu") : base(buttonText)
         {
 

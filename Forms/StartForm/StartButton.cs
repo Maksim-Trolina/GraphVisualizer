@@ -29,6 +29,7 @@ namespace Forms
 
         public void ButtonClick(object sender, EventArgs e)
         {
+            if(inputCountVertexForm == null)
             inputCountVertexForm = new InputCountVertexForm(startForm);
 
             inputCountVertexForm.Show();
