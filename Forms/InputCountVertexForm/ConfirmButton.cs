@@ -50,7 +50,7 @@ namespace Forms
 
     public class MatrixGraph
     {
-        public InputCountBox[,] Matrix { get; set; }
+        public InputCountBox[,] Matrix { get; private set; }
 
         private InputCountVertexForm inputCountVertexForm;
 

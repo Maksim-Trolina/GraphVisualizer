@@ -34,29 +34,29 @@ namespace Forms.DrawForm
 
         private WeightTable weightTable;
 
-        public List<List<CellBox>> Matrix;
+        private List<List<CellBox>> matrix;
 
         public MatrixWeightPanel(WeightTable weightTable, List<List<CellBox>> matrix)
         {
 
             this.weightTable = weightTable;
-            this.Matrix = matrix;
+            this.matrix = matrix;
 
         }
 
         public void DrawingMatrix()
         {
 
-            for (int i = 0; i < Matrix.Count; i++)
+            for (int i = 0; i < matrix.Count; i++)
             {
 
-                for (int j = 0; j < Matrix.Count; j++)
+                for (int j = 0; j < matrix.Count; j++)
                 {
-                    if (Matrix[i][j].Text == "0")
+                    if (matrix[i][j].Text == "0")
                     {
-                        Matrix[i][j].Enabled = false;
+                        matrix[i][j].Enabled = false;
                     }
-                    weightTable.Controls.Add(Matrix[i][j]);
+                    weightTable.Controls.Add(matrix[i][j]);
                 }
 
             }
@@ -76,7 +76,7 @@ namespace Forms.DrawForm
             int positionY = 0;
 
 
-            int countCellsBefore = Matrix.Count;
+            int countCellsBefore = matrix.Count;
 
 
             for (int i = 0; i < countCellsBefore; i++)
@@ -84,12 +84,12 @@ namespace Forms.DrawForm
                 for (int j = countCellsBefore; j < countCellsBefore + countOfNewVertexs; j++)
                 {
 
-                    Matrix[i].Add(new CellBox(width, height, positionX + (width + stepX) * j - weightTable.HorizontalScroll.Value
+                    matrix[i].Add(new CellBox(width, height, positionX + (width + stepX) * j - weightTable.HorizontalScroll.Value
                         , positionY + (height + stepY) * i - weightTable.VerticalScroll.Value));
 
-                    Matrix[i][j].Enabled = false;
+                    matrix[i][j].Enabled = false;
 
-                    weightTable.Controls.Add(Matrix[i][j]);
+                    weightTable.Controls.Add(matrix[i][j]);
 
                 }
                 
@@ -97,17 +97,17 @@ namespace Forms.DrawForm
 
             for(int i = countCellsBefore; i < countCellsBefore + countOfNewVertexs; i++)
             {
-                Matrix.Add(new List<CellBox>());
+                matrix.Add(new List<CellBox>());
 
                 for(int j = 0; j < countOfNewVertexs + countCellsBefore; j++)
                 {
 
-                    Matrix[i].Add(new CellBox(width, height, positionX + (width + stepX) * j - weightTable.HorizontalScroll.Value
+                    matrix[i].Add(new CellBox(width, height, positionX + (width + stepX) * j - weightTable.HorizontalScroll.Value
                          , positionY + (height + stepY) * i - weightTable.VerticalScroll.Value));
 
-                    Matrix[i][j].Enabled = false;
+                    matrix[i][j].Enabled = false;
 
-                    weightTable.Controls.Add(Matrix[i][j]);
+                    weightTable.Controls.Add(matrix[i][j]);
 
                 }
                 
@@ -117,9 +117,9 @@ namespace Forms.DrawForm
 
         public void UpdateNodes(int startId, int endId)
         {
-            Matrix[startId][endId].Text = "1";
+            matrix[startId][endId].Text = "1";
 
-            Matrix[startId][endId].Enabled = true;
+            matrix[startId][endId].Enabled = true;
         }
      }
 }

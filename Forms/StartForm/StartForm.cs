@@ -13,7 +13,7 @@ namespace StartForm
 
         public StartForm()
         {
-            InitializeComponent();;
+            InitializeComponent();
 
             startButton = new StartButton(this);
 
