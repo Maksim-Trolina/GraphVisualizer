@@ -26,13 +26,13 @@ namespace AlgorithmsTest
 
             WeightedGraph weightedGraph = new WeightedGraph(adjacencyList);
 
-            List<Vertex> path = weightedGraph.FindShortestPath(verticles[0], verticles[2]);
+            List<int> actual = weightedGraph.FindShortestPath(verticles[0].Id, verticles[2].Id);
 
-            Assert.AreEqual(null, path);
+            Assert.Null(actual);
         }
 
         [Test]
-        public void FindShortestPathTest_SimpleGraph_NullExcepted()
+        public void FindShortestPathTest_SimpleGraph_PathExpected()
         {
             List<Vertex> verticles = new List<Vertex>()
             {
@@ -74,41 +74,40 @@ namespace AlgorithmsTest
 
             WeightedGraph weightedGraph = new WeightedGraph(adjacencyList);
 
-            List<Vertex> actual = weightedGraph.FindShortestPath(verticles[0], verticles[4]);
+            List<int> actual = weightedGraph.FindShortestPath(verticles[0].Id, verticles[4].Id);
 
-            List<Vertex> expected = new List<Vertex>()
-            {
-                new Vertex()
-                { Id = 0, Nodes = new List<Node>()
-                    {
-                         new Node() { Weight = 3, Connectable = 4 }
-                        , new Node() { Weight = 1, Connectable = 1 }
-                        , new Node() { Weight = 2, Connectable = 2}
-                    }
-                },
-
-                new Vertex()
-                { Id = 1, Nodes = new List<Node>()
-                    {
-                        new Node() { Weight = 1, Connectable = 4 }
-                        ,new Node() { Weight = 2, Connectable = 3}
-                    }
-                },
-
-                new Vertex()
-                { Id = 4, Nodes = new List<Node>()
-                    {
-                        new Node() { Weight = 1, Connectable = 3 }
-                    }
-                },
-            };
+            List<int> expected = new List<int> { 0, 1, 4 };
 
             for (int i = 0; i < actual.Count; ++i)
             {
-                Assert.AreEqual(expected[i].Id, actual[i].Id);
+                Assert.AreEqual(expected[i], actual[i]);
             }
+        }
 
-           
+        [Test]
+        public void FindShortestPath_StartEqualsEnd_PathExpected()
+        {
+            List<Vertex> verticles = new List<Vertex>()
+            {
+                new Vertex() { Id = 0, Nodes = new List<Node>() { new Node() { Weight = 1, Connectable = 1 } } },
+
+                new Vertex() { Id = 1, Nodes = new List<Node>() { new Node() { Weight = 3, Connectable = 0 } } },
+
+                new Vertex() { Id = 2 }
+            };
+
+            AdjacencyList adjacencyList = new AdjacencyList(verticles);
+
+            WeightedGraph weightedGraph = new WeightedGraph(adjacencyList);
+
+            List<int> actual = weightedGraph.FindShortestPath(verticles[0].Id, verticles[0].Id);
+
+            List<int> expected = new List<int> { 0 };
+
+            for (int i = 0; i < actual.Count; ++i)
+            {
+                Assert.AreEqual(expected[i], actual[i]);
+            }
         }
     }
 }

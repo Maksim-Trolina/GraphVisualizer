@@ -42,11 +42,9 @@ namespace Algorithms
             }
         }
         
-        public List<Vertex> FindShortestPath(Vertex startVertex, Vertex endVertex)
+        public List<int> FindShortestPath(int startVertexId, int endVertexId)
         {
-            List<Vertex> path = new List<Vertex>();
-
-            VertexInfo startVertexInfo = GetVertexInfo(startVertex.Id);
+            VertexInfo startVertexInfo = GetVertexInfo(startVertexId);
 
             startVertexInfo.SumWeightEdges = 0;
 
@@ -64,23 +62,7 @@ namespace Algorithms
                 SetSumToNextVertex(currentVertexInfo);
             }
 
-            if (GetVertexInfo(endVertex.Id).SumWeightEdges == Int32.MaxValue)
-            {
-                return null;
-            }
-
-            while (startVertex.Id != endVertex.Id)
-            {
-                path.Add(endVertex);
-
-                endVertex = GetVertexInfo(endVertex.Id).PrevVertex;
-            }
-
-            path.Add(endVertex);
-
-            path.Reverse();
-
-            return path;
+            return GetPath(startVertexId, endVertexId);
         }
 
         private void SetSumToNextVertex(VertexInfo vertexInfo)
@@ -89,13 +71,13 @@ namespace Algorithms
 
             for (int i = 0; i < vertexInfo.Vertex.Nodes.Count; ++i)
             {
-                int sum = vertexInfo.SumWeightEdges + vertexInfo.Vertex.Nodes[i].Weight;
+                long sum = vertexInfo.SumWeightEdges + vertexInfo.Vertex.Nodes[i].Weight;
 
                 VertexInfo nextVertexInfo = GetVertexInfo(vertexInfo.Vertex.Nodes[i].Connectable);
 
                 if (sum < nextVertexInfo.SumWeightEdges)
                 {
-                    nextVertexInfo.SumWeightEdges = sum;
+                    nextVertexInfo.SumWeightEdges = Convert.ToInt32(sum);
 
                     nextVertexInfo.PrevVertex = vertexInfo.Vertex;
                 }
@@ -132,6 +114,31 @@ namespace Algorithms
             }
 
             return null;
+        }
+
+        private List<int> GetPath(int startVertexId, int endVertexId)
+        {
+            List<int> path = new List<int>();
+
+            if (GetVertexInfo(endVertexId).SumWeightEdges == Int32.MaxValue)
+            {
+                return null;
+            }
+
+            Vertex vertex = new Vertex() { Id = endVertexId };
+
+            while (startVertexId != vertex.Id)
+            {
+                path.Add(vertex.Id);
+
+                vertex = GetVertexInfo(vertex.Id).PrevVertex;
+            }
+
+            path.Add(startVertexId);
+
+            path.Reverse();
+
+            return path;
         }
     }
 }
