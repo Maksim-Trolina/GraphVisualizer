@@ -100,5 +100,19 @@ namespace AlgorithmsTest
 
             Assert.IsTrue(isTrueCount && cycles[0].SequenceEqual(new List<int> { 0, 1, 2, 0 }) && cycles[1].SequenceEqual(new List<int> { 0, 4, 1, 3, 0 }));
         }
+
+        [Test]
+        public void GetCyclesTest_GraphWithoutCycles_ZeroCycle()
+        {
+            List<List<int>> graph = new List<List<int>> { new List<int> { 1 }, new List<int> { 2 }, new List<int>() };
+            UnweightedGraph unweightedGraph = new UnweightedGraph(graph);
+
+            List<List<int>> cycles = unweightedGraph.GetCycles();
+
+            bool isTrueCount = cycles.Count == 0;
+
+            Assert.IsTrue(isTrueCount);
+            
+        }
     }
 }
