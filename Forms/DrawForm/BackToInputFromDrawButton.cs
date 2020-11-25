@@ -6,7 +6,7 @@ using GraphRepresentation;
 
 namespace Forms.DrawForm
 {
-    class BackToMenuFromDrawButton : BackButton
+    class BackToInputFromDrawButton : BackButton
     {
         private AdjacencyList adjacencyList;
 
@@ -24,17 +24,19 @@ namespace Forms.DrawForm
 
         private List<List<CellAdjacencyList>> cells;
 
-        private StartForm.StartForm startForm;
+        private InputCountVertexForm inputCountVertexForm;
 
-        public BackToMenuFromDrawButton(AdjacencyList adjacencyList, List<VertexDraw> vertexDraws, 
-            List<EdgeDraw> edgeDraws, StartForm.DrawForm drawForm, AdjacencyListPanel adjacencyListPanel, 
-            WeightTable weightTable, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells, 
-            StartForm.StartForm startForm, string buttonText = "back to menu") : base(buttonText)
+        private MatrixGraph matrixGraph;
+
+        public BackToInputFromDrawButton(AdjacencyList adjacencyList, List<VertexDraw> vertexDraws,
+            List<EdgeDraw> edgeDraws, StartForm.DrawForm drawForm, AdjacencyListPanel adjacencyListPanel,
+            WeightTable weightTable, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells,
+            InputCountVertexForm inputCountVertexForm, MatrixGraph matrixGraph, string buttonText = "back to matrix") : base(buttonText)
         {
 
             Text = buttonText;
 
-            Location = new System.Drawing.Point(300, 410);
+            Location = new System.Drawing.Point(400, 410);
 
             this.adjacencyList = adjacencyList;
 
@@ -52,9 +54,11 @@ namespace Forms.DrawForm
 
             this.cells = cells;
 
-            this.startForm = startForm;
+            this.inputCountVertexForm = inputCountVertexForm;
 
-    }
+            this.matrixGraph = matrixGraph;
+
+        }
 
         public override void ButtonClick(object sender, EventArgs e)
         {
@@ -67,9 +71,14 @@ namespace Forms.DrawForm
 
             adjacencyListPanel.Controls.Clear();
             weightTable.Controls.Clear();
-           
-            startForm.Show();
+            
+            if(matrixGraph != null)
+            matrixGraph.DeleteMatrix();
+
+            inputCountVertexForm.Show();
+
             drawForm.Hide();
+
         }
 
     }

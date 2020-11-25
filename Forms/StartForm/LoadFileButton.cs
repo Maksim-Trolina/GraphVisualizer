@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using GraphModelDraw;
 using CollisionDraw;
 using Forms.DrawForm;
+using GraphRepresentation;
 
 namespace Forms
 {
@@ -33,6 +34,10 @@ namespace Forms
         private CollisionVertex collisionVertex;
 
         private InputCountVertexForm inputCountVertexForm;
+
+        private MatrixGraph matrixGraph;
+
+        private AdjacencyList adjacencyList;
 
         public LoadFileButton(StartForm.StartForm startForm)
         {
@@ -77,6 +82,8 @@ namespace Forms
 
                 matrix = converter.ConvertToListListCellBox(loadGraph);
 
+                adjacencyList = converter.ConvertToAdjacencyList(matrix);
+
                 DrawingLoadedEdges(matrix);
                 DrawingLoadedVertexs(matrix);
 
@@ -84,11 +91,12 @@ namespace Forms
                 inputCountVertexForm = new InputCountVertexForm(startForm);
 
                 if(drawForm == null)
-                drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix, startForm, inputCountVertexForm);
+                drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix, startForm, inputCountVertexForm, matrixGraph, adjacencyList);
+
+                drawForm.Show();
 
                 startForm.Hide();
-                drawForm.ShowDialog();
-                startForm.Close();
+
             }
             
             

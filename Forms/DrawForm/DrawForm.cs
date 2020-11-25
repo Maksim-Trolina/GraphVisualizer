@@ -9,7 +9,6 @@ using System.Drawing.Drawing2D;
 using ArrowDraw;
 using Forms;
 using GraphRepresentation;
-using System.Runtime.CompilerServices;
 
 namespace StartForm
 {
@@ -55,9 +54,11 @@ namespace StartForm
 
         private BackToMenuFromDrawButton backToMenuOfDrawButton;
 
-        //private BackToInputFromDrawButton backToInputFromDrawButton;
+        private BackToInputFromDrawButton backToInputFromDrawButton;
 
-        public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<CellBox>> matrix, StartForm startForm, InputCountVertexForm inputCountVertexForm)
+
+        public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<CellBox>> matrix, StartForm startForm, 
+            InputCountVertexForm inputCountVertexForm, MatrixGraph matrixGraph, AdjacencyList adjacencyList)
 
         {
             InitializeComponent();
@@ -98,7 +99,7 @@ namespace StartForm
 
             converter = new Converter();
 
-            adjacencyList = converter.ConvertToAdjacencyList(matrix);
+            this.adjacencyList = adjacencyList;
 
             adListPanel = new AdjacencyListPanel(200, 200, Size.Width - 200, 0, adjacencyList);
 
@@ -122,9 +123,10 @@ namespace StartForm
             backToMenuOfDrawButton = new BackToMenuFromDrawButton(adjacencyList, vertexDraws, edgeDraws,
                 this, adListPanel, weightTable, matrix, adListPanel.AdListTable.Cells, startForm);
 
-            /*backToInputFromDrawButton = new BackToInputFromDrawButton(matrixWeightPanel, this, inputCountVertexForm);
+            backToInputFromDrawButton = new BackToInputFromDrawButton(adjacencyList, vertexDraws, edgeDraws,
+                this, adListPanel, weightTable, matrix, adListPanel.AdListTable.Cells, inputCountVertexForm, matrixGraph);
 
-            Controls.Add(backToInputFromDrawButton);*/
+            Controls.Add(backToInputFromDrawButton);
 
             Controls.Add(backToMenuOfDrawButton);
 

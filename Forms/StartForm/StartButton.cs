@@ -32,9 +32,9 @@ namespace Forms
             if(inputCountVertexForm == null)
             inputCountVertexForm = new InputCountVertexForm(startForm);
 
-            inputCountVertexForm.Show();
-
             startForm.Hide();
+
+            inputCountVertexForm.Show();
             
 
         }           
