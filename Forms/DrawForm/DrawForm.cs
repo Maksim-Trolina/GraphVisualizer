@@ -178,7 +178,7 @@ namespace StartForm
            
             foreach (var edge in edgeDraws)
             {
-                if (edge.BrushEdge != BrushColor.Green)
+                if (edge.BrushEdge == BrushColor.Black)
                 {
                     newEdgeDefinition.DefinitionOfEdge(vertexDraws, edge, ref startPoint, ref endPoint);
 
@@ -189,13 +189,14 @@ namespace StartForm
             }
 
             pen.Width = 8;
-            pen.Color = Color.Green;
 
             foreach(var edge in edgeDraws)
             {
-                if(edge.BrushEdge == BrushColor.Green)
+                if(edge.BrushEdge != BrushColor.Black)
                 {
                     newEdgeDefinition.DefinitionOfEdge(vertexDraws, edge, ref startPoint, ref endPoint);
+
+                    pen.Color = GetColor(edge.BrushEdge);
 
                     graphics.DrawLine(pen, startPoint, arrow.GetEndArrowPoint(startPoint, endPoint));
                 }

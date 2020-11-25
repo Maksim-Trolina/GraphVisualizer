@@ -19,6 +19,8 @@ namespace Forms.DrawForm
         private StartForm.DrawForm drawForm;
 
         private List<List<int>> cycles;
+
+        private List<BrushColor> colors;
         public CycleButton(int width,int height,AdjacencyList adjacencyList,List<EdgeDraw> edgeDraws,StartForm.DrawForm drawForm)
         {
             Size = new System.Drawing.Size(width, height);
@@ -38,6 +40,8 @@ namespace Forms.DrawForm
             this.drawForm = drawForm;
 
             cycles = null;
+
+            colors = new List<BrushColor> { BrushColor.Green, BrushColor.Red, BrushColor.Yellow };
         }
 
         public void ButtonClick(object sender,EventArgs e)
@@ -52,6 +56,8 @@ namespace Forms.DrawForm
             {
                 ClearCycle();
 
+                colors = new List<BrushColor> { BrushColor.Green, BrushColor.Red, BrushColor.Yellow };
+
                 drawForm.Refresh();
             }
         }
@@ -62,36 +68,51 @@ namespace Forms.DrawForm
 
             UnweightedGraph unweightedGraph = new Algorithms.UnweightedGraph(graph);
 
-            if (!unweightedGraph.IsAcyclic())
-            {
-                cycles = unweightedGraph.GetCycles();
+            cycles = unweightedGraph.GetCycles();
 
-                ChangeColorEdges(BrushColor.Green);
+            for(int i = 0; i < cycles.Count; i++)
+            {
+                ChangeColorEdges(GetColor(),cycles[i]);
             }
         }
 
         private void ClearCycle()
         {
-            ChangeColorEdges(BrushColor.Black);
+            for (int i = 0; i < cycles.Count; i++)
+            {
+                ChangeColorEdges(BrushColor.Black,cycles[i]);
+            }
 
             cycles = null;
         }
 
-        private void ChangeColorEdges(BrushColor color)
+        private void ChangeColorEdges(BrushColor color,List<int> cycle)
         {
-            for(int i = 0; i < cycles.Count; i++)
+
+            for(int i = 0; i < cycle.Count - 1; i++)
             {
-                for(int j = 0; j < cycles[i].Count - 1; j++)
+                for(int j = 0; j < edgeDraws.Count; j++)
                 {
-                    for(int q = 0; q < edgeDraws.Count; q++)
+                    if(edgeDraws[j].Id == cycle[i] && edgeDraws[j].ConnectabelVertex == cycle[i + 1])
                     {
-                        if(edgeDraws[q].Id == cycles[i][j] && edgeDraws[q].ConnectabelVertex == cycles[i][j + 1])
-                        {
-                            edgeDraws[q].BrushEdge = color;
-                        }
+                        edgeDraws[j].BrushEdge = color;
                     }
                 }
             }
+        }
+
+        private BrushColor GetColor()
+        {
+            BrushColor color;
+
+            color = colors[0];
+
+            if (colors.Count > 1)
+            {
+                colors.RemoveAt(0);
+            }
+
+            return color;
         }
     }
 }
