@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Forms.DrawForm
 {
-    class WeightTableButton : ToolStripButton
+    public class WeightTableButton : ToolStripButton
     {
         private WeightTable weightTable;
 

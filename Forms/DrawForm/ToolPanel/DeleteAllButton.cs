@@ -7,7 +7,7 @@ using System;
 
 namespace Forms.DrawForm
 {
-    class DeleteAllButton : ToolStripButton
+    public class DeleteAllButton : ToolStripButton
     {
 
         private AdjacencyList adjacencyList;

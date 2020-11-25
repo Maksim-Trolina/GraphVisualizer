@@ -7,7 +7,7 @@ using CraphModel;
 
 namespace Forms.DrawForm
 {
-    class DrawingEdges
+    public class DrawingEdges
     {
 
         public void VertexFind(NewEdgeDefinition vertexClick, MouseEventArgs e, List<VertexDraw> vertexDraws,  List<EdgeDraw> edgeDraws, ref int startVertexId, ref int endVertexId,

@@ -6,7 +6,7 @@ using GraphRepresentation;
 
 namespace Forms.DrawForm
 {
-    class SaveWeightButton : ToolStripButton
+    public class SaveWeightButton : ToolStripButton
     {
         private AdjacencyList adjacencyList;
 

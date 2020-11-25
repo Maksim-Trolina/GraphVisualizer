@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Forms.DrawForm
 {
-    class AdjacencyListPanelButton : ToolStripButton
+    public class AdjacencyListPanelButton : ToolStripButton
     {
         private AdjacencyListPanel adListPanel;
 
