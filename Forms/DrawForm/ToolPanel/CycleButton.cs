@@ -18,7 +18,7 @@ namespace Forms.DrawForm
 
         private StartForm.DrawForm drawForm;
 
-        private List<int> cycle;
+        private List<List<int>> cycles;
         public CycleButton(int width,int height,AdjacencyList adjacencyList,List<EdgeDraw> edgeDraws,StartForm.DrawForm drawForm)
         {
             Size = new System.Drawing.Size(width, height);
@@ -37,12 +37,12 @@ namespace Forms.DrawForm
 
             this.drawForm = drawForm;
 
-            cycle = null;
+            cycles = null;
         }
 
         public void ButtonClick(object sender,EventArgs e)
         {
-            if (cycle == null)
+            if (cycles == null)
             {
                 DrawCycle();
 
@@ -64,7 +64,7 @@ namespace Forms.DrawForm
 
             if (!unweightedGraph.IsAcyclic())
             {
-                cycle = unweightedGraph.GetCycle();
+                cycles = unweightedGraph.GetCycles();
 
                 ChangeColorEdges(BrushColor.Green);
             }
@@ -74,18 +74,21 @@ namespace Forms.DrawForm
         {
             ChangeColorEdges(BrushColor.Black);
 
-            cycle = null;
+            cycles = null;
         }
 
         private void ChangeColorEdges(BrushColor color)
         {
-            for(int i = 0; i < cycle.Count - 1; i++)
+            for(int i = 0; i < cycles.Count; i++)
             {
-                for(int j = 0; j < edgeDraws.Count; j++)
+                for(int j = 0; j < cycles[i].Count - 1; j++)
                 {
-                    if(edgeDraws[j].Id == cycle[i] && edgeDraws[j].ConnectabelVertex == cycle[i + 1])
+                    for(int q = 0; q < edgeDraws.Count; q++)
                     {
-                        edgeDraws[j].BrushEdge = color;
+                        if(edgeDraws[q].Id == cycles[i][j] && edgeDraws[q].ConnectabelVertex == cycles[i][j + 1])
+                        {
+                            edgeDraws[q].BrushEdge = color;
+                        }
                     }
                 }
             }
