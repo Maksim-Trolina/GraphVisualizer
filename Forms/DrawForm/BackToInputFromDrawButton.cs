@@ -77,7 +77,7 @@ namespace Forms.DrawForm
 
             inputCountVertexForm.Show();
 
-            drawForm.Hide();
+            drawForm.Close();
 
         }
 

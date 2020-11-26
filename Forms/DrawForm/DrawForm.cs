@@ -130,15 +130,7 @@ namespace StartForm
 
             Controls.Add(backToMenuOfDrawButton);
 
-            this.FormClosed += DrawForm_FormClosed;
         }
-
-        private void DrawForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-
-        }
-
 
         private void MouseClickDrawForm(object sender, MouseEventArgs e)
         {

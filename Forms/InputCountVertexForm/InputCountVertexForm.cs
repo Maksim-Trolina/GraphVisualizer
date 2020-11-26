@@ -38,14 +38,6 @@ namespace Forms
             drawVertexButton = new DrawVertexButton(100, 30, 600, 100, this, matrixGraph, startForm);
             Controls.Add(drawVertexButton);
 
-            this.FormClosed += InputCountVertexForm_FormClosed;
-
-        }
-
-        private void InputCountVertexForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-
         }
 
 

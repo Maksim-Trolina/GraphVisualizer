@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Forms
 {
@@ -36,7 +34,7 @@ namespace Forms
 
             startForm.Show();
 
-            inputCountVertexForm.Hide();
+            inputCountVertexForm.Close();
            
 
         }

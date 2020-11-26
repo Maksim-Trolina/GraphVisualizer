@@ -87,10 +87,8 @@ namespace Forms
                 DrawingLoadedEdges(matrix);
                 DrawingLoadedVertexs(matrix);
 
-                if(inputCountVertexForm == null)
                 inputCountVertexForm = new InputCountVertexForm(startForm);
 
-                if(drawForm == null)
                 drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix, startForm, inputCountVertexForm, matrixGraph, adjacencyList);
 
                 drawForm.Show();

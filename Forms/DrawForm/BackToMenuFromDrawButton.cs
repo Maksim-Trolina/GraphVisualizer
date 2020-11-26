@@ -69,7 +69,7 @@ namespace Forms.DrawForm
             weightTable.Controls.Clear();
            
             startForm.Show();
-            drawForm.Hide();
+            drawForm.Close();
         }
 
     }
