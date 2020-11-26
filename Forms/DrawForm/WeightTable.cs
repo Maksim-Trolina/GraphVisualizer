@@ -7,7 +7,7 @@ using GraphModelDraw;
 
 namespace Forms.DrawForm
 {
-    class WeightTable : Panel
+    public class WeightTable : Panel
     {
 
         public WeightTable(int width, int height, int positionX, int positionY)
@@ -29,7 +29,7 @@ namespace Forms.DrawForm
     }
 
 
-     class MatrixWeightPanel
+     public class MatrixWeightPanel
      {
 
         private WeightTable weightTable;

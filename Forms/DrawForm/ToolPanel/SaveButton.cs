@@ -8,7 +8,7 @@ using System.IO;
 
 namespace Forms.DrawForm
 {
-    class SaveButton : ToolStripButton
+    public class SaveButton : ToolStripButton
     {
         private AdjacencyList adjacencyList;
 
