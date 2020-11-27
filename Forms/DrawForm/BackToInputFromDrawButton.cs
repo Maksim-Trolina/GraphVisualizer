@@ -28,10 +28,12 @@ namespace Forms.DrawForm
 
         private MatrixGraph matrixGraph;
 
+        private StartForm.StartForm startForm;
+
         public BackToInputFromDrawButton(AdjacencyList adjacencyList, List<VertexDraw> vertexDraws,
             List<EdgeDraw> edgeDraws, StartForm.DrawForm drawForm, AdjacencyListPanel adjacencyListPanel,
             WeightTable weightTable, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells,
-            InputCountVertexForm inputCountVertexForm, MatrixGraph matrixGraph, string buttonText = "back to matrix") : base(buttonText)
+            InputCountVertexForm inputCountVertexForm, MatrixGraph matrixGraph, StartForm.StartForm startForm, string buttonText = "back to matrix") : base(buttonText)
         {
 
             Text = buttonText;
@@ -58,6 +60,8 @@ namespace Forms.DrawForm
 
             this.matrixGraph = matrixGraph;
 
+            this.startForm = startForm;
+
         }
 
         public override void ButtonClick(object sender, EventArgs e)
@@ -74,6 +78,8 @@ namespace Forms.DrawForm
             
             if(matrixGraph != null)
             matrixGraph.DeleteMatrix();
+
+            inputCountVertexForm = new InputCountVertexForm(startForm);
 
             inputCountVertexForm.Show();
 

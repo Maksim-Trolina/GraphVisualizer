@@ -72,7 +72,7 @@ namespace Forms
 
             drawForm.Show();
 
-            inputCountForm.Hide();
+            inputCountForm.Close();
 
         }
        

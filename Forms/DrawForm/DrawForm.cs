@@ -124,7 +124,7 @@ namespace StartForm
                 this, adListPanel, weightTable, matrix, adListPanel.AdListTable.Cells, startForm);
 
             backToInputFromDrawButton = new BackToInputFromDrawButton(adjacencyList, vertexDraws, edgeDraws,
-                this, adListPanel, weightTable, matrix, adListPanel.AdListTable.Cells, inputCountVertexForm, matrixGraph);
+                this, adListPanel, weightTable, matrix, adListPanel.AdListTable.Cells, inputCountVertexForm, matrixGraph, startForm);
 
             Controls.Add(backToInputFromDrawButton);
 
