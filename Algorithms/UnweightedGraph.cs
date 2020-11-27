@@ -64,6 +64,37 @@ namespace Algorithms
             }
         }
 
+        private void DeletingEdges(List<int> cycle)
+        {
+            for(int i = 0; i < cycle.Count - 1; i++)
+            {
+                int index = cycle[i];
+
+                for(int j = 0; j < graph[index].Count; j++)
+                {
+                    if(graph[index][j] == cycle[i + 1])
+                    {
+                        graph[index].RemoveAt(j);
+                        break;
+                    }
+                }
+            }
+        }
+
+        public List<List<int>> GetCycles()
+        {
+            List<List<int>> cycles = new List<List<int>>();
+
+            while (!IsAcyclic())
+            {
+                List<int> cycle = GetCycle();
+                cycles.Add(cycle);
+                DeletingEdges(cycle);
+            }
+
+            return cycles;
+        }
+
         public List<int> GetCycle()
         {
             List<int> cycle = new List<int> { cycleStart };
