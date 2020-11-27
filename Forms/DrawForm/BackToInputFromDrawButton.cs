@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GraphModelDraw;
 using GraphRepresentation;
+using System.Drawing;
 
 
 namespace Forms.DrawForm
@@ -33,8 +34,15 @@ namespace Forms.DrawForm
         public BackToInputFromDrawButton(AdjacencyList adjacencyList, List<VertexDraw> vertexDraws,
             List<EdgeDraw> edgeDraws, StartForm.DrawForm drawForm, AdjacencyListPanel adjacencyListPanel,
             WeightTable weightTable, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells,
-            InputCountVertexForm inputCountVertexForm, MatrixGraph matrixGraph, StartForm.StartForm startForm, string buttonText = "back to matrix") : base(buttonText)
+            InputCountVertexForm inputCountVertexForm, MatrixGraph matrixGraph, StartForm.StartForm startForm, string buttonText = "Matrix") : base(buttonText)
         {
+            ForeColor = Color.Black;
+
+            this.BackColor = Color.Orange;
+
+            Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(204)));
+
+            FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 
             Text = buttonText;
 

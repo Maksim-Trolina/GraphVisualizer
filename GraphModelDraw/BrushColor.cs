@@ -4,7 +4,7 @@ namespace GraphModelDraw
 {
     public enum BrushColor
     {
-        Red,
+        Orange,
         Black,
         Yellow,
         Green

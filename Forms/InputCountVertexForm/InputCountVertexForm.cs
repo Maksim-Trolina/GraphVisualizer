@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System.Drawing;
 
 
 namespace Forms
@@ -20,6 +21,12 @@ namespace Forms
         public InputCountVertexForm(StartForm.StartForm startForm)
         {
             InitializeComponent();
+
+            StartPosition = FormStartPosition.CenterScreen;
+
+            Text = "GraphVizualizer / Matrix";
+
+            this.BackColor = Color.DarkGray;
 
             matrixGraph = new MatrixGraph(this);
 

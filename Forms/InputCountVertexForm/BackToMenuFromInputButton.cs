@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace Forms
 {
@@ -11,8 +12,15 @@ namespace Forms
         private StartForm.StartForm startForm;
 
         public BackToMenuFromInputButton(MatrixGraph matrixGraph, StartForm.StartForm startForm, 
-            InputCountVertexForm inputCountVertexForm, string buttonText = "back to menu") : base(buttonText)
+            InputCountVertexForm inputCountVertexForm, string buttonText = "Menu") : base(buttonText)
         {
+            ForeColor = Color.Black;
+
+            this.BackColor = Color.Orange;
+
+            Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(204)));
+
+            FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 
             Text = buttonText;
 

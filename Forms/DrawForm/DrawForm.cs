@@ -63,6 +63,12 @@ namespace StartForm
         {
             InitializeComponent();
 
+            StartPosition = FormStartPosition.CenterScreen;
+
+            Text = "GraphVizualizer / Draw";
+
+            this.BackColor = Color.DarkGray;
+
             DoubleBuffered = true;
 
             this.vertexDraws = vertexDraws;
@@ -116,7 +122,7 @@ namespace StartForm
 
             brushes = new Brush[2];
       
-            brushes[(int)BrushColor.Red] = Brushes.Red;
+            brushes[(int)BrushColor.Orange] = Brushes.Orange;
 
             brushes[(int)BrushColor.Black] = Brushes.Black;
 
@@ -136,7 +142,7 @@ namespace StartForm
         {
             if(e.Button == MouseButtons.Left)
             {
-                VertexDraw vertexDraw = new VertexDraw(BrushColor.Red, BrushColor.Green
+                VertexDraw vertexDraw = new VertexDraw(BrushColor.Orange, BrushColor.Green
                     , e.X - (int)VertexParameters.Radius, e.Y - (int)VertexParameters.Radius
                     , (int)VertexParameters.Width, (int)VertexParameters.Height, "Саси"
                     , vertexDraws.Count);
@@ -171,7 +177,13 @@ namespace StartForm
                     Refresh();
 
                 }
+
+                if (DialogResult == DialogResult.Cancel)
+                {
+                    Application.Exit();
+                }
             }
+           
 
         }
 
@@ -238,7 +250,7 @@ namespace StartForm
                     return Color.Black;
                 case BrushColor.Green:
                     return Color.Green;
-                case BrushColor.Red:
+                case BrushColor.Orange:
                     return Color.Red;
                 case BrushColor.Yellow:
                     return Color.Yellow;

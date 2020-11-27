@@ -33,6 +33,14 @@ namespace Forms
         public DrawVertexButton(int width, int height, int positionX, int positionY, InputCountVertexForm inputCountForm
             , MatrixGraph matrixGraph, StartForm.StartForm startForm, string buttonText = "Create vertexes")
         {
+            ForeColor = Color.Black;
+
+            this.BackColor = Color.Orange;
+
+            Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(204)));
+
+            FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+
             this.Text = buttonText;
 
             this.Size = new System.Drawing.Size(width, height);
@@ -167,7 +175,7 @@ namespace Forms
 
             for (int i = 0; i < countVertex; ++i)
             {
-                VertexDraw vertexDraw = new VertexDraw(BrushColor.Red, BrushColor.Red, x + i * step, y, (float)VertexParameters.Width
+                VertexDraw vertexDraw = new VertexDraw(BrushColor.Orange, BrushColor.Orange, x + i * step, y, (float)VertexParameters.Width
                     , (float)VertexParameters.Height, "", i);
 
                 if (collisionVertex.IsDrawVertex(vertexDraw, vertexDraws))
