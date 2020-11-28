@@ -24,12 +24,10 @@ namespace Forms.DrawForm
 
         private List<List<CellAdjacencyList>> cells;
 
-        private StartForm.StartForm startForm;
-
         public BackToMenuFromDrawButton(AdjacencyList adjacencyList, List<VertexDraw> vertexDraws, 
             List<EdgeDraw> edgeDraws, StartForm.DrawForm drawForm, AdjacencyListPanel adjacencyListPanel, 
             WeightTable weightTable, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells, 
-            StartForm.StartForm startForm, string buttonText = "Menu") : base(buttonText)
+            string buttonText = "Menu") : base(buttonText)
         {
             ForeColor = Color.Black;
 
@@ -59,8 +57,6 @@ namespace Forms.DrawForm
 
             this.cells = cells;
 
-            this.startForm = startForm;
-
     }
 
         public override void ButtonClick(object sender, EventArgs e)
@@ -74,8 +70,10 @@ namespace Forms.DrawForm
 
             adjacencyListPanel.Controls.Clear();
             weightTable.Controls.Clear();
-           
-            startForm.Show();
+
+            StartForm.StartForm startForm = new StartForm.StartForm();
+            drawForm.Hide();
+            startForm.ShowDialog();
             drawForm.Close();
         }
 

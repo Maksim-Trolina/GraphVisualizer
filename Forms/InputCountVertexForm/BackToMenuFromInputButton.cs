@@ -9,9 +9,7 @@ namespace Forms
 
         private MatrixGraph matrixGraph;
 
-        private StartForm.StartForm startForm;
-
-        public BackToMenuFromInputButton(MatrixGraph matrixGraph, StartForm.StartForm startForm, 
+        public BackToMenuFromInputButton(MatrixGraph matrixGraph, 
             InputCountVertexForm inputCountVertexForm, string buttonText = "Menu") : base(buttonText)
         {
             ForeColor = Color.Black;
@@ -26,25 +24,23 @@ namespace Forms
 
             Location = new System.Drawing.Point(10, 410);
 
-            this.startForm = startForm;
-
             this.inputCountVertexForm = inputCountVertexForm;
 
             this.matrixGraph = matrixGraph;
-
         }
 
 
         public override void ButtonClick(object sender, EventArgs e)
         {
-
             matrixGraph.DeleteMatrix();
 
-            startForm.Show();
+            StartForm.StartForm startForm = new StartForm.StartForm();
 
-            inputCountVertexForm.Close();
-           
+            inputCountVertexForm.Hide();
 
+            startForm.ShowDialog();
+
+            inputCountVertexForm.Close();  
         }
     }
 }

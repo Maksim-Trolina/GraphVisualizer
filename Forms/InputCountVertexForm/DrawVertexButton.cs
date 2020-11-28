@@ -78,7 +78,9 @@ namespace Forms
 
             drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix, startForm, inputCountForm, matrixGraph, initialGraph.UpdateAdjacencyList(matrix));
 
-            drawForm.Show();
+            inputCountForm.Hide();
+
+            drawForm.ShowDialog();
 
             inputCountForm.Close();
 

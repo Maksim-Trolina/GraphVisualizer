@@ -127,7 +127,7 @@ namespace StartForm
             brushes[(int)BrushColor.Black] = Brushes.Black;
 
             backToMenuOfDrawButton = new BackToMenuFromDrawButton(adjacencyList, vertexDraws, edgeDraws,
-                this, adListPanel, weightTable, matrix, adListPanel.AdListTable.Cells, startForm);
+                this, adListPanel, weightTable, matrix, adListPanel.AdListTable.Cells);
 
             backToInputFromDrawButton = new BackToInputFromDrawButton(adjacencyList, vertexDraws, edgeDraws,
                 this, adListPanel, weightTable, matrix, adListPanel.AdListTable.Cells, inputCountVertexForm, matrixGraph, startForm);

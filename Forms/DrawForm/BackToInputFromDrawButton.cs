@@ -89,7 +89,9 @@ namespace Forms.DrawForm
 
             inputCountVertexForm = new InputCountVertexForm(startForm);
 
-            inputCountVertexForm.Show();
+            drawForm.Hide();
+
+            inputCountVertexForm.ShowDialog();
 
             drawForm.Close();
 

@@ -39,7 +39,7 @@ namespace Forms
             confirmButton = new ConfirmButton(100, 30, 500, 100, inputBox, matrixGraph);
             Controls.Add(confirmButton);
 
-            backToMenuOfInputButton = new BackToMenuFromInputButton(matrixGraph, startForm, this);
+            backToMenuOfInputButton = new BackToMenuFromInputButton(matrixGraph, this);
             Controls.Add(backToMenuOfInputButton);
 
             drawVertexButton = new DrawVertexButton(100, 30, 600, 100, this, matrixGraph, startForm);
