@@ -110,8 +110,6 @@ namespace Forms
 
                 drawForm.Show();
 
-                startForm.Hide();
-
             }
 
 
