@@ -56,7 +56,7 @@ namespace VertexSearch
 
                 if (endVertexId == startVertexId)
                 {
-                    vertexDraws[startVertexId].BrushCircle = BrushColor.Red;
+                    vertexDraws[startVertexId].BrushCircle = BrushColor.Orange;
                     endVertexId = -1;
                     startVertexId = -1;
                     
@@ -65,7 +65,7 @@ namespace VertexSearch
 
                 if (endVertexId != -1)
                 {
-                    vertexDraws[startVertexId].BrushCircle = BrushColor.Red;
+                    vertexDraws[startVertexId].BrushCircle = BrushColor.Orange;
 
                 }
 

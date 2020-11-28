@@ -6,6 +6,10 @@ using System.Collections.Generic;
 using GraphModelDraw;
 using CollisionDraw;
 using Forms.DrawForm;
+using GraphRepresentation;
+using System.Drawing;
+
+
 
 namespace Forms
 {
@@ -32,9 +36,29 @@ namespace Forms
 
         private CollisionVertex collisionVertex;
 
+        private InputCountVertexForm inputCountVertexForm;
+
+        private MatrixGraph matrixGraph;
+
+        private AdjacencyList adjacencyList;
+
+        private int left;
+
+
         public LoadFileButton(StartForm.StartForm startForm)
         {
             Text = "Load file";
+
+            this.left = left;
+
+            FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+
+            ForeColor = Color.Black;
+
+            this.BackColor = Color.Orange;
+
+            Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, 
+                System.Drawing.GraphicsUnit.Point, ((System.Byte)(204)));
 
             Location = new System.Drawing.Point(350, 220);
 
@@ -75,17 +99,24 @@ namespace Forms
 
                 matrix = converter.ConvertToListListCellBox(loadGraph);
 
+                adjacencyList = converter.ConvertToAdjacencyList(matrix);
+
                 DrawingLoadedEdges(matrix);
                 DrawingLoadedVertexs(matrix);
 
-                drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix);
+                inputCountVertexForm = new InputCountVertexForm(startForm);
+
+                drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix, startForm, inputCountVertexForm, matrixGraph, adjacencyList);
 
                 startForm.Hide();
+
                 drawForm.ShowDialog();
+
                 startForm.Close();
+
             }
-            
-            
+
+
         }
 
         private void DrawingLoadedVertexs(List<List<CellBox>> matrix)
@@ -100,7 +131,7 @@ namespace Forms
 
             for (int i = 0; i < countVertex; ++i)
             {
-                VertexDraw vertexDraw = new VertexDraw(BrushColor.Red, BrushColor.Red, x + i * step, y, (float)VertexParameters.Width
+                VertexDraw vertexDraw = new VertexDraw(BrushColor.Orange, BrushColor.Orange, x + i * step, y, (float)VertexParameters.Width
                     , (float)VertexParameters.Height, "", i);
 
                 if (collisionVertex.IsDrawVertex(vertexDraw, vertexDraws))

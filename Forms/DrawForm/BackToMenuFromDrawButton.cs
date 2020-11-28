@@ -1,15 +1,13 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Collections.Generic;
 using GraphModelDraw;
 using GraphRepresentation;
-using System.Collections.Generic;
-using System;
-
+using System.Drawing;
 
 namespace Forms.DrawForm
 {
-    public class DeleteAllButton : ToolStripButton
+    class BackToMenuFromDrawButton : BackButton
     {
-
         private AdjacencyList adjacencyList;
 
         private List<VertexDraw> vertexDraws;
@@ -26,18 +24,22 @@ namespace Forms.DrawForm
 
         private List<List<CellAdjacencyList>> cells;
 
-        public DeleteAllButton(int width, int height, AdjacencyList adjacencyList, List<VertexDraw> vertexDraws, 
+        public BackToMenuFromDrawButton(AdjacencyList adjacencyList, List<VertexDraw> vertexDraws, 
             List<EdgeDraw> edgeDraws, StartForm.DrawForm drawForm, AdjacencyListPanel adjacencyListPanel, 
-            WeightTable weightTable, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells)
+            WeightTable weightTable, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells, 
+            string buttonText = "Menu") : base(buttonText)
         {
+            ForeColor = Color.Black;
 
-            Size = new System.Drawing.Size(width, height);
+            this.BackColor = Color.Orange;
 
-            Dock = DockStyle.Top;
+            Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(204)));
 
-            Text = "Delete all";
+            FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 
-            Click += new EventHandler(ButtonClick);
+            Text = buttonText;
+
+            Location = new System.Drawing.Point(300, 410);
 
             this.adjacencyList = adjacencyList;
 
@@ -54,11 +56,12 @@ namespace Forms.DrawForm
             this.matrix = matrix;
 
             this.cells = cells;
-        }
 
-        public void ButtonClick(object sender, EventArgs e)
+    }
+
+        public override void ButtonClick(object sender, EventArgs e)
         {
-            
+
             adjacencyList.adjacencyList.Clear();
             vertexDraws.Clear();
             edgeDraws.Clear();
@@ -68,7 +71,11 @@ namespace Forms.DrawForm
             adjacencyListPanel.Controls.Clear();
             weightTable.Controls.Clear();
 
-            drawForm.Refresh();
+            StartForm.StartForm startForm = new StartForm.StartForm();
+            drawForm.Hide();
+            startForm.ShowDialog();
+            drawForm.Close();
         }
+
     }
 }

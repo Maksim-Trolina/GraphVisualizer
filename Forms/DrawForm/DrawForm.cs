@@ -9,7 +9,6 @@ using System.Drawing.Drawing2D;
 using ArrowDraw;
 using Forms;
 using GraphRepresentation;
-using System.Runtime.CompilerServices;
 
 namespace StartForm
 {
@@ -53,11 +52,22 @@ namespace StartForm
 
         private Converter converter;
 
+        private BackToMenuFromDrawButton backToMenuOfDrawButton;
 
-        public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<CellBox>> matrix)
+        private BackToInputFromDrawButton backToInputFromDrawButton;
+
+
+        public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<CellBox>> matrix, StartForm startForm, 
+            InputCountVertexForm inputCountVertexForm, MatrixGraph matrixGraph, AdjacencyList adjacencyList)
 
         {
             InitializeComponent();
+
+            StartPosition = FormStartPosition.CenterScreen;
+
+            Text = "GraphVizualizer / Draw";
+
+            this.BackColor = Color.DarkGray;
 
             DoubleBuffered = true;
 
@@ -95,7 +105,7 @@ namespace StartForm
 
             converter = new Converter();
 
-            adjacencyList = converter.ConvertToAdjacencyList(matrix);
+            this.adjacencyList = adjacencyList;
 
             adListPanel = new AdjacencyListPanel(200, 200, Size.Width - 200, 0, adjacencyList);
 
@@ -112,18 +122,27 @@ namespace StartForm
 
             brushes = new Brush[2];
       
-            brushes[(int)BrushColor.Red] = Brushes.Red;
+            brushes[(int)BrushColor.Orange] = Brushes.Orange;
 
             brushes[(int)BrushColor.Black] = Brushes.Black;
 
+            backToMenuOfDrawButton = new BackToMenuFromDrawButton(adjacencyList, vertexDraws, edgeDraws,
+                this, adListPanel, weightTable, matrix, adListPanel.AdListTable.Cells);
+
+            backToInputFromDrawButton = new BackToInputFromDrawButton(adjacencyList, vertexDraws, edgeDraws,
+                this, adListPanel, weightTable, matrix, adListPanel.AdListTable.Cells, inputCountVertexForm, matrixGraph, startForm);
+
+            Controls.Add(backToInputFromDrawButton);
+
+            Controls.Add(backToMenuOfDrawButton);
+
         }
 
-        
         private void MouseClickDrawForm(object sender, MouseEventArgs e)
         {
             if(e.Button == MouseButtons.Left)
             {
-                VertexDraw vertexDraw = new VertexDraw(BrushColor.Red, BrushColor.Green
+                VertexDraw vertexDraw = new VertexDraw(BrushColor.Orange, BrushColor.Green
                     , e.X - (int)VertexParameters.Radius, e.Y - (int)VertexParameters.Radius
                     , (int)VertexParameters.Width, (int)VertexParameters.Height, "Саси"
                     , vertexDraws.Count);
@@ -158,7 +177,13 @@ namespace StartForm
                     Refresh();
 
                 }
+
+                if (DialogResult == DialogResult.Cancel)
+                {
+                    Application.Exit();
+                }
             }
+           
 
         }
 
@@ -225,7 +250,7 @@ namespace StartForm
                     return Color.Black;
                 case BrushColor.Green:
                     return Color.Green;
-                case BrushColor.Red:
+                case BrushColor.Orange:
                     return Color.Red;
                 case BrushColor.Yellow:
                     return Color.Yellow;

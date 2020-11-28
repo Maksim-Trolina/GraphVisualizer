@@ -2,20 +2,28 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Forms
 {
     public class ConfirmButton : Button
     {
-        private InputCountVertexForm inputCountVertexForm;
 
         private InputCountBox inputCountBox;
 
         private MatrixGraph matrixGraph;
 
         public ConfirmButton(int width, int height, int positionX, int positionY, InputCountBox inputCountBox
-            ,InputCountVertexForm inputCountVertexForm, MatrixGraph matrixGraph, string buttonText = "OK")
+            , MatrixGraph matrixGraph, string buttonText = "OK")
         {
+            ForeColor = Color.Black;
+
+            this.BackColor = Color.Orange;
+
+            Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(204)));
+
+            FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+
             this.Text = buttonText;
 
             this.Size = new System.Drawing.Size(width, height);
@@ -23,8 +31,6 @@ namespace Forms
             this.Location = new System.Drawing.Point(positionX, positionY);
 
             this.inputCountBox = inputCountBox;
-
-            this.inputCountVertexForm = inputCountVertexForm;
 
             Click += new EventHandler(ButtonClick);
 

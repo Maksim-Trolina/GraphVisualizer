@@ -1,5 +1,8 @@
 ﻿using System.Windows.Forms;
 using Forms;
+using System.Drawing;
+using System;
+
 
 
 namespace StartForm
@@ -15,6 +18,12 @@ namespace StartForm
         {
             InitializeComponent();
 
+            StartPosition = FormStartPosition.CenterScreen;
+
+            Text = "GraphVizualizer / Menu";
+
+            this.BackColor = Color.DarkGray;
+
             startButton = new StartButton(this);
 
             loadFileButton = new LoadFileButton(this);
@@ -23,8 +32,8 @@ namespace StartForm
 
             Controls.Add(loadFileButton);
 
-            
-        }   
+
+        }
 
     }
 }

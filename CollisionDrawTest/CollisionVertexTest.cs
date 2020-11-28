@@ -24,7 +24,7 @@ namespace CollisionDrawTest
             float x = 30.5f;
             float y = 20.7f;
 
-            vertexDraw = new VertexDraw(BrushColor.Red, BrushColor.Green, x, y, (float)VertexParameters.Width, (float)VertexParameters.Height, "", vertexDraws.Count);
+            vertexDraw = new VertexDraw(BrushColor.Orange, BrushColor.Green, x, y, (float)VertexParameters.Width, (float)VertexParameters.Height, "", vertexDraws.Count);
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace CollisionDrawTest
             float x = vertexDraw.X + 2 * (float)VertexParameters.Radius + 0.1f;
             float y = vertexDraw.Y;          
 
-            VertexDraw vertexItemList = new VertexDraw(BrushColor.Red, BrushColor.Green, x, y, (float)VertexParameters.Width 
+            VertexDraw vertexItemList = new VertexDraw(BrushColor.Orange, BrushColor.Green, x, y, (float)VertexParameters.Width 
                , (float)VertexParameters.Height, "", vertexDraws.Count);
 
             vertexDraws.Add(vertexItemList);
@@ -59,7 +59,7 @@ namespace CollisionDrawTest
             float x = vertexDraw.X + 2 * (float)VertexParameters.Radius - 0.1f;
             float y = vertexDraw.Y;
 
-            VertexDraw vertexItemList = new VertexDraw(BrushColor.Red, BrushColor.Green, x, y, (float)VertexParameters.Width
+            VertexDraw vertexItemList = new VertexDraw(BrushColor.Orange, BrushColor.Green, x, y, (float)VertexParameters.Width
                , (float)VertexParameters.Height, "", vertexDraws.Count);
 
             vertexDraws.Add(vertexItemList);

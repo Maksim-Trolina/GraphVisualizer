@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using GraphModelDraw;
 using CollisionDraw;
 using Forms.DrawForm;
+using GraphRepresentation;
 
 namespace Forms
 {
@@ -26,9 +27,20 @@ namespace Forms
 
         private List<List<CellBox>> matrix;
 
+        private StartForm.StartForm startForm;
+
+
         public DrawVertexButton(int width, int height, int positionX, int positionY, InputCountVertexForm inputCountForm
-            , MatrixGraph matrixGraph, string buttonText = "Create vertexes")
+            , MatrixGraph matrixGraph, StartForm.StartForm startForm, string buttonText = "Create vertexes")
         {
+            ForeColor = Color.Black;
+
+            this.BackColor = Color.Orange;
+
+            Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(204)));
+
+            FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+
             this.Text = buttonText;
 
             this.Size = new System.Drawing.Size(width, height);
@@ -48,17 +60,23 @@ namespace Forms
             matrix = new List<List<CellBox>>();
 
             Click += new EventHandler(ButtonClick);
+
+            this.startForm = startForm;
         }
 
         private void ButtonClick(object sender, EventArgs e)
         {
+            vertexDraws.Clear();
+
+            edgeDraws.Clear();
+
             initialGraph.CreateVertexes();
 
             initialGraph.FillingMatrix(matrix);
 
             initialGraph.CreateEdges();
 
-            drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix);
+            drawForm = new StartForm.DrawForm(vertexDraws, edgeDraws, matrix, startForm, inputCountForm, matrixGraph, initialGraph.UpdateAdjacencyList(matrix));
 
             inputCountForm.Hide();
 
@@ -67,8 +85,7 @@ namespace Forms
             inputCountForm.Close();
 
         }
-
-        
+       
     }
 
     public class InitialGraph
@@ -81,6 +98,10 @@ namespace Forms
 
         private MatrixGraph matrixGraph;
 
+        private Converter converter;
+
+        private AdjacencyList adjacencyList;
+
         public InitialGraph(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, MatrixGraph matrixGraph)
         {
             this.vertexDraws = vertexDraws;
@@ -90,6 +111,9 @@ namespace Forms
             this.matrixGraph = matrixGraph;
 
             collisionVertex = new CollisionVertex();
+
+            converter = new Converter();
+
         }
 
         public void FillingMatrix(List<List<CellBox>> matrix)
@@ -153,7 +177,7 @@ namespace Forms
 
             for (int i = 0; i < countVertex; ++i)
             {
-                VertexDraw vertexDraw = new VertexDraw(BrushColor.Red, BrushColor.Red, x + i * step, y, (float)VertexParameters.Width
+                VertexDraw vertexDraw = new VertexDraw(BrushColor.Orange, BrushColor.Orange, x + i * step, y, (float)VertexParameters.Width
                     , (float)VertexParameters.Height, "", i);
 
                 if (collisionVertex.IsDrawVertex(vertexDraw, vertexDraws))
@@ -196,6 +220,12 @@ namespace Forms
                     }
                 }
             }
+        }
+
+        public AdjacencyList UpdateAdjacencyList(List<List<CellBox>> matrix)
+        {
+            return adjacencyList = converter.ConvertToAdjacencyList(matrix);
+
         }
     }
 }

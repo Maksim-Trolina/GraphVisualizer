@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Forms.DrawForm
 {
@@ -13,6 +14,7 @@ namespace Forms.DrawForm
 
         public AdjacencyListPanel(int width, int height, int positionX, int positionY, GraphRepresentation.AdjacencyList adjacencyList)
         {
+
             Size = new System.Drawing.Size(width, height);
 
             Location = new System.Drawing.Point(positionX, positionY);

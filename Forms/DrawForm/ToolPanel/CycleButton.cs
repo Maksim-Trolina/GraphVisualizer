@@ -41,7 +41,7 @@ namespace Forms.DrawForm
 
             cycles = null;
 
-            colors = new List<BrushColor> { BrushColor.Green, BrushColor.Red, BrushColor.Yellow };
+            colors = new List<BrushColor> { BrushColor.Green, BrushColor.Orange, BrushColor.Yellow };
         }
 
         public void ButtonClick(object sender,EventArgs e)
@@ -56,7 +56,7 @@ namespace Forms.DrawForm
             {
                 ClearCycle();
 
-                colors = new List<BrushColor> { BrushColor.Green, BrushColor.Red, BrushColor.Yellow };
+                colors = new List<BrushColor> { BrushColor.Green, BrushColor.Orange, BrushColor.Yellow };
 
                 drawForm.Refresh();
             }
