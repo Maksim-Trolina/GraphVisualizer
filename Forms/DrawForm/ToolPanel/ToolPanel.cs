@@ -42,7 +42,7 @@ namespace Forms.DrawForm
 
             adListButton = new AdjacencyListPanelButton(20, 20, adListPanel, weightTable, saveWeightButton);
 
-            saveButton = new SaveButton(20, 20, adjacencyList, drawForm, backToInputFromDrawButton, backToMenuOfDrawButton);
+            saveButton = new SaveButton(20, 20, adjacencyList, drawForm, backToInputFromDrawButton, backToMenuOfDrawButton, weightTable, adListPanel);
 
             deleteAllButton = new DeleteAllButton(20, 20, adjacencyList, vertexDraws, edgeDraws, drawForm, adListPanel, weightTable, matrix, cells);
 

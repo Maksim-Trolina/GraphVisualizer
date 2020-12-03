@@ -23,9 +23,14 @@ namespace Forms.DrawForm
 
         private BackToMenuFromDrawButton backToMenuOfDrawButton;
 
+        private WeightTable weightTable;
+
+        private AdjacencyListPanel adListPanel;
+
 
         public SaveButton(int width, int height, AdjacencyList adjacencyList, StartForm.DrawForm drawForm, 
-            BackToInputFromDrawButton backToInputFromDrawButton, BackToMenuFromDrawButton backToMenuOfDrawButton)
+            BackToInputFromDrawButton backToInputFromDrawButton, BackToMenuFromDrawButton backToMenuOfDrawButton, WeightTable weightTable,
+             AdjacencyListPanel adListPanel)
         {
 
             Size = new System.Drawing.Size(width, height);
@@ -52,6 +57,10 @@ namespace Forms.DrawForm
 
             this.backToMenuOfDrawButton = backToMenuOfDrawButton;
 
+            this.weightTable = weightTable;
+
+            this.adListPanel = adListPanel;
+
         }
 
 
@@ -60,30 +69,71 @@ namespace Forms.DrawForm
 
             SaveFileDialog sfd = new SaveFileDialog();
 
+            bool adListPanelWasClose = false;
+
+            bool weightTableWasClose = false;
+
             if (sfd.ShowDialog() == DialogResult.OK)
             {
 
                 Path.GetFullPath(sfd.FileName);
 
-                serializeGraph.SaveGraph(converter.ConvertToGraph(adjacencyList), Path.GetFullPath(sfd.FileName));
+                serializeGraph.SaveGraph(converter.ConvertToGraph(adjacencyList), Path.GetFullPath(sfd.FileName));               
 
-                Parent.Hide();
-
-                backToInputFromDrawButton.Hide();
-
-                backToMenuOfDrawButton.Hide();
+                HidingСontrols(ref adListPanelWasClose, ref weightTableWasClose);
 
                 SaveBmpAsPNG(GetControlScreenshot(drawForm), sfd.FileName);
 
-                backToInputFromDrawButton.Show();
-
-                backToMenuOfDrawButton.Show();
-
-                Parent.Show();
+                ShowingСontrols(adListPanelWasClose, weightTableWasClose);
 
             }
           
         }
+
+        private void HidingСontrols(ref bool adListPanelWasClose, ref bool weightTableWasClose)
+        {
+            Parent.Hide();
+
+            backToInputFromDrawButton.Hide();
+
+            backToMenuOfDrawButton.Hide();
+
+            if (adListPanel.Visible != false)
+            {
+                adListPanel.Hide();
+
+                adListPanelWasClose = true;
+            }
+
+            if (weightTable.Visible != false)
+            {
+                weightTable.Hide();
+
+                weightTableWasClose = true;
+            }
+
+        }
+
+        private void ShowingСontrols(bool adListPanelWasClose, bool weightTableWasClose)
+        {
+            backToInputFromDrawButton.Show();
+
+            backToMenuOfDrawButton.Show();
+
+            if (adListPanelWasClose)
+
+                adListPanel.Show();
+
+            if (weightTableWasClose)
+
+                weightTable.Show();
+
+            Parent.Show();
+
+        }
+
+
+
 
         private Bitmap GetControlScreenshot(Control control)
         {
