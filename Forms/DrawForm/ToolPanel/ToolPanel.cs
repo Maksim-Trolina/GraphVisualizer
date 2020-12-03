@@ -22,9 +22,12 @@ namespace Forms.DrawForm
 
         private SaveWeightButton saveWeightButton;
 
+        private ShortestPathPanelButton shortestPathButton;
 
-        public ToolPanel(int positionX, int positionY, WeightTable weightTable, List<EdgeDraw> edgeDraws, AdjacencyList adjacencyList 
-            ,StartForm.DrawForm drawForm, AdjacencyListPanel adListPanel, List<VertexDraw> vertexDraws, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells)
+        public ToolPanel(int positionX, int positionY, WeightTable weightTable, List<EdgeDraw> edgeDraws
+            , AdjacencyList adjacencyList, StartForm.DrawForm drawForm, AdjacencyListPanel adListPanel
+            , List<VertexDraw> vertexDraws, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells
+            ,ShortestPathPanel shortestPathPanel)
         {
 
             Location = new System.Drawing.Point(positionX, positionY);
@@ -38,6 +41,8 @@ namespace Forms.DrawForm
             tableButton = new WeightTableButton(20, 20, weightTable, adListPanel, saveWeightButton);
 
             cycleButton = new CycleButton(20, 20, adjacencyList, edgeDraws, drawForm);
+
+            shortestPathButton = new ShortestPathPanelButton(20, 20, shortestPathPanel);
 
             adListButton = new AdjacencyListPanelButton(20, 20, adListPanel, weightTable, saveWeightButton);
 
@@ -55,6 +60,10 @@ namespace Forms.DrawForm
             Items.Add(new ToolStripSeparator());
 
             Items.Add(cycleButton);
+
+            Items.Add(new ToolStripSeparator());
+
+            Items.Add(shortestPathButton);
 
             Items.Add(new ToolStripSeparator());
 

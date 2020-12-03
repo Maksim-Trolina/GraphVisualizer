@@ -42,6 +42,8 @@ namespace StartForm
 
         private AdjacencyListPanel adListPanel;
 
+        private ShortestPathPanel shortestPathPanel;
+
         private MatrixWeightPanel matrixWeightPanel;
 
         private Arrow arrow;
@@ -111,8 +113,13 @@ namespace StartForm
 
             Controls.Add(adListPanel);
 
+            shortestPathPanel = new ShortestPathPanel(200, 200, 150, 0, adjacencyList, edgeDraws, this);
+
+            Controls.Add(shortestPathPanel);
+
             toolPanel = new ToolPanel(0, 100, weightTable, this.edgeDraws
-                , adjacencyList, this, adListPanel, this.vertexDraws, matrix, adListPanel.AdListTable.Cells);
+                , adjacencyList, this, adListPanel, this.vertexDraws, matrix
+                , adListPanel.AdListTable.Cells, shortestPathPanel);
 
             Controls.Add(toolPanel);
 
