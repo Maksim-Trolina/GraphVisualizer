@@ -19,8 +19,13 @@ namespace Forms.DrawForm
 
         private StartForm.DrawForm drawForm;
 
+        private BackToInputFromDrawButton backToInputFromDrawButton;
 
-        public SaveButton(int width, int height, AdjacencyList adjacencyList, StartForm.DrawForm drawForm)
+        private BackToMenuFromDrawButton backToMenuOfDrawButton;
+
+
+        public SaveButton(int width, int height, AdjacencyList adjacencyList, StartForm.DrawForm drawForm, 
+            BackToInputFromDrawButton backToInputFromDrawButton, BackToMenuFromDrawButton backToMenuOfDrawButton)
         {
 
             Size = new System.Drawing.Size(width, height);
@@ -43,6 +48,10 @@ namespace Forms.DrawForm
 
             this.drawForm = drawForm;
 
+            this.backToInputFromDrawButton = backToInputFromDrawButton;
+
+            this.backToMenuOfDrawButton = backToMenuOfDrawButton;
+
         }
 
 
@@ -58,7 +67,19 @@ namespace Forms.DrawForm
 
                 serializeGraph.SaveGraph(converter.ConvertToGraph(adjacencyList), Path.GetFullPath(sfd.FileName));
 
+                Parent.Hide();
+
+                backToInputFromDrawButton.Hide();
+
+                backToMenuOfDrawButton.Hide();
+
                 SaveBmpAsPNG(GetControlScreenshot(drawForm), sfd.FileName);
+
+                backToInputFromDrawButton.Show();
+
+                backToMenuOfDrawButton.Show();
+
+                Parent.Show();
 
             }
           
@@ -70,8 +91,14 @@ namespace Forms.DrawForm
             Size szCurrent = control.Size;
             control.AutoSize = true;
 
-            Bitmap bmp = new Bitmap(control.Width, control.Height);
-            control.DrawToBitmap(bmp, control.ClientRectangle);
+            Rectangle rectangle = new Rectangle();
+
+            rectangle.Width = control.Width;
+
+            rectangle.Height = control.Height;
+
+            Bitmap bmp = new Bitmap(rectangle.Width, rectangle.Height);
+            control.DrawToBitmap(bmp, rectangle);
 
             control.AutoSize = false;
             control.Size = szCurrent;

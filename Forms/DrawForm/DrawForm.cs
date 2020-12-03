@@ -109,12 +109,7 @@ namespace StartForm
 
             adListPanel = new AdjacencyListPanel(200, 200, Size.Width - 200, 0, adjacencyList);
 
-            Controls.Add(adListPanel);
-
-            toolPanel = new ToolPanel(0, 100, weightTable, this.edgeDraws
-                , adjacencyList, this, adListPanel, this.vertexDraws, matrix, adListPanel.AdListTable.Cells);
-
-            Controls.Add(toolPanel);
+            Controls.Add(adListPanel);           
 
             pen.EndCap = LineCap.ArrowAnchor;
 
@@ -135,6 +130,12 @@ namespace StartForm
             Controls.Add(backToInputFromDrawButton);
 
             Controls.Add(backToMenuOfDrawButton);
+
+            toolPanel = new ToolPanel(0, 100, weightTable, this.edgeDraws
+                , adjacencyList, this, adListPanel, this.vertexDraws, matrix, adListPanel.AdListTable.Cells, 
+                backToInputFromDrawButton, backToMenuOfDrawButton);
+
+            Controls.Add(toolPanel);
 
         }
 
