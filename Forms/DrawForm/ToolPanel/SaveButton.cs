@@ -112,6 +112,8 @@ namespace Forms.DrawForm
                 weightTableWasClose = true;
             }
 
+            drawForm.FormBorderStyle = FormBorderStyle.None;
+
         }
 
         private void ShowingСontrols(bool adListPanelWasClose, bool weightTableWasClose)
@@ -130,6 +132,8 @@ namespace Forms.DrawForm
 
             Parent.Show();
 
+            drawForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+
         }
 
 
@@ -146,6 +150,7 @@ namespace Forms.DrawForm
             rectangle.Width = control.Width;
 
             rectangle.Height = control.Height;
+
 
             Bitmap bmp = new Bitmap(rectangle.Width, rectangle.Height);
             control.DrawToBitmap(bmp, rectangle);
