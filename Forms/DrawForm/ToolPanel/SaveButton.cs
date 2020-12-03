@@ -92,6 +92,9 @@ namespace Forms.DrawForm
 
         private void HidingСontrols(ref bool adListPanelWasClose, ref bool weightTableWasClose)
         {
+
+            drawForm.FormBorderStyle = FormBorderStyle.None;
+
             Parent.Hide();
 
             backToInputFromDrawButton.Hide();
@@ -110,14 +113,15 @@ namespace Forms.DrawForm
                 weightTable.Hide();
 
                 weightTableWasClose = true;
-            }
-
-            drawForm.FormBorderStyle = FormBorderStyle.None;
+            }          
 
         }
 
         private void ShowingСontrols(bool adListPanelWasClose, bool weightTableWasClose)
         {
+
+            drawForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+
             backToInputFromDrawButton.Show();
 
             backToMenuOfDrawButton.Show();
@@ -131,12 +135,8 @@ namespace Forms.DrawForm
                 weightTable.Show();
 
             Parent.Show();
-
-            drawForm.FormBorderStyle = FormBorderStyle.FixedDialog;
-
+          
         }
-
-
 
 
         private Bitmap GetControlScreenshot(Control control)
