@@ -20,6 +20,10 @@ namespace Forms.DrawForm
 
         private InfoTextLabel infoText;
 
+        private InfoTextLabel startVertexText;
+
+        private InfoTextLabel endVertexText;
+
         public ShortestPathPanel(int width, int height, int positionX, int positionY
             , GraphRepresentation.AdjacencyList adList, List<EdgeDraw> edgeDraws
             , StartForm.DrawForm drawForm)
@@ -42,11 +46,19 @@ namespace Forms.DrawForm
 
             Controls.Add(infoText);
 
-            startVertex= new InputCountBox(20, 20, 40, 60);
+            startVertexText = new InfoTextLabel(65, 20, 0, 60, "From:");
+
+            Controls.Add(startVertexText);
+
+            endVertexText = new InfoTextLabel(45, 20, Size.Width - 100, 60, "To:");
+
+            Controls.Add(endVertexText);
+
+            startVertex = new InputCountBox(20, 20, 65, 60);
 
             Controls.Add(startVertex);
 
-            endVertex = new InputCountBox(20, 20, Size.Width - 60, 60);
+            endVertex = new InputCountBox(20, 20, Size.Width - 55, 60);
 
             Controls.Add(endVertex);
 
