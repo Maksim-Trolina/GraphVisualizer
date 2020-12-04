@@ -2,7 +2,7 @@
 
 namespace Forms
 {
-    class InfoTextLabel : System.Windows.Forms.Label
+    public class InfoTextLabel : System.Windows.Forms.Label
     {
         public InfoTextLabel(int width, int height, int positionX, int positionY, string info = "Enter the number of vertices")
         {

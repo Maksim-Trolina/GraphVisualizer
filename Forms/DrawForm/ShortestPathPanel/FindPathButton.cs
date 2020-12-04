@@ -21,11 +21,13 @@ namespace Forms.DrawForm
         private InputCountBox endVertex;
 
         private StartForm.DrawForm drawForm;
+
+        private InfoTextLabel infoText;
        
         public FindPathButton(int width, int height, int positionX, int positionY
             , GraphRepresentation.AdjacencyList adList, List<EdgeDraw> edgeDraws
             , InputCountBox startVertex, InputCountBox endVertex
-            , List<int>path, StartForm.DrawForm drawForm)
+            , StartForm.DrawForm drawForm, InfoTextLabel infoText)
         {
             Size = new System.Drawing.Size(width, height);
 
@@ -45,7 +47,9 @@ namespace Forms.DrawForm
 
             this.drawForm = drawForm;
 
-            this.path = path;
+            this.infoText = infoText;
+
+            path = null;
         }
 
         private void ButtonClick(object sender, EventArgs e)
@@ -58,31 +62,46 @@ namespace Forms.DrawForm
             {
                 ClearPath();
 
-                DrawPath(start, end);
+                DrawPath(start, end, infoText);
+            }
+            else
+            {
+                infoText.Text = "Non-exist vertex";
             }
         }
 
-        private void DrawPath(int start, int end)
+        private void DrawPath(int start, int end, InfoTextLabel infoText)
         {
             WeightedGraph weightedGraph = new WeightedGraph(adList);
 
             path = weightedGraph.FindShortestPath(start, end);
 
-            ChangeColorEdges(BrushColor.Yellow, path);
+            if (SumWeightPath(path) == 0)
+            {
+                infoText.Text = "Path: is not exist";
+            }
+            else
+            {
+                infoText.Text += Convert.ToString(SumWeightPath(path));
+            }
+
+            ChangeColorEdges(BrushColor.Yellow);
 
             drawForm.Refresh();
         }
 
-        private void ClearPath()
+        public void ClearPath()
         {
-            ChangeColorEdges(BrushColor.Black, path);
-
-            drawForm.Refresh();
+            ChangeColorEdges(BrushColor.Black);
 
             path = null;
+
+            infoText.Text = "Path: ";
+
+            drawForm.Refresh();
         }
 
-        private void ChangeColorEdges(BrushColor color, List<int> path)
+        private void ChangeColorEdges(BrushColor color)
         {
             if (path != null)
             {
@@ -97,6 +116,23 @@ namespace Forms.DrawForm
                     }
                 }
             }
+        }
+
+        private int SumWeightPath(List<int> path)
+        {
+            if (path == null)
+            {
+                return 0; 
+            }
+
+            int sum = 0;
+
+            for (int i = 0; i < path.Count - 1; ++i)
+            {
+                sum += adList.adjacencyList[path[i]][adList.FindNumberInList(path[i], path[i + 1])].Weight;
+            }
+
+            return sum;
         }
     }
 }

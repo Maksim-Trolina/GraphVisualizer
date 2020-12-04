@@ -25,6 +25,11 @@ namespace Forms.DrawForm
         private void ButtonClick(object sender, EventArgs e)
         {
             shortestPathPanel.Visible = !shortestPathPanel.Visible;
+
+            if (!shortestPathPanel.Visible)
+            {
+                shortestPathPanel.findPathButton.ClearPath();
+            }
         }
     }
 }

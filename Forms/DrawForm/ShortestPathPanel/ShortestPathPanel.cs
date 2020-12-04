@@ -14,13 +14,11 @@ namespace Forms.DrawForm
 
         private InputCountBox endVertex;
 
-        private FindPathButton findPathButton;
-
-        private DeletePathButton deletePathButton;
+        public FindPathButton findPathButton;
 
         private List<EdgeDraw> edgeDraws;
 
-        private List<int> path;
+        private InfoTextLabel infoText;
 
         public ShortestPathPanel(int width, int height, int positionX, int positionY
             , GraphRepresentation.AdjacencyList adList, List<EdgeDraw> edgeDraws
@@ -40,7 +38,9 @@ namespace Forms.DrawForm
 
             this.edgeDraws = edgeDraws;
 
-            //path = null;
+            infoText = new InfoTextLabel(180, 20, 10, 20,"Path: ");
+
+            Controls.Add(infoText);
 
             startVertex= new InputCountBox(20, 20, 40, 60);
 
@@ -50,14 +50,10 @@ namespace Forms.DrawForm
 
             Controls.Add(endVertex);
 
-            findPathButton = new FindPathButton(95, 30, 5, Size.Height - 60, adList, edgeDraws
-                , startVertex, endVertex, path, drawForm);
+            findPathButton = new FindPathButton(95, 30, Size.Width / 2 - 45, Size.Height - 60, adList, edgeDraws
+                , startVertex, endVertex, drawForm, infoText);
 
             Controls.Add(findPathButton);
-
-            deletePathButton = new DeletePathButton(95, 30, Size.Width - 100, Size.Height - 60, path, drawForm, edgeDraws);
-
-            Controls.Add(deletePathButton);
         }
     }
 }
