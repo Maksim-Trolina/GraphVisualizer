@@ -69,10 +69,6 @@ namespace Forms.DrawForm
 
             SaveFileDialog sfd = new SaveFileDialog();
 
-            bool adListPanelWasClose = false;
-
-            bool weightTableWasClose = false;
-
             if (sfd.ShowDialog() == DialogResult.OK)
             {
 
@@ -80,62 +76,53 @@ namespace Forms.DrawForm
 
                 serializeGraph.SaveGraph(converter.ConvertToGraph(adjacencyList), Path.GetFullPath(sfd.FileName));               
 
-                HidingСontrols(ref adListPanelWasClose, ref weightTableWasClose);
+                HidingСontrols();
 
                 SaveBmpAsPNG(GetControlScreenshot(drawForm), sfd.FileName);
 
-                ShowingСontrols(adListPanelWasClose, weightTableWasClose);
+                ShowingСontrols();
 
             }
           
         }
 
-        private void HidingСontrols(ref bool adListPanelWasClose, ref bool weightTableWasClose)
+        private void HidingСontrols()
         {
 
             drawForm.FormBorderStyle = FormBorderStyle.None;
 
-            Parent.Hide();
-
-            backToInputFromDrawButton.Hide();
-
-            backToMenuOfDrawButton.Hide();
-
-            if (adListPanel.Visible != false)
+            foreach (Control c in drawForm.Controls)
             {
-                adListPanel.Hide();
+                c.Tag = false;
 
-                adListPanelWasClose = true;
+                if (c.Visible) 
+                {
+                    c.Tag = true;
+
+                    c.Visible = false;
+                }
+              
             }
-
-            if (weightTable.Visible != false)
-            {
-                weightTable.Hide();
-
-                weightTableWasClose = true;
-            }          
 
         }
 
-        private void ShowingСontrols(bool adListPanelWasClose, bool weightTableWasClose)
+        private void ShowingСontrols()
         {
 
             drawForm.FormBorderStyle = FormBorderStyle.FixedDialog;
 
-            backToInputFromDrawButton.Show();
+            foreach (Control c in drawForm.Controls)
+            {
 
-            backToMenuOfDrawButton.Show();
+                if ((bool)c.Tag)
+                {
+                    c.Tag = false;
 
-            if (adListPanelWasClose)
+                    c.Visible = true;
+                }
 
-                adListPanel.Show();
+            }
 
-            if (weightTableWasClose)
-
-                weightTable.Show();
-
-            Parent.Show();
-          
         }
 
 
