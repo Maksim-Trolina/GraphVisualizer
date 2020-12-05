@@ -19,18 +19,8 @@ namespace Forms.DrawForm
 
         private StartForm.DrawForm drawForm;
 
-        private BackToInputFromDrawButton backToInputFromDrawButton;
 
-        private BackToMenuFromDrawButton backToMenuOfDrawButton;
-
-        private WeightTable weightTable;
-
-        private AdjacencyListPanel adListPanel;
-
-
-        public SaveButton(int width, int height, AdjacencyList adjacencyList, StartForm.DrawForm drawForm, 
-            BackToInputFromDrawButton backToInputFromDrawButton, BackToMenuFromDrawButton backToMenuOfDrawButton, WeightTable weightTable,
-             AdjacencyListPanel adListPanel)
+        public SaveButton(int width, int height, AdjacencyList adjacencyList, StartForm.DrawForm drawForm)
         {
 
             Size = new System.Drawing.Size(width, height);
@@ -52,14 +42,6 @@ namespace Forms.DrawForm
             this.adjacencyList = adjacencyList;
 
             this.drawForm = drawForm;
-
-            this.backToInputFromDrawButton = backToInputFromDrawButton;
-
-            this.backToMenuOfDrawButton = backToMenuOfDrawButton;
-
-            this.weightTable = weightTable;
-
-            this.adListPanel = adListPanel;
 
         }
 

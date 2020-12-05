@@ -132,8 +132,7 @@ namespace StartForm
             Controls.Add(backToMenuOfDrawButton);
 
             toolPanel = new ToolPanel(0, 100, weightTable, this.edgeDraws
-                , adjacencyList, this, adListPanel, this.vertexDraws, matrix, adListPanel.AdListTable.Cells, 
-                backToInputFromDrawButton, backToMenuOfDrawButton);
+                , adjacencyList, this, adListPanel, this.vertexDraws, matrix, adListPanel.AdListTable.Cells);
 
             Controls.Add(toolPanel);
 
