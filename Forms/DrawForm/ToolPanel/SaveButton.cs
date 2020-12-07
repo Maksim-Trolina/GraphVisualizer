@@ -73,15 +73,15 @@ namespace Forms.DrawForm
 
             drawForm.FormBorderStyle = FormBorderStyle.None;
 
-            foreach (Control c in drawForm.Controls)
+            foreach (Control control in drawForm.Controls)
             {
-                c.Tag = false;
+                control.Tag = false;
 
-                if (c.Visible) 
+                if (control.Visible) 
                 {
-                    c.Tag = true;
+                    control.Tag = true;
 
-                    c.Visible = false;
+                    control.Visible = false;
                 }
               
             }
@@ -93,14 +93,14 @@ namespace Forms.DrawForm
 
             drawForm.FormBorderStyle = FormBorderStyle.FixedDialog;
 
-            foreach (Control c in drawForm.Controls)
+            foreach (Control control in drawForm.Controls)
             {
 
-                if ((bool)c.Tag)
+                if ((bool)control.Tag)
                 {
-                    c.Tag = false;
+                    control.Tag = false;
 
-                    c.Visible = true;
+                    control.Visible = true;
                 }
 
             }
@@ -114,14 +114,10 @@ namespace Forms.DrawForm
             Size szCurrent = control.Size;
             control.AutoSize = true;
 
-            Rectangle rectangle = new Rectangle();
-
-            rectangle.Width = control.Width;
-
-            rectangle.Height = control.Height;
-
+            Rectangle rectangle = new Rectangle{Width = control.Width, Height = control.Height};
 
             Bitmap bmp = new Bitmap(rectangle.Width, rectangle.Height);
+
             control.DrawToBitmap(bmp, rectangle);
 
             control.AutoSize = false;
