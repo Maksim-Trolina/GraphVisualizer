@@ -3,7 +3,7 @@ using System;
 
 namespace Forms
 {
-    class BackButton : Button
+    public class BackButton : Button
     {
 
         public BackButton(string buttonText = "back to menu")

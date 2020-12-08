@@ -111,6 +111,8 @@ namespace StartForm
 
             adListPanel = new AdjacencyListPanel(200, 200, Size.Width - 200, 0, adjacencyList);
 
+            Controls.Add(adListPanel);           
+
             Controls.Add(adListPanel);
 
             shortestPathPanel = new ShortestPathPanel(200, 200, 150, 0, adjacencyList, edgeDraws, this);
@@ -142,7 +144,6 @@ namespace StartForm
             Controls.Add(backToInputFromDrawButton);
 
             Controls.Add(backToMenuOfDrawButton);
-
         }
 
         private void MouseClickDrawForm(object sender, MouseEventArgs e)

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
-using CraphModel;
 using Serializing;
-using System.Collections.Generic;
 using GraphRepresentation;
 using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
+
 
 namespace Forms.DrawForm
 {
@@ -16,8 +17,10 @@ namespace Forms.DrawForm
 
         private Converter converter;
 
+        private StartForm.DrawForm drawForm;
 
-        public SaveButton(int width, int height, AdjacencyList adjacencyList)
+
+        public SaveButton(int width, int height, AdjacencyList adjacencyList, StartForm.DrawForm drawForm)
         {
 
             Size = new System.Drawing.Size(width, height);
@@ -38,6 +41,8 @@ namespace Forms.DrawForm
 
             this.adjacencyList = adjacencyList;
 
+            this.drawForm = drawForm;
+
         }
 
 
@@ -51,13 +56,79 @@ namespace Forms.DrawForm
 
                 Path.GetFullPath(sfd.FileName);
 
-               // adjacencyList = converter.ConvertToAdjacencyList(matrix);
+                serializeGraph.SaveGraph(converter.ConvertToGraph(adjacencyList), Path.GetFullPath(sfd.FileName));               
 
-                serializeGraph.SaveGraph(converter.ConvertToGraph(adjacencyList), Path.GetFullPath(sfd.FileName));
+                HidingСontrols();
+
+                SaveBmpAsPNG(GetControlScreenshot(drawForm), sfd.FileName);
+
+                ShowingСontrols();
+
+            }
+          
+        }
+
+        private void HidingСontrols()
+        {
+
+            drawForm.FormBorderStyle = FormBorderStyle.None;
+
+            foreach (Control control in drawForm.Controls)
+            {
+                control.Tag = false;
+
+                if (control.Visible) 
+                {
+                    control.Tag = true;
+
+                    control.Visible = false;
+                }
+              
+            }
+
+        }
+
+        private void ShowingСontrols()
+        {
+
+            drawForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+
+            foreach (Control control in drawForm.Controls)
+            {
+
+                if ((bool)control.Tag)
+                {
+                    control.Tag = false;
+
+                    control.Visible = true;
+                }
 
             }
 
-          
+        }
+
+
+        private Bitmap GetControlScreenshot(Control control)
+        {
+
+            Size szCurrent = control.Size;
+            control.AutoSize = true;
+
+            Rectangle rectangle = new Rectangle{Width = control.Width, Height = control.Height};
+
+            Bitmap bmp = new Bitmap(rectangle.Width, rectangle.Height);
+
+            control.DrawToBitmap(bmp, rectangle);
+
+            control.AutoSize = false;
+            control.Size = szCurrent;
+
+            return bmp;
+        }
+
+        private void SaveBmpAsPNG(Bitmap bmp, string FilePath)
+        {            
+            bmp.Save(string.Concat(FilePath, ".png"), ImageFormat.Png);
         }
     }
 }

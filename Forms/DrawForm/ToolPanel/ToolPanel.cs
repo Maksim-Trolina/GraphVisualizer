@@ -24,10 +24,12 @@ namespace Forms.DrawForm
 
         private ShortestPathPanelButton shortestPathButton;
 
+
         public ToolPanel(int positionX, int positionY, WeightTable weightTable, List<EdgeDraw> edgeDraws
             , AdjacencyList adjacencyList, StartForm.DrawForm drawForm, AdjacencyListPanel adListPanel
             , List<VertexDraw> vertexDraws, List<List<CellBox>> matrix, List<List<CellAdjacencyList>> cells
             ,ShortestPathPanel shortestPathPanel)
+
         {
 
             Location = new System.Drawing.Point(positionX, positionY);
@@ -46,7 +48,7 @@ namespace Forms.DrawForm
 
             adListButton = new AdjacencyListPanelButton(20, 20, adListPanel, weightTable, saveWeightButton);
 
-            saveButton = new SaveButton(20, 20, adjacencyList);
+            saveButton = new SaveButton(20, 20, adjacencyList, drawForm);
 
             deleteAllButton = new DeleteAllButton(20, 20, adjacencyList, vertexDraws, edgeDraws, drawForm, adListPanel, weightTable, matrix, cells);
 
