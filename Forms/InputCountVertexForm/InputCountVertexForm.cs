@@ -30,7 +30,7 @@ namespace Forms
 
             this.BackColor = Color.DarkGray;
 
-            matrixPanel = new MatrixWeightTablePanel(200, 200, Width / 2 - 100, 200);
+            matrixPanel = new MatrixWeightTablePanel(350, 290, Width / 2 - 190, 155);
             
             matrixGraph = new MatrixGraph(matrixPanel);
 
