@@ -61,11 +61,11 @@ namespace Forms
     {
         public InputCountBox[,] Matrix { get; private set; }
 
-        private InputCountVertexForm inputCountVertexForm;
+        private MatrixWeightTablePanel matrixPanel;
 
-        public MatrixGraph(InputCountVertexForm inputCountVertexForm)
+        public MatrixGraph(MatrixWeightTablePanel matrixPanel)
         {
-            this.inputCountVertexForm = inputCountVertexForm;
+            this.matrixPanel = matrixPanel;
         }
 
         public void DeleteMatrix()
@@ -76,7 +76,7 @@ namespace Forms
                 {
                     for (int j = 0; j < Matrix.GetLength(1); ++j)
                     {
-                        inputCountVertexForm.Controls.Remove(Matrix[i, j]);
+                        matrixPanel.Controls.Remove(Matrix[i, j]);
                     }
                 }
             }
@@ -86,14 +86,14 @@ namespace Forms
         {
             Matrix = new InputCountBox[rows, rows];
 
-            int stepX = 15;
-            int stepY = 15;
+            int stepX = 8;
+            int stepY = 8;
 
             int width = 30;
             int height = 20;
 
-            int positionX = 50;
-            int positionY = 200;
+            int positionX = 0;
+            int positionY = 0;
 
             for (int i = 0; i < rows; ++i)
             {
@@ -105,7 +105,7 @@ namespace Forms
                         Matrix[i, j].Enabled = false;
                     }
                     
-                    inputCountVertexForm.Controls.Add(Matrix[i, j]);
+                    matrixPanel.Controls.Add(Matrix[i, j]);
                 }
             }
         }

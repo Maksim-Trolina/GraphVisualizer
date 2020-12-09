@@ -18,6 +18,8 @@ namespace Forms
 
         private BackToMenuFromInputButton backToMenuOfInputButton;
 
+        private MatrixWeightTablePanel matrixPanel;
+
         public InputCountVertexForm(StartForm.StartForm startForm)
         {
             InitializeComponent();
@@ -28,7 +30,9 @@ namespace Forms
 
             this.BackColor = Color.DarkGray;
 
-            matrixGraph = new MatrixGraph(this);
+            matrixPanel = new MatrixWeightTablePanel(200, 200, Width / 2 - 100, 200);
+            
+            matrixGraph = new MatrixGraph(matrixPanel);
 
             inputBox = new InputCountBox(300, 20, 200, 100);
             Controls.Add(inputBox);
@@ -44,6 +48,10 @@ namespace Forms
 
             drawVertexButton = new DrawVertexButton(100, 30, 600, 100, this, matrixGraph, startForm);
             Controls.Add(drawVertexButton);
+
+            Controls.Add(matrixPanel);
+
+
 
         }
 
