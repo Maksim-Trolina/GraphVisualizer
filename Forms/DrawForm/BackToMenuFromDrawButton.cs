@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace Forms.DrawForm
 {
-    class BackToMenuFromDrawButton : BackButton
+    public class BackToMenuFromDrawButton : BackButton
     {
         private AdjacencyList adjacencyList;
 
