@@ -23,7 +23,7 @@ namespace Forms
 
             FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 
-            Text = "Matrix";
+            Text = "Create new graph";
 
             Location = new System.Drawing.Point(350, 160);
 
