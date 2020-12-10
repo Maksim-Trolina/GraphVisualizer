@@ -13,7 +13,7 @@ Path to exe file: GraphVisualizer\Forms\bin\Release\netcoreapp3.1
 
 After starting the application, it appears with the option to create a new graph or load an existing one.
 The graph loading function is still under development. 
-After clicking on the "Matrix" button, a window opens, in which you can enter the number of vertices 
+After clicking on the "Create new graph" button, a window opens, in which you can enter the number of vertices 
 in the graph, then click "OK" and an adjacency matrix for these vertices will be generated in the same 
 window.
 
