@@ -12,18 +12,38 @@ namespace AutoTest
     public class Tests
     {
 
-    
+        protected const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
+
+        private const string WpfAppId = @"D:\Eugene27\GraphVisualizer\Forms\bin\Debug\netcoreapp3.1\Forms.exe";
+
+        protected static WindowsDriver<WindowsElement> session;
+
+
         [Test]
-        public void CreateNewGraph_Click_Test()
+        public void CreateNewGraph_ButtonClick_Test()
         {
             AppiumOptions opt = new AppiumOptions();
 
-            opt.AddAdditionalCapability("app", @"D:\Eugene27\GraphVisualizer\Forms\bin\Debug\netcoreapp3.1\Forms.exe");
+            opt.AddAdditionalCapability("app", WpfAppId);
 
-            var session = new WindowsDriver<WindowsElement>(new Uri("http://127.0.0.1:4723"), opt);
+            session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), opt);
 
-            session.FindElementByName("Create new graph").Click();
-            
+            session.FindElementByName("Load file").Click();
+
+           // session.FindElementByName("Create").Click();
+
+        }
+
+        [Test]
+
+        public void LoadFile_ButtonClick_Test()
+        {
+
+
+            //session.FindElementByName("Load graph").Click();
+
+
+
         }
 
 
