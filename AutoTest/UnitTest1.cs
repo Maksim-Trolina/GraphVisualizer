@@ -12,11 +12,11 @@ namespace AutoTest
     public class Tests
     {
 
-        protected const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
+        protected const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723/";
 
-        private const string WpfAppId = @"D:\Eugene27\GraphVisualizer\Forms\bin\Debug\netcoreapp3.1\Forms.exe";
+        private const string WpfAppId = @"C:\Users\DONBASS\Desktop\GraphVisualizer\Forms\bin\Debug\netcoreapp3.1\Forms.exe";
 
-        protected static WindowsDriver<WindowsElement> session;
+        protected static RemoteWebDriver session;
 
 
         [Test]
@@ -26,12 +26,21 @@ namespace AutoTest
 
             opt.AddAdditionalCapability("app", WpfAppId);
 
-            session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), opt);
+            session = new RemoteWebDriver(new Uri(WindowsApplicationDriverUrl), opt);
+
+            session.FindElementByName("Create new graph").Click();
+
+            session.SwitchTo().Window(session.WindowHandles[0]);
+
+            session.FindElementByName("Create vertexes").Click();
+
+            session.SwitchTo().Window(session.WindowHandles[0]);
+
+            session.FindElementByName("Menu").Click();
+
+            session.SwitchTo().Window(session.WindowHandles[0]);
 
             session.FindElementByName("Load file").Click();
-
-           // session.FindElementByName("Create").Click();
-
         }
 
         [Test]
