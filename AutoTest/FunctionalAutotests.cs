@@ -16,7 +16,9 @@ namespace AutoTest
 
         protected const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723/";
 
-        private const string WpfAppId = @"D:\Eugene27\GraphVisualizer\Forms\bin\Debug\netcoreapp3.1\Forms.exe";
+        private const string WpfAppId = @"..\..\..\..\Forms\bin\Debug\netcoreapp3.1\Forms.exe";
+
+        private string fullPath = Path.GetFullPath(WpfAppId);
 
         protected static RemoteWebDriver session;
 
@@ -26,7 +28,7 @@ namespace AutoTest
         {
             AppiumOptions opt = new AppiumOptions();
 
-            opt.AddAdditionalCapability("app", WpfAppId);
+            opt.AddAdditionalCapability("app", fullPath);
 
             session = new RemoteWebDriver(new Uri(WindowsApplicationDriverUrl), opt);
           
@@ -66,12 +68,31 @@ namespace AutoTest
 
         [Test]
 
+        public void SaveGraph_Test()
+        {
+
+            CreateNewGraph_Draw_Test();
+
+            Actions builder = new Actions(session);
+
+            session.FindElementByName("Save that graph").Click();
+
+            session.FindElementByName("Имя файла:").SendKeys("AutomaticTestGraph");
+
+            builder.DoubleClick(session.FindElementByName("Сохранить")).Perform();
+
+
+            session.Quit();
+        }
+
+        [Test]
+
         public void GraphLoading_Test()
         {
 
             AppiumOptions opt = new AppiumOptions();
 
-            opt.AddAdditionalCapability("app", WpfAppId);
+            opt.AddAdditionalCapability("app", fullPath);
 
             session = new RemoteWebDriver(new Uri(WindowsApplicationDriverUrl), opt);
 
