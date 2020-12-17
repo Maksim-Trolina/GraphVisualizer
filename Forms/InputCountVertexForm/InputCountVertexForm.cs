@@ -1,13 +1,6 @@
-﻿using StartForm;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System.Windows.Forms;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Text;
-using System.Windows.Forms;
-using GraphModelDraw;
+
 
 namespace Forms
 {
@@ -21,13 +14,25 @@ namespace Forms
 
         private DrawVertexButton drawVertexButton;
 
-        private MatrixGraph matrixGraph;
+        public MatrixGraph matrixGraph;
 
-        public InputCountVertexForm()
+        private BackToMenuFromInputButton backToMenuOfInputButton;
+
+        private MatrixWeightTablePanel matrixPanel;
+
+        public InputCountVertexForm(StartForm.StartForm startForm)
         {
             InitializeComponent();
 
-            matrixGraph = new MatrixGraph(this);
+            StartPosition = FormStartPosition.CenterScreen;
+
+            Text = "GraphVizualizer / Matrix";
+
+            this.BackColor = Color.DarkGray;
+
+            matrixPanel = new MatrixWeightTablePanel(350, 290, Width / 2 - 190, 155);
+            
+            matrixGraph = new MatrixGraph(matrixPanel);
 
             inputBox = new InputCountBox(300, 20, 200, 100);
             Controls.Add(inputBox);
@@ -35,16 +40,22 @@ namespace Forms
             infoText = new InfoTextLabel(300, 30, 200, 80);
             Controls.Add(infoText);
 
-            confirmButton = new ConfirmButton(100, 30, 500, 100, inputBox, this, matrixGraph);
+            confirmButton = new ConfirmButton(100, 30, 500, 100, inputBox, matrixGraph);
             Controls.Add(confirmButton);
 
-            drawVertexButton = new DrawVertexButton(100, 30, 600, 100, this, matrixGraph);
+            backToMenuOfInputButton = new BackToMenuFromInputButton(matrixGraph, this);
+            Controls.Add(backToMenuOfInputButton);
+
+            drawVertexButton = new DrawVertexButton(100, 30, 600, 100, this, matrixGraph, startForm);
             Controls.Add(drawVertexButton);
 
-            
+            Controls.Add(matrixPanel);
+
+
+
         }
 
-        
+
     }
 
 

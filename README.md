@@ -13,7 +13,7 @@ Path to exe file: GraphVisualizer\Forms\bin\Release\netcoreapp3.1
 
 After starting the application, it appears with the option to create a new graph or load an existing one.
 The graph loading function is still under development. 
-After clicking on the "Matrix" button, a window opens, in which you can enter the number of vertices 
+After clicking on the "Create new graph" button, a window opens, in which you can enter the number of vertices 
 in the graph, then click "OK" and an adjacency matrix for these vertices will be generated in the same 
 window.
 
@@ -49,11 +49,35 @@ Press again to remove the backlight.
 ### Saving graph
 
 In order to save the drawn graph, press "Save graph", then select the folder to save and enter the file name. 
-The save format is json.
+Two files are saved to the folder: json and png.
+
+### Weight table
+
+Shows connections between vertices. Updated in real time. You can specify weights for edges. After filling in, 
+you need to click on the button "Save Changes".
+
+### Adjacency list
+
+Everything is the same as for the table of weights, only in a different visual representation.
+
+### Show cycle
+
+Press this button to highlight the cycles in the graph. Pressing again will hide the loops.
+
+### Shortest path
+
+After clicking the button, in the window that opens, enter the id of the starting and ending vertices. Then press the 
+"find path" button. The length of this path will be displayed on top. If it does not exist, a corresponding message 
+will be displayed.
+
+### Delete all
+
+Removes the drawn graph and cleans up the weight matrix along with the adjacency list.
 
 ## Technologies used:
 
-C#,Windows Forms, .NET FrameWork + .Net Core, NUnit, Visual Studio 2019
+C#,Windows Forms, .NET FrameWork + .Net Core, NUnit, Visual Studio 2019, WinAppDriver, Selenium Webdriver,
+Appium
 
 ## Development team:
 

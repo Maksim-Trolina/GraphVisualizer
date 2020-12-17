@@ -42,6 +42,8 @@ namespace StartForm
 
         private AdjacencyListPanel adListPanel;
 
+        private ShortestPathPanel shortestPathPanel;
+
         private MatrixWeightPanel matrixWeightPanel;
 
         private Arrow arrow;
@@ -52,11 +54,22 @@ namespace StartForm
 
         private Converter converter;
 
+        private BackToMenuFromDrawButton backToMenuOfDrawButton;
 
-        public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<InputCountBox>> matrix)
+        private BackToInputFromDrawButton backToInputFromDrawButton;
+
+
+        public DrawForm(List<VertexDraw> vertexDraws, List<EdgeDraw> edgeDraws, List<List<CellBox>> matrix, StartForm startForm, 
+            InputCountVertexForm inputCountVertexForm, MatrixGraph matrixGraph, AdjacencyList adjacencyList)
 
         {
             InitializeComponent();
+
+            StartPosition = FormStartPosition.CenterScreen;
+
+            Text = "GraphVizualizer / Draw";
+
+            this.BackColor = Color.DarkGray;
 
             DoubleBuffered = true;
 
@@ -70,11 +83,7 @@ namespace StartForm
 
             drawingEdges = new DrawingEdges();
 
-            MouseDown += new MouseEventHandler(MouseClickDrawForm);
-
-            SaveButton saveButton = new SaveButton();
-
-            Controls.Add(saveButton);
+            MouseDown += new MouseEventHandler(MouseClickDrawForm);          
 
             vertexBrush = new SolidBrush(Color.Black);
 
@@ -98,13 +107,21 @@ namespace StartForm
 
             converter = new Converter();
 
-            adjacencyList = converter.ConvertToAdjacencyList(matrix);
+            this.adjacencyList = adjacencyList;
 
             adListPanel = new AdjacencyListPanel(200, 200, Size.Width - 200, 0, adjacencyList);
 
+            Controls.Add(adListPanel);           
+
             Controls.Add(adListPanel);
 
-            toolPanel = new ToolPanel(0, 100, weightTable, this.edgeDraws, adjacencyList, this, adListPanel);
+            shortestPathPanel = new ShortestPathPanel(200, 200, 150, 0, adjacencyList, edgeDraws, this);
+
+            Controls.Add(shortestPathPanel);
+
+            toolPanel = new ToolPanel(0, 100, weightTable, this.edgeDraws
+                , adjacencyList, this, adListPanel, this.vertexDraws, matrix
+                , adListPanel.AdListTable.Cells, shortestPathPanel);
 
             Controls.Add(toolPanel);
 
@@ -114,17 +131,26 @@ namespace StartForm
 
             brushes = new Brush[2];
       
-            brushes[(int)BrushColor.Red] = Brushes.Red;
+            brushes[(int)BrushColor.Orange] = Brushes.Orange;
 
             brushes[(int)BrushColor.Black] = Brushes.Black;
+
+            backToMenuOfDrawButton = new BackToMenuFromDrawButton(adjacencyList, vertexDraws, edgeDraws,
+                this, adListPanel, weightTable, matrix, adListPanel.AdListTable.Cells);
+
+            backToInputFromDrawButton = new BackToInputFromDrawButton(adjacencyList, vertexDraws, edgeDraws,
+                this, adListPanel, weightTable, matrix, adListPanel.AdListTable.Cells, inputCountVertexForm, matrixGraph, startForm);
+
+            Controls.Add(backToInputFromDrawButton);
+
+            Controls.Add(backToMenuOfDrawButton);
         }
 
-        
         private void MouseClickDrawForm(object sender, MouseEventArgs e)
         {
             if(e.Button == MouseButtons.Left)
             {
-                VertexDraw vertexDraw = new VertexDraw(BrushColor.Red, BrushColor.Green
+                VertexDraw vertexDraw = new VertexDraw(BrushColor.Orange, BrushColor.Green
                     , e.X - (int)VertexParameters.Radius, e.Y - (int)VertexParameters.Radius
                     , (int)VertexParameters.Width, (int)VertexParameters.Height, "Саси"
                     , vertexDraws.Count);
@@ -154,13 +180,18 @@ namespace StartForm
                 else
                 {
 
-                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId, ref adjacencyList, adListPanel);
-
+                    drawingEdges.VertexFind(newEdgeDefinition, e, vertexDraws,  edgeDraws, ref startVertexId, ref endVertexId, ref adjacencyList, adListPanel, matrixWeightPanel);
 
                     Refresh();
 
                 }
+
+                if (DialogResult == DialogResult.Cancel)
+                {
+                    Application.Exit();
+                }
             }
+           
 
         }
 
@@ -180,13 +211,31 @@ namespace StartForm
            
             foreach (var edge in edgeDraws)
             {
-                newEdgeDefinition.DefinitionOfEdge(vertexDraws, edge, ref startPoint, ref endPoint);
+                if (edge.BrushEdge == BrushColor.Black)
+                {
+                    newEdgeDefinition.DefinitionOfEdge(vertexDraws, edge, ref startPoint, ref endPoint);
 
-                pen.Color = GetColor(edge.BrushEdge);
+                    pen.Color = GetColor(edge.BrushEdge);
 
-                graphics.DrawLine(pen, startPoint, arrow.GetEndArrowPoint(startPoint,endPoint));
+                    graphics.DrawLine(pen, startPoint, arrow.GetEndArrowPoint(startPoint, endPoint));
+                }
             }
 
+            pen.Width = 8;
+
+            foreach(var edge in edgeDraws)
+            {
+                if(edge.BrushEdge != BrushColor.Black)
+                {
+                    newEdgeDefinition.DefinitionOfEdge(vertexDraws, edge, ref startPoint, ref endPoint);
+
+                    pen.Color = GetColor(edge.BrushEdge);
+
+                    graphics.DrawLine(pen, startPoint, arrow.GetEndArrowPoint(startPoint, endPoint));
+                }
+            }
+
+            pen.Width = 5;
 
             foreach (var vertex in vertexDraws)
             {         
@@ -209,7 +258,7 @@ namespace StartForm
                     return Color.Black;
                 case BrushColor.Green:
                     return Color.Green;
-                case BrushColor.Red:
+                case BrushColor.Orange:
                     return Color.Red;
                 case BrushColor.Yellow:
                     return Color.Yellow;

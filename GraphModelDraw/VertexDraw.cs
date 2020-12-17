@@ -45,7 +45,7 @@ namespace GraphModelDraw
         {
             vertexDraws[vertexId].X = newX;
             vertexDraws[vertexId].Y = newY;
-            vertexDraws[vertexId].BrushCircle = BrushColor.Red;
+            vertexDraws[vertexId].BrushCircle = BrushColor.Orange;
             vertexId = -1;
 
         }

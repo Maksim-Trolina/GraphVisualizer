@@ -39,7 +39,7 @@ namespace GraphRepresentationTest
         public void AddNodeTest_CreateLoop_ExceptionExpected()
         {
 
-            var ex = Assert.Throws<System.Exception>(() => adList.AddNode(vertex, vertex, 20));
+            var ex = Assert.Throws<System.Exception>(() => adList.AddNode(vertex.Id, vertex.Id, 20));
 
             Assert.AreEqual(ex.Message, "The starting vertex coincides with the ending vertex");
         }

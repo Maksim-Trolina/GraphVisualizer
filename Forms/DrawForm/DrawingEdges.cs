@@ -7,11 +7,11 @@ using CraphModel;
 
 namespace Forms.DrawForm
 {
-    class DrawingEdges
+    public class DrawingEdges
     {
 
         public void VertexFind(NewEdgeDefinition vertexClick, MouseEventArgs e, List<VertexDraw> vertexDraws,  List<EdgeDraw> edgeDraws, ref int startVertexId, ref int endVertexId,
-                               ref AdjacencyList adjacencyList, AdjacencyListPanel adListPanel)
+                               ref AdjacencyList adjacencyList, AdjacencyListPanel adListPanel, MatrixWeightPanel matrixWeightPanel)
         {
 
             vertexClick.VertexRemember(ref startVertexId, ref endVertexId
@@ -25,9 +25,11 @@ namespace Forms.DrawForm
 
                 edgeDraws.Add(edgeDraw);
 
-                adjacencyList.AddNode(startVertexId ,endVertexId , 0);
+                adjacencyList.AddNode(startVertexId ,endVertexId , 1);
 
                 adListPanel.UpdateNodesPanel(startVertexId, endVertexId);
+
+                matrixWeightPanel.UpdateNodes(startVertexId, endVertexId);
               
                 startVertexId = -1;
                 endVertexId = -1;
