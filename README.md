@@ -49,11 +49,35 @@ Press again to remove the backlight.
 ### Saving graph
 
 In order to save the drawn graph, press "Save graph", then select the folder to save and enter the file name. 
-The save format is json.
+Two files are saved to the folder: json and png.
+
+### Weight table
+
+Shows connections between vertices. Updated in real time. You can specify weights for edges. After filling in, 
+you need to click on the button "Save Changes".
+
+### Adjacency list
+
+Everything is the same as for the table of weights, only in a different visual representation.
+
+### Show cycle
+
+Press this button to highlight the cycles in the graph. Pressing again will hide the loops.
+
+### Shortest path
+
+After clicking the button, in the window that opens, enter the id of the starting and ending vertices. Then press the 
+"find path" button. The length of this path will be displayed on top. If it does not exist, a corresponding message 
+will be displayed.
+
+### Delete all
+
+Removes the drawn graph and cleans up the weight matrix along with the adjacency list.
 
 ## Technologies used:
 
-C#,Windows Forms, .NET FrameWork + .Net Core, NUnit, Visual Studio 2019
+C#,Windows Forms, .NET FrameWork + .Net Core, NUnit, Visual Studio 2019, WinAppDriver, Selenium Webdriver,
+Appium
 
 ## Development team:
 
